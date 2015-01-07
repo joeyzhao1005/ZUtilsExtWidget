@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="WithDelEditText">
+
+        <!-- 搜索框内hint文字 -->
+        <attr name="WithDelEditText_hint" format="string" />
+        <!-- 清除图标（触发清空的图标）-->
+        <attr name="WithDelEditText_delete_icon" format="reference" />
+
+    </declare-styleable>
+
+</resources>

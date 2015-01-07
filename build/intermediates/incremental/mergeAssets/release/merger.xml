@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/Zhao/Documents/Doraemon/WithU/WithU/com.kit.extend.widget/assets"><file name="db.sqlite" path="/Users/Zhao/Documents/Doraemon/WithU/WithU/com.kit.extend.widget/assets/db.sqlite"/></source></dataSet><dataSet config="release"><source path="/Users/Zhao/Documents/Doraemon/WithU/WithU/com.kit.extend.widget/build-types/release/assets"/></dataSet></merger>
