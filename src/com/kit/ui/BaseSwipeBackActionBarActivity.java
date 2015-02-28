@@ -6,9 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.kit.app.ActivityManager;
-import com.kit.ui.swipebacklayout.lib.app.SwipeBackV4FragmentActivity;
+import com.kit.ui.swipebacklayout.lib.app.SwipeBackActionBarActivity;
 
-public class BaseSwipeBackV4FragmentActivity extends SwipeBackV4FragmentActivity
+public class BaseSwipeBackActionBarActivity extends SwipeBackActionBarActivity
         implements BaseV4Fragment.OnFragmentInteractionListener,IDoActivityInit {
 
 

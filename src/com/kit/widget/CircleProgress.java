@@ -1,10 +1,5 @@
 package com.kit.widget;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-import com.kit.extend.widget.R;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -15,8 +10,12 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
+
+import com.kit.extend.widget.R;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class CircleProgress extends View {
 
@@ -50,26 +49,26 @@ public class CircleProgress extends View {
 		TypedArray array = context.obtainStyledAttributes(attrs,
 				R.styleable.CircleProgressBar);
 
-		mMaxProgress = array.getInteger(R.styleable.CircleProgressBar_max,
+		mMaxProgress = array.getInteger(R.styleable.CircleProgressBar_CircleProgressBar_max,
 				DEFAULT_MAX_VALUE); // 获取进度条最大值
 
-		boolean bFill = array.getBoolean(R.styleable.CircleProgressBar_fill,
+		boolean bFill = array.getBoolean(R.styleable.CircleProgressBar_CircleProgressBar_fill,
 				DEFAULT_FILL_MODE); // 获取填充模式
 		int paintWidth = array.getInt(
-				R.styleable.CircleProgressBar_Paint_Width, DEFAULT_PAINT_WIDTH); // 获取画笔宽度
+				R.styleable.CircleProgressBar_CircleProgressBar_Paint_Width, DEFAULT_PAINT_WIDTH); // 获取画笔宽度
 		mCircleAttribute.setFill(bFill);
 		if (bFill == false) {
 			mCircleAttribute.setPaintWidth(paintWidth);
 		}
 
 		int paintColor = array.getColor(
-				R.styleable.CircleProgressBar_Paint_Color, DEFAULT_PAINT_COLOR); // 获取画笔颜色
+				R.styleable.CircleProgressBar_CircleProgressBar_Paint_Color, DEFAULT_PAINT_COLOR); // 获取画笔颜色
 
 		//Log.i("", "paintColor = " + Integer.toHexString(paintColor));
 		mCircleAttribute.setPaintColor(paintColor);
 
 		mCircleAttribute.mSidePaintInterval = array.getInt(
-				R.styleable.CircleProgressBar_Inside_Interval,
+				R.styleable.CircleProgressBar_CircleProgressBar_Inside_Interval,
 				DEFAULT_INSIDE_VALUE);// 圆环缩进距离
 
 		array.recycle(); // 一定要调用，否则会有问题

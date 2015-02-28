@@ -52,8 +52,8 @@
         <!-- 背景透明 -->
         <item name="android:backgroundDimEnabled">true</item>
         <!-- 模糊 -->
-
     </style>
+
 
     <style name="Theme.Dialog.HalfBottomInBottomOut" parent="android:Theme.Dialog">
         <item name="android:windowAnimationStyle">@style/Anim.Window.HalfBottomInBottomOut</item>
@@ -102,6 +102,7 @@
         <item name="android:backgroundDimEnabled">true</item>
         <!-- 模糊 -->
     </style>
+
 
     <style name="Theme.Dialog.LeftInRightOut" parent="android:Theme.Dialog">
         <item name="android:windowAnimationStyle">@style/Anim.Window.LeftInRightOut</item>
@@ -165,5 +166,45 @@
     <style name="Theme.Dialog.Transparency.BottomInBottomOut" parent="Theme.Dialog.Transparency">
         <item name="android:windowAnimationStyle">@style/Anim.Window.BottomInBottomOut</item>
     </style>
+
+
+    <!--AppCompat start-->
+    <style name="Theme.Dialog.AppCompat.LeftInRightOut" parent="Theme.AppCompat.Light.Dialog">
+        <item name="windowActionBar">false</item>
+        <item name="android:windowAnimationStyle">@style/Anim.Window.LeftInRightOut</item>
+
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 背景透明 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 模糊 -->
+    </style>
+
+
+    <style name="Theme.Dialog.AppCompat.BottomInBottomOut" parent="Theme.AppCompat.Light.Dialog">
+        <item name="windowActionBar">false</item>
+        <item name="android:windowAnimationStyle">@style/Anim.Window.BottomInBottomOut</item>
+
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 背景透明 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 模糊 -->
+    </style>
+    <!--AppCompat end-->
 
 </resources>

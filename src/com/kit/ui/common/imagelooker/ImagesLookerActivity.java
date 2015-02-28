@@ -5,23 +5,21 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.kit.app.model.ImageData;
 import com.kit.app.model.Model;
 import com.kit.extend.widget.R;
-import com.kit.ui.BaseSwipeBackSherlockFragmentActivity;
-import com.kit.utils.ActionBarUtils;
+import com.kit.ui.BaseSwipeBackV4FragmentActivity;
 import com.kit.utils.IntentUtils;
 import com.kit.utils.ZogUtils;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import java.util.ArrayList;
 
-public class ImagesLookerActivity extends BaseSwipeBackSherlockFragmentActivity {
+public class ImagesLookerActivity extends BaseSwipeBackV4FragmentActivity {
 
     private ViewPager pager;
     private ArrayList<ImageData> imageDataList;
@@ -48,13 +46,13 @@ public class ImagesLookerActivity extends BaseSwipeBackSherlockFragmentActivity 
     @Override
     public boolean initWidget() {
 
-        try {
-            ActionBar actionBar = getSupportActionBar();
-            actionBar.setBackgroundDrawable(getResources().getDrawable(R.color.transparent));
-            ActionBarUtils.setHomeBack(this, R.drawable.ic_back, R.string.back);
-        } catch (Exception e) {
-            ZogUtils.printLog(ImagesLookerActivity.class, "版本过低，不支持");
-        }
+//        try {
+//            ActionBar actionBar = getSupportActionBar();
+//            actionBar.setBackgroundDrawable(getResources().getDrawable(R.color.transparent));
+//            ActionBarUtils.setHomeBack(this, R.drawable.ic_back, R.string.back);
+//        } catch (Exception e) {
+//            ZogUtils.printLog(ImagesLookerActivity.class, "版本过低，不支持");
+//        }
         setContentView(R.layout.imageslooker_activity);
 
         //ViewPager的adapter
