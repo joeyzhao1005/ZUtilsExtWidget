@@ -2,6 +2,7 @@
 <resources>
 
     <declare-styleable name="CircleProgressBar">
+
         <attr name="CircleProgressBar_max" format="integer" />
         <!-- 进度条最大值 -->
         <attr name="CircleProgressBar_fill" format="boolean" />
@@ -12,6 +13,7 @@
         <!-- 画笔颜色 -->
         <attr name="CircleProgressBar_Inside_Interval" format="integer" />
         <!-- 圆形区域向里缩进的距离 -->
+
     </declare-styleable>
 
 </resources>
