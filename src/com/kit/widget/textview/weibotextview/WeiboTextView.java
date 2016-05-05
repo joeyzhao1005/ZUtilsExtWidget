@@ -244,8 +244,11 @@ public class WeiboTextView extends TextView implements GifDrawableExtend.UpdateL
             }
 
         }
-
-        setImageSpan.setSpan(context, text, builder, emotions, getLineHeight(), this, isUseGifAnim);
+        if (isUseGifAnim) {
+            setImageSpan.setSpan(context, text, builder, emotions, getLineHeight(), this, isUseGifAnim);
+        } else {
+            setImageSpan.setSpan(context, text, builder, emotions, getLineHeight(), null, isUseGifAnim);
+        }
 //        if (movementMethod != null){
 //            textView.setMovementMethod(LinkMovementMethod.getInstance());
         setMovementMethod(localLinkMovementMethod);

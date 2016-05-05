@@ -12,15 +12,26 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.kit.extend.widget.R;
 
 public class WithDelEditText extends LinearLayout {
 
     private ImageView ivWithDelEditTextDeleteIcon;
+    private ImageView ivWithDelEditTextIcon;
     private EditText et;
+    private RelativeLayout rl;
+    private int maxLines;
+    private int lines;
     private String hintString;
+    private Drawable WithDelEditTextIcon;
     private Drawable WithDelEditTextDeleteIcon;
+    private Drawable WithDelEditTextBackground;
+
+    private int hintColor;
+
+
     public OnCheckValueListenter checkListenter;
     public onFocusValueListenter focusCheckListenter;
 
@@ -31,11 +42,28 @@ public class WithDelEditText extends LinearLayout {
         TypedArray a = context.obtainStyledAttributes(attrs,
                 R.styleable.WithDelEditText);
 
+
         hintString = a
                 .getString(R.styleable.WithDelEditText_WithDelEditText_hint);
 
+        hintColor = a.getColor(R.styleable.WithDelEditText_WithDelEditText_hint_color, getContext().getResources().getColor(R.color.gray_half_5));
+
+        WithDelEditTextIcon = a
+                .getDrawable(R.styleable.WithDelEditText_WithDelEditText_icon);
+
         WithDelEditTextDeleteIcon = a
                 .getDrawable(R.styleable.WithDelEditText_WithDelEditText_delete_icon);
+
+
+        WithDelEditTextDeleteIcon = a
+                .getDrawable(R.styleable.WithDelEditText_WithDelEditText_delete_icon);
+
+        WithDelEditTextBackground = a
+                .getDrawable(R.styleable.WithDelEditText_WithDelEditText_background);
+
+        lines = a.getInteger(R.styleable.WithDelEditText_WithDelEditText_lines, 1);
+        maxLines = a.getInteger(R.styleable.WithDelEditText_WithDelEditText_maxLines, 1);
+
 
         a.recycle();
 
@@ -48,9 +76,23 @@ public class WithDelEditText extends LinearLayout {
             ivWithDelEditTextDeleteIcon
                     .setImageDrawable(WithDelEditTextDeleteIcon);
 
+        rl = (RelativeLayout) view
+                .findViewById(R.id.rl);
+        if (WithDelEditTextBackground != null)
+            rl.setBackgroundDrawable(WithDelEditTextBackground);
+
         et = (EditText) view.findViewById(R.id.et_with_del_edittext);
         if (!TextUtils.isEmpty(hintString))
             et.setHint(hintString);
+
+        et.setHintTextColor(hintColor);
+
+        ivWithDelEditTextIcon = (ImageView) view.findViewById(R.id.iv_with_del_eidttext_icon);
+        if (WithDelEditTextIcon != null) {
+            ivWithDelEditTextIcon
+                    .setImageDrawable(WithDelEditTextIcon);
+            ivWithDelEditTextIcon.setVisibility(VISIBLE);
+        }
 
         ivWithDelEditTextDeleteIcon.setOnClickListener(new OnClickListener() {
             @Override
@@ -58,6 +100,10 @@ public class WithDelEditText extends LinearLayout {
                 et.setText("");
             }
         });
+
+        et.setLines(lines);
+        et.setMaxLines(maxLines);
+
         // 给编辑框添加文本改变事件
         et.addTextChangedListener(new MyTextWatcher());
         et.setOnFocusChangeListener(new OnFocusChangeListener() {
@@ -77,6 +123,8 @@ public class WithDelEditText extends LinearLayout {
                 }
             }
         });
+
+
         // 把获得的view加载到这个控件中
         addView(view);
     }

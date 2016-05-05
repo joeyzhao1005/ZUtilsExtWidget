@@ -13,8 +13,8 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="11dp"
         android:gravity="center"
-        android:text="嘻嘻"
-        android:textColor="@color/text_color"
+        android:text="@string/default_value"
+        android:textColor="@color/black"
         android:textSize="16sp" />
 
     <ImageView

@@ -163,12 +163,13 @@ public class CitySelectorActivity extends BaseActivity implements
 
         llLeft.setOnClickListener(this);
 
-        initWidgetWithData();
 
         return super.initWidget();
     }
 
-    private void initWidgetWithData() {
+
+    @Override
+    protected boolean initWidgetWithData() {
         citySelectorInitializer = new CitySelectorInitializer(mContext, listView,
                 isProvinceHaveDefaultAll, isCityHaveDefaultAll, isDistrictHaveDefaultAll);
 
@@ -184,6 +185,7 @@ public class CitySelectorActivity extends BaseActivity implements
             // LogUtils.printLog(getClass(), "第一次选择 initProvince");
             citySelectorInitializer.initProvince();
         }
+        return super.initWidgetWithData();
     }
 
     public void changetTV(int selectorType) {

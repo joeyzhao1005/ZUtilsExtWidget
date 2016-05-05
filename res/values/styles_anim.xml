@@ -172,7 +172,7 @@
     <!-- 右侧滑入 右侧滑出Activity -->
     <style name="Animation.Activity.RightInRightOut.Window" parent="@android:style/Animation.Activity">
 
-        <!-- 第一个表示新的activity创建进入效果 -->
+        <!-- 第1个表示新的activity创建进入效果 -->
         <!--<item name="@android:activityOpenEnterAnimation">@anim/slide_in_right</item>-->
         <!-- 第2个表示activity还没有finish()下退出效果 -->
         <!--<item name="@android:activityOpenExitAnimation">@anim/slide_out_left</item>-->

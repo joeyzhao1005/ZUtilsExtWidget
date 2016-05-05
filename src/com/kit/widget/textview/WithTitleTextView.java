@@ -13,8 +13,9 @@ import android.widget.TextView;
 
 import com.kit.extend.widget.R;
 import com.kit.utils.DensityUtils;
+import com.kit.widget.base.BaseLinearLayout;
 
-public class WithTitleTextView extends LinearLayout {
+public class WithTitleTextView extends BaseLinearLayout {
 
     // private EditText et;
     private TextView tvTitle, tvContent;
@@ -191,6 +192,20 @@ public class WithTitleTextView extends LinearLayout {
      */
     public void setContent(CharSequence text) {
         tvContent.setText(text);
+    }
+
+
+    public int getContentColor() {
+        return content_color;
+    }
+
+    public void setContentColor(int contentColor) {
+        this.content_color = contentColor;
+        tvContent.setTextColor(contentColor);
+    }
+
+    public TextView getTextViewContent() {
+        return tvContent;
     }
 
 

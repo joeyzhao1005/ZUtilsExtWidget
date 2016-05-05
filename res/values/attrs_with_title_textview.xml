@@ -21,12 +21,14 @@
 
         <!-- 内容文字 -->
         <attr name="WithTitleTextView_content" format="string" />
+
         <!-- 内容文字间距 -->
-        <attr name="WithTitleTextView_content_margin" format="dimension" />
+        <!--<attr name="WithTitleTextView_content_margin" format="dimension" />-->
         <!-- 内容文字间距 -->
-        <attr name="WithTitleTextView_content_margin_left" format="dimension" />
-        <!-- 内容文字间距 -->
-        <attr name="WithTitleTextView_content_margin_right" format="dimension" />
+        <!--<attr name="WithTitleTextView_content_margin_left" format="dimension" />-->
+         <!--内容文字间距 -->
+        <!--<attr name="WithTitleTextView_content_margin_right" format="dimension" />-->
+
         <!-- 内容文字颜色 -->
         <attr name="WithTitleTextView_content_color" format="color" />
         <!-- 内容文字大小 -->
