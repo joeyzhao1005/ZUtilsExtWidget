@@ -9,7 +9,7 @@ import com.kit.app.ActivityManager;
 import com.kit.ui.swipebacklayout.lib.app.SwipeBackActionBarActivity;
 
 public class BaseSwipeBackActionBarActivity extends SwipeBackActionBarActivity
-        implements BaseV4Fragment.OnFragmentInteractionListener,IDoActivityInit {
+        implements BaseV4Fragment.OnFragmentInteractionListener {
 
 
     @Override

@@ -17,6 +17,7 @@
     <drawable name="gray_half_2">#20808080</drawable>
     <drawable name="gray_half_5">#50808080</drawable>
     <drawable name="gray_half">#80808080</drawable>
+    <drawable name="transparent">#00000000</drawable>
     <drawable name="transparent_black1">#10000000</drawable>
     <drawable name="transparent_black2">#20000000</drawable>
     <drawable name="transparent_black3">#30000000</drawable>

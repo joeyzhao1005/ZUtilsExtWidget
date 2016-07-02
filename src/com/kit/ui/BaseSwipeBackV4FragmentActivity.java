@@ -9,7 +9,7 @@ import com.kit.app.ActivityManager;
 import com.kit.ui.swipebacklayout.lib.app.SwipeBackV4FragmentActivity;
 
 public class BaseSwipeBackV4FragmentActivity extends SwipeBackV4FragmentActivity
-        implements BaseV4Fragment.OnFragmentInteractionListener,IDoActivityInit {
+        implements BaseV4Fragment.OnFragmentInteractionListener {
 
 
     @Override

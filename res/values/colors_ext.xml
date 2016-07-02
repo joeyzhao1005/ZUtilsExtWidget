@@ -26,6 +26,12 @@
     <color name="transparent_black7">#70000000</color>
     <color name="transparent_black8">#80000000</color>
     <color name="transparent_black9">#90000000</color>
+    <color name="transparent_black10">#AA000000</color>
+    <color name="transparent_black11">#BB000000</color>
+    <color name="transparent_black12">#CC000000</color>
+    <color name="transparent_black13">#DD000000</color>
+    <color name="transparent_black14">#EE000000</color>
+    <color name="transparent_black15">#FF000000</color>
     <color name="transparent_white1">#10FFFFFF</color>
     <color name="transparent_white2">#20FFFFFF</color>
     <color name="transparent_white3">#30FFFFFF</color>

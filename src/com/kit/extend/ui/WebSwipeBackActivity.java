@@ -3,6 +3,7 @@ package com.kit.extend.ui;
 import android.os.Bundle;
 import android.view.View;
 
+import com.kit.extend.ui.web.WebActivity;
 import com.kit.ui.swipebacklayout.lib.SwipeBackLayout;
 import com.kit.ui.swipebacklayout.lib.Utils;
 import com.kit.ui.swipebacklayout.lib.app.SwipeBackActivityBase;

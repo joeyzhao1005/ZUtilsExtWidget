@@ -1,13 +1,15 @@
-apply plugin: 'android-library'
+apply plugin: 'com.android.library'
 
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
-    compile project(':com.kit.basic')
+    compile project(':ZUtils')
+    compile 'com.github.bumptech.glide:glide:3.6.1'
+
 }
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion '21.1.1'
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
 
     sourceSets {
         main {

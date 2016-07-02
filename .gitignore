@@ -41,3 +41,4 @@ build
 ant.properties
 build.xml
 META-INF
+/.settings/
