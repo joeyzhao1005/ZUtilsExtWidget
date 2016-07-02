@@ -116,7 +116,7 @@
 //	@Override
 //	public void onLoadMore() {
 //
-//		LogUtils.printLog(getClass(), "onLoadMore()");
+//		LogUtils.i(getClass(), "onLoadMore()");
 //
 //		mHandler.postDelayed(new Runnable() {
 //			@Override

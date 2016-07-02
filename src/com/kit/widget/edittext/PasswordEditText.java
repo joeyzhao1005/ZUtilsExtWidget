@@ -1,35 +1,40 @@
 package com.kit.widget.edittext;
 
-import com.kit.extend.widget.R;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
-import android.text.InputType;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.TextureView;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ToggleButton;
+
+import com.kit.extend.widget.R;
 
 public class PasswordEditText extends LinearLayout {
 
 	private ImageView ivPasswordEditTextToggle;
 	private ToggleButton tbPasswordEditTextToggle;
+	private ImageView ivPasswordEditTextIcon;
+	private RelativeLayout rl;
 	private EditText et;
 
 	private String hintString;
 	private Drawable passwordEditTextToggle;
+	private Drawable passwordEditTextIcon;
+	private Drawable passwordEditTextBackground;
+	private int hintColor;
+
+
 
 	public PasswordEditText(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -43,6 +48,15 @@ public class PasswordEditText extends LinearLayout {
 
 		passwordEditTextToggle = a
 				.getDrawable(R.styleable.PasswordEditText_PasswordEditText_toggle);
+
+		hintColor = a.getColor(R.styleable.PasswordEditText_PasswordEditText_hint_color,getContext().getResources().getColor(R.color.gray_half_5));
+
+		passwordEditTextIcon = a
+				.getDrawable(R.styleable.PasswordEditText_PasswordEditText_icon);
+
+
+		passwordEditTextBackground = a
+				.getDrawable(R.styleable.PasswordEditText_PasswordEditText_background);
 
 		a.recycle();
 
@@ -59,6 +73,23 @@ public class PasswordEditText extends LinearLayout {
 		et = (EditText) view.findViewById(R.id.et_password_eidttext_edittext);
 		if (!TextUtils.isEmpty(hintString))
 			et.setHint(hintString);
+
+		et.setHintTextColor(hintColor);
+
+
+		rl = (RelativeLayout) view
+				.findViewById(R.id.rl);
+		if(passwordEditTextBackground !=null)
+			rl.setBackgroundDrawable(passwordEditTextBackground);
+
+		ivPasswordEditTextIcon = (ImageView) view.findViewById(R.id.iv_with_del_eidttext_icon);
+		if (passwordEditTextIcon != null)
+			ivPasswordEditTextIcon
+					.setImageDrawable(passwordEditTextIcon);
+
+
+
+
 		tbPasswordEditTextToggle.setChecked(true);
 
 		tbPasswordEditTextToggle

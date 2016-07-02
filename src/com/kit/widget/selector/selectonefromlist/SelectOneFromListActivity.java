@@ -1,7 +1,5 @@
 package com.kit.widget.selector.selectonefromlist;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,196 +8,188 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.kit.extend.widget.R;
 import com.kit.ui.BaseActivity;
-import com.kit.utils.IntentUtils;
 import com.kit.utils.ZogUtils;
+import com.kit.utils.intentutils.IntentUtils;
+
+import java.util.ArrayList;
 
 /**
- * 
+ * @author Echo 1149892817@qq.com
  * @ClassName MyActivity
  * @Description 公共选择小界面
- * @author Echo 1149892817@qq.com
  * @date 2014-6-3
- * 
  */
 
 public class SelectOneFromListActivity extends BaseActivity implements
-		OnClickListener {
+        OnClickListener {
 
-	private Context mContext;
+    private Context mContext;
 
-	private ListView rblv;
+    private ListView rblv;
 
-	private LinearLayout llLeft, llTitle;
+    private MyTask1 mTask1;
 
-	private TextView tvTitle;
+    // public static int selectedsPos = -2;
 
-	private MyTask1 mTask1;
+    private SelectOneFromListAdapter csara;
 
-	// public static int selectedsPos = -2;
+    private int selectedPosition;
 
-	private SelectOneFromListAdapter csara;
+    private String title;
 
-	private int selectedPosition;
+    // String[] item = { "选我", "哦，不，选我", "选我得永生", "不选我会疯", "咦，鄙视楼上，切" };
+    private ArrayList<String> item = new ArrayList<String>();
 
-	private String title;
+    private int startPosition = 0;
 
-	// String[] item = { "选我", "哦，不，选我", "选我得永生", "不选我会疯", "咦，鄙视楼上，切" };
-	private ArrayList<String> item = new ArrayList<String>();
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
-	private int startPosition = 0;
+    @Override
+    public boolean loadData() {
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-	}
+        doTask1();
 
-	@Override
-	public boolean loadData() {
+        super.loadData();
+        return true;
+    }
 
-		doTask1();
+    @Override
+    public boolean getExtra() {
+        Bundle bundle = this.getIntent().getExtras();
 
-		super.loadData();
-		return true;
-	}
+        title = bundle
+                .getString(SelectOneFromListConstant.SELECT_ONE_FROM_LIST_EXTRAS_KEY_ACTIVITY_TITLE);
+        item = bundle
+                .getStringArrayList(SelectOneFromListConstant.SELECT_ONE_FROM_LIST_EXTRAS_KEY_ITEMS_ARRAYLIST);
+        selectedPosition = bundle
+                .getInt(SelectOneFromListConstant.SELECT_ONE_FROM_LIST_EXTRAS_KEY_SELECTED_POSITION);
 
-	@Override
-	public boolean getExtra() {
-		Bundle bundle = this.getIntent().getExtras();
+        return super.getExtra();
+    }
 
-		title = bundle
-				.getString(SelectOneFromListConstant.SELECT_ONE_FROM_LIST_EXTRAS_KEY_ACTIVITY_TITLE);
-		item = bundle
-				.getStringArrayList(SelectOneFromListConstant.SELECT_ONE_FROM_LIST_EXTRAS_KEY_ITEMS_ARRAYLIST);
-		selectedPosition = bundle
-				.getInt(SelectOneFromListConstant.SELECT_ONE_FROM_LIST_EXTRAS_KEY_SELECTED_POSITION);
+    @Override
+    public boolean initWidget() {
+        mContext = this;
+        setContentView(R.layout.select_one_from_list_activity);
+        setTitle(title);
 
-		return super.getExtra();
-	}
+        rblv = (ListView) findViewById(R.id.rblv);
+        //ScrollUtils.disableOVER_SCROLL_NEVER(rblv);
 
-	@Override
-	public boolean initWidget() {
-		mContext = this;
-		setContentView(R.layout.select_one_from_list_activity);
+        csara = new SelectOneFromListAdapter(mContext, selectedPosition, item);
+        rblv.setAdapter(csara);
 
-		llLeft = (LinearLayout) findViewById(R.id.llLeft);
-		llTitle = (LinearLayout) findViewById(R.id.llTitle);
-		tvTitle = (TextView) findViewById(R.id.tvTitle);
 
-		llTitle.setVisibility(View.VISIBLE);
-		tvTitle.setText(title);
+        rblv.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parentView, View view,
+                                    int position, long id) {
 
-		rblv = (ListView) findViewById(R.id.rblv);
-		//ScrollUtils.disableOVER_SCROLL_NEVER(rblv);
-		
-		csara = new SelectOneFromListAdapter(mContext, selectedPosition, item);
-		rblv.setAdapter(csara);
+                // if (selectedPosition != position) {
+                // selectedPosition = selectedPosition - startPosition;
 
-		llLeft.setOnClickListener(this);
+                if (selectedPosition >= startPosition) {
+                    View viewItem = parentView.getChildAt(selectedPosition);
 
-		rblv.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parentView, View view,
-					int position, long id) {
+                    viewItem.findViewById(R.id.iv).setVisibility(View.GONE);
+                    selectedPosition = position;
+                    ImageView iv = (ImageView) view.findViewById(R.id.iv);
+                    iv.setVisibility(View.VISIBLE);
+                } else {
+                    selectedPosition = position;
+                    ImageView iv = (ImageView) view.findViewById(R.id.iv);
+                    iv.setVisibility(View.VISIBLE);
+                }
 
-				// if (selectedPosition != position) {
-				// selectedPosition = selectedPosition - startPosition;
+                Bundle bundle = new Bundle();
 
-				if (selectedPosition >= startPosition) {
-					View viewItem = parentView.getChildAt(selectedPosition);
+                bundle.putInt(
+                        SelectOneFromListConstant.SELECT_ONE_FROM_LIST_EXTRAS_KEY_SELECTED_POSITION,
+                        selectedPosition);
+                bundle.putString(
+                        SelectOneFromListConstant.SELECT_ONE_FROM_LIST_EXTRAS_KEY_SELECTED_ITEM_STRING,
+                        item.get(position));
 
-					viewItem.findViewById(R.id.iv).setVisibility(View.GONE);
-					selectedPosition = position;
-					ImageView iv = (ImageView) view.findViewById(R.id.iv);
-					iv.setVisibility(View.VISIBLE);
-				} else {
-					selectedPosition = position;
-					ImageView iv = (ImageView) view.findViewById(R.id.iv);
-					iv.setVisibility(View.VISIBLE);
-				}
 
-				Bundle bundle = new Bundle();
-
-				bundle.putString(
-						SelectOneFromListConstant.SELECT_ONE_FROM_LIST_EXTRAS_KEY_SELECTED_ITEM_STRING,
-						item.get(position));
-				bundle.putInt(
-						SelectOneFromListConstant.SELECT_ONE_FROM_LIST_EXTRAS_KEY_SELECTED_POSITION,
-						selectedPosition);
-
-				ZogUtils.printLog(getClass(),
+                ZogUtils.i(getClass(),
                         selectedPosition + " " + item.get(position));
 
-				IntentUtils
-						.gotoNextActivity(
-								mContext,
-								bundle,
-								SelectOneFromListConstant.ACTIVITY_ON_RESULT_SELECT_ONE_FROM_LIST_REQUEST,
-								true);
-			}
+                IntentUtils
+                        .setResult(
+                                mContext,
+                                bundle,
+                                SelectOneFromListConstant.ACTIVITY_ON_RESULT_SELECT_ONE_FROM_LIST_RESULT,
+                                true);
+            }
 
-			// }
-		});
+            // }
+        });
 
-		return true;
-	}
+        return true;
+    }
 
-	public void doTask1() {
+    public void doTask1() {
 
-		if (mTask1 != null) {
-			mTask1.cancel(true);
-			mTask1 = new MyTask1();
-			mTask1.execute();
-		} else {
-			mTask1 = new MyTask1();
-			mTask1.execute();
-		}
-	}
+        if (mTask1 != null) {
+            mTask1.cancel(true);
+            mTask1 = new MyTask1();
+            mTask1.execute();
+        } else {
+            mTask1 = new MyTask1();
+            mTask1.execute();
+        }
+    }
 
-	private class MyTask1 extends AsyncTask<Void, Void, ArrayList<String>> {
-		// onPreExecute方法用于在执行后台任务前做一些UI操作
-		@Override
-		protected void onPreExecute() {
+    private class MyTask1 extends AsyncTask<Void, Void, ArrayList<String>> {
+        // onPreExecute方法用于在执行后台任务前做一些UI操作
+        @Override
+        protected void onPreExecute() {
 
-		}
+        }
 
-		// doInBackground方法内部执行后台任务,不可在此方法内修改UI
-		@Override
-		protected ArrayList<String> doInBackground(Void... params) {
+        // doInBackground方法内部执行后台任务,不可在此方法内修改UI
+        @Override
+        protected ArrayList<String> doInBackground(Void... params) {
 
-			return null;
-		}
+            return null;
+        }
 
-		@Override
-		protected void onPostExecute(ArrayList<String> result) {
+        @Override
+        protected void onPostExecute(ArrayList<String> result) {
 
-		}
+        }
 
-	}
+    }
 
-	@Override
-	public void onClick(View view) {
-		int id = view.getId();
-		if (id == R.id.llLeft) {
-			this.finish();
-		}
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        if (id == R.id.llLeft) {
+            this.finish();
+        }
 
-	}
+    }
 
-	@Override
-	protected void onDestroy() {
+    public int getSelectedPosition() {
+        return selectedPosition;
+    }
 
-		if (mTask1 != null) {
-			mTask1.cancel(true);
-			mTask1 = null;
-		}
+    @Override
+    protected void onDestroy() {
 
-		super.onDestroy();
-	}
+        if (mTask1 != null) {
+            mTask1.cancel(true);
+            mTask1 = null;
+        }
+
+        super.onDestroy();
+    }
 
 }

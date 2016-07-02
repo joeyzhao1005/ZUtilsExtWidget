@@ -5,7 +5,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import com.kit.utils.IntentUtils;
+import com.kit.utils.intentutils.IntentUtils;
 import com.kit.extend.widget.R;
 
 public class DialogUtils {

@@ -268,7 +268,7 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
         }
         int finalHeight = 0;
 
-        ZogUtils.printLog(getClass(), "finalHeight:" + finalHeight);
+        ZogUtils.i(getClass(), "finalHeight:" + finalHeight);
         // is refreshing, just scroll back to show all the header.
         if (mPullRefreshing && height > mHeaderViewHeight) {
             finalHeight = mHeaderViewHeight;

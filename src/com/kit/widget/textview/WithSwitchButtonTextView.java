@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.support.v7.widget.SwitchCompat;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -15,9 +16,9 @@ import android.widget.TextView;
 
 import com.kit.extend.widget.R;
 import com.kit.utils.DensityUtils;
-import com.kit.widget.switchbutton.SwitchButton;
+import com.kit.widget.base.BaseLinearLayout;
 
-public class WithSwitchButtonTextView extends LinearLayout {
+public class WithSwitchButtonTextView extends BaseLinearLayout {
 
     // private ImageView ivGo;
     // private EditText et;
@@ -37,7 +38,7 @@ public class WithSwitchButtonTextView extends LinearLayout {
 
     private int title_color, content_color;
 
-    public SwitchButton switchButton;
+    public SwitchCompat switchButton;
 
     @SuppressLint("NewApi")
     @SuppressWarnings("deprecation")
@@ -85,7 +86,7 @@ public class WithSwitchButtonTextView extends LinearLayout {
 
         rlEditText = (RelativeLayout) view.findViewById(R.id.rlEditText);
 
-        switchButton = (SwitchButton) view.findViewById(R.id.switchButton);
+        switchButton = (SwitchCompat) view.findViewById(R.id.switchButton);
 
         if (WithSwitchButtonTextView_background != null)
             llWithSwitchButtonTextView
@@ -191,8 +192,16 @@ public class WithSwitchButtonTextView extends LinearLayout {
      */
     public void setChecked(boolean b) {
         switchButton.setChecked(b);
-
     }
+
+    /**
+     * 设置是否选中
+     * @param b
+     */
+    public boolean isChecked() {
+        return switchButton.isChecked();
+    }
+
 
 
 }

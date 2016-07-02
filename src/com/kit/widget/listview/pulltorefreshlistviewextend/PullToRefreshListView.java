@@ -185,7 +185,7 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
      * 开始刷新
      */
     private void startRefresh() {
-        ZogUtils.printLog(PullToRefreshListView.class, "startRefresh!!!!!!!!!!!!!!!!");
+        ZogUtils.i(PullToRefreshListView.class, "startRefresh!!!!!!!!!!!!!!!!");
 
 
         preRefresh();
@@ -229,7 +229,7 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
      * stop load more, reset footer view.
      */
     public void stopLoadMore() {
-        ZogUtils.printLog(PullToRefreshListView.class, "stopLoadMore!!!!!!!!!!!!!!!!");
+        ZogUtils.i(PullToRefreshListView.class, "stopLoadMore!!!!!!!!!!!!!!!!");
 
         if (mPullLoading == true) {
             mPullLoading = false;
@@ -264,7 +264,7 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
      */
     private void updateHeaderHeight(float delta) {
 
-//        LogUtils.printLog(PullToRefreshListView.class, "delta:" + delta);
+//        LogUtils.i(PullToRefreshListView.class, "delta:" + delta);
 //        if (mPullRefreshing&&mHeaderView.getVisiableHeight()>=mHeaderView.getHeaderRealHeight()) {
 //            delta = 0;
 //        }
@@ -310,10 +310,10 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
      */
     private void resetHeaderHeight() {
 
-//        LogUtils.printLog(getClass(), "--------------------resetHeaderHeight");
+//        LogUtils.i(getClass(), "--------------------resetHeaderHeight");
 
         int height = mHeaderView.getVisiableHeight();
-//        LogUtils.printLog(getClass(), "mHeaderView.getVisiableHeight():" + height);
+//        LogUtils.i(getClass(), "mHeaderView.getVisiableHeight():" + height);
 
         // refreshing and header isn't shown fully. do nothing.
         if (mPullRefreshing && height <= mHeaderViewRealHeight) {
@@ -326,11 +326,11 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
         }
         int finalHeight = 0;
 
-//        LogUtils.printLog(getClass(), "header finalHeight:" + finalHeight + " mHeaderViewRealHeight:" + mHeaderViewRealHeight);
+//        LogUtils.i(getClass(), "header finalHeight:" + finalHeight + " mHeaderViewRealHeight:" + mHeaderViewRealHeight);
         if (mPullRefreshing) {
             finalHeight = mHeaderViewRealHeight;
         }
-//        LogUtils.printLog(getClass(), "header finalHeight:" + finalHeight + " mHeaderViewRealHeight:" + mHeaderViewRealHeight);
+//        LogUtils.i(getClass(), "header finalHeight:" + finalHeight + " mHeaderViewRealHeight:" + mHeaderViewRealHeight);
 
         mScrollBack = SCROLLBACK_HEADER;
 
@@ -345,7 +345,7 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
 
         int height = mFooterView.getVisiableHeight();
 
-//        LogUtils.printLog(getClass(), "footer height:" + height
+//        LogUtils.i(getClass(), "footer height:" + height
 //                + " mFooterView.isFooterVisable():" + mFooterView.isFooterVisable());
 
         if (height == 0) {// not visible.
@@ -389,11 +389,11 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
 
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-//                LogUtils.printLog(PullToRefreshListView.class, "ACTION_DOWN");
+//                LogUtils.i(PullToRefreshListView.class, "ACTION_DOWN");
                 mLastY = ev.getRawY();
                 break;
             case MotionEvent.ACTION_MOVE:
-//                LogUtils.printLog(PullToRefreshListView.class, "ACTION_MOVE");
+//                LogUtils.i(PullToRefreshListView.class, "ACTION_MOVE");
                 final float deltaY = ev.getRawY() - mLastY;
                 mLastY = ev.getRawY();
                 if (getFirstVisiblePosition() == 0
@@ -408,10 +408,10 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
                 }
                 break;
             default:
-//                LogUtils.printLog(PullToRefreshListView.class, "ACTION default");
+//                LogUtils.i(PullToRefreshListView.class, "ACTION default");
                 mLastY = -1; // reset
                 if (getFirstVisiblePosition() == 0) {
-//                    LogUtils.printLog(PullToRefreshListView.class, "mHeaderView.getVisiableHeight():" + mHeaderView.getVisiableHeight());
+//                    LogUtils.i(PullToRefreshListView.class, "mHeaderView.getVisiableHeight():" + mHeaderView.getVisiableHeight());
                     if (mEnablePullRefresh
                             && (mHeaderView.getVisiableHeight() > PULL_REFRESH_DELTA) && !mPullRefreshing) {
                         // invoke refresh
@@ -419,7 +419,7 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
                     }
                     resetHeaderHeight();
                 } else if (getLastVisiblePosition() == mTotalItemCount - 1) {
-//                    LogUtils.printLog(PullToRefreshListView.class, "mFooterView.getVisiableHeight():" + mFooterView.getVisiableHeight());
+//                    LogUtils.i(PullToRefreshListView.class, "mFooterView.getVisiableHeight():" + mFooterView.getVisiableHeight());
                     if (mEnablePullLoad
                             && (mFooterView.getVisiableHeight() - mFooterViewRealHeight) > PULL_LOAD_MORE_DELTA
                             && !mPullLoading) {

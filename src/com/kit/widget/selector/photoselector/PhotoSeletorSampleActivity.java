@@ -90,7 +90,7 @@ public class PhotoSeletorSampleActivity extends BaseActivity implements
             asc.actionSheetStrings = s;
             asc.colors = colors;
 
-            ZogUtils.printLog(getClass(), "sun" + asc + "--"
+            ZogUtils.i(getClass(), "sun" + asc + "--"
                     + asc.actionSheetStrings);
             new ActionSheet().show(this, asc,
                     new OnActionSheetItemSelectedSample(), null);

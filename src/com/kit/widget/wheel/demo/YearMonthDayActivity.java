@@ -117,7 +117,7 @@ public class YearMonthDayActivity extends BaseActivity implements
 
 		// year
 		curYear = calendar.get(Calendar.YEAR);
-		ZogUtils.printLog(getClass(), "ymd:" + curYear + " " + curMonth + " "
+		ZogUtils.i(getClass(), "ymd:" + curYear + " " + curMonth + " "
                 + curDay);
 
 		// month
@@ -238,7 +238,7 @@ public class YearMonthDayActivity extends BaseActivity implements
 			String monthStr = (monthIndex + 1) + "";
 			String dayStr = (curDay) + "";
 
-			ZogUtils.printLog(getClass(), yearStr + "-" + monthStr + "-"
+			ZogUtils.i(getClass(), yearStr + "-" + monthStr + "-"
                     + dayStr);
 
 			Intent intent = new Intent();

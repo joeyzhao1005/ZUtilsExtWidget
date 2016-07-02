@@ -163,7 +163,7 @@ public class FloatingView extends FrameLayout {
 //            ObjectAnimator animator = ObjectAnimator.ofFloat(this, "y", mHidden ? mYHidden : mYDisplayed).setDuration(500);
 //            animator.setInterpolator(mInterpolator);
 //            animator.start();
-            ZogUtils.printLog(FloatingView.class, "mHidden:" + mHidden + " " + resAnimInID + "#" + resAnimOutID);
+            ZogUtils.i(FloatingView.class, "mHidden:" + mHidden + " " + resAnimInID + "#" + resAnimOutID);
 
             if (mHidden) {//隐藏
                 AnimUtils.hidden(context, this, resAnimOutID);
@@ -180,7 +180,7 @@ public class FloatingView extends FrameLayout {
     }
 
     public void listenTo(AbsListView listView) {
-        ZogUtils.printLog(FloatingView.class, "listenTo listView: " + listView);
+        ZogUtils.i(FloatingView.class, "listenTo listView: " + listView);
 
         if (null != listView) {
             listView.setOnScrollListener(new DirectionScrollListener(this));

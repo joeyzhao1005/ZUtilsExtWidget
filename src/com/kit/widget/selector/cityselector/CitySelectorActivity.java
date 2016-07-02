@@ -59,7 +59,7 @@ public class CitySelectorActivity extends BaseActivity implements
             isProvinceHaveDefaultAll = bundle
                     .getBoolean(CitySelectorConstant.CITY_SELECTOR_EXTRAS_KEY_ISPROVINCEHAVEDEFAULTALL);
         } catch (Exception e) {
-            ZogUtils.printLog(getClass(), "getDefaultAll return value is empty");
+            ZogUtils.i(getClass(), "getDefaultAll return value is empty");
             // LogUtils.showException(e);
         }
 
@@ -67,7 +67,7 @@ public class CitySelectorActivity extends BaseActivity implements
             isCityHaveDefaultAll = bundle
                     .getBoolean(CitySelectorConstant.CITY_SELECTOR_EXTRAS_KEY_ISCITYHAVEDEFAULTALL);
         } catch (Exception e) {
-            ZogUtils.printLog(getClass(), "getDefaultAll return value is empty");
+            ZogUtils.i(getClass(), "getDefaultAll return value is empty");
             // LogUtils.showException(e);
         }
 
@@ -76,11 +76,11 @@ public class CitySelectorActivity extends BaseActivity implements
                     .getBoolean(CitySelectorConstant.CITY_SELECTOR_EXTRAS_KEY_ISDISTRICTHAVEDEFAULTALL);
 
         } catch (Exception e) {
-            ZogUtils.printLog(getClass(), "getDefaultAll return value is empty");
+            ZogUtils.i(getClass(), "getDefaultAll return value is empty");
             // LogUtils.showException(e);
         }
 
-        ZogUtils.printLog(getClass(), isProvinceHaveDefaultAll + " " + isCityHaveDefaultAll + " " + isDistrictHaveDefaultAll);
+        ZogUtils.i(getClass(), isProvinceHaveDefaultAll + " " + isCityHaveDefaultAll + " " + isDistrictHaveDefaultAll);
 
 
         try {
@@ -92,7 +92,7 @@ public class CitySelectorActivity extends BaseActivity implements
                     .getSerializable(CitySelectorConstant.CITY_SELECTOR_EXTRAS_KEY_DISTRICT);
 
         } catch (Exception e) {
-            ZogUtils.printLog(getClass(), "getExtra() return value is empty");
+            ZogUtils.i(getClass(), "getExtra() return value is empty");
             // LogUtils.showException(e);
         }
 
@@ -101,7 +101,7 @@ public class CitySelectorActivity extends BaseActivity implements
                     .getBoolean(CitySelectorConstant.CITY_SELECTOR_EXTRAS_KEY_ISPROVINCEDISABLED);
         } catch (Exception e) {
             isProvinceDisabled = false;
-            ZogUtils.printLog(getClass(), "isProvinceDisabled:" + isProvinceDisabled);
+            ZogUtils.i(getClass(), "isProvinceDisabled:" + isProvinceDisabled);
 
         }
 
@@ -110,7 +110,7 @@ public class CitySelectorActivity extends BaseActivity implements
                     .getBoolean(CitySelectorConstant.CITY_SELECTOR_EXTRAS_KEY_ISCITYDISABLED);
         } catch (Exception e) {
             isCityDisabled = false;
-            ZogUtils.printLog(getClass(), "isProvinceDisabled:" + isProvinceDisabled);
+            ZogUtils.i(getClass(), "isProvinceDisabled:" + isProvinceDisabled);
 
         }
 
@@ -119,7 +119,7 @@ public class CitySelectorActivity extends BaseActivity implements
                     .getBoolean(CitySelectorConstant.CITY_SELECTOR_EXTRAS_KEY_ISDISTRICTDISABLED);
         } catch (Exception e) {
             isDistrictDisabled = false;
-            ZogUtils.printLog(getClass(), "isProvinceDisabled:" + isProvinceDisabled);
+            ZogUtils.i(getClass(), "isProvinceDisabled:" + isProvinceDisabled);
 
         }
         return super.getExtra();
@@ -163,27 +163,29 @@ public class CitySelectorActivity extends BaseActivity implements
 
         llLeft.setOnClickListener(this);
 
-        initWidgetWithData();
 
         return super.initWidget();
     }
 
-    private void initWidgetWithData() {
+
+    @Override
+    protected boolean initWidgetWithData() {
         citySelectorInitializer = new CitySelectorInitializer(mContext, listView,
                 isProvinceHaveDefaultAll, isCityHaveDefaultAll, isDistrictHaveDefaultAll);
 
         if (province != null && city != null) {
             // 如果有上个界面带过来的place，即是已经选择过,要展开到区县级别，重新去做选择
 
-            // LogUtils.printLog(mContext, city.getPcode());
+            // LogUtils.i(mContext, city.getPcode());
 
             citySelectorInitializer.initDistrict(city
                     .getCode());
         } else {
             // 第一次选择
-            // LogUtils.printLog(getClass(), "第一次选择 initProvince");
+            // LogUtils.i(getClass(), "第一次选择 initProvince");
             citySelectorInitializer.initProvince();
         }
+        return super.initWidgetWithData();
     }
 
     public void changetTV(int selectorType) {
@@ -313,7 +315,7 @@ public class CitySelectorActivity extends BaseActivity implements
      */
     public void setProvinceCityDistrictDisabled(boolean isProvinceDisabled, boolean isCityDisabled, boolean isDistrictDisabled) {
 
-//        LogUtils.printLog(getClass(), isProvinceDisabled + " " + isCityDisabled + " " + isDistrictDisabled);
+//        LogUtils.i(getClass(), isProvinceDisabled + " " + isCityDisabled + " " + isDistrictDisabled);
 
 
         if (isProvinceDisabled)

@@ -279,7 +279,7 @@ public class YearMonthDayHourMinuteActivity extends BaseActivity implements
 			String hourStr = (curHour) + "";
 			String minuteStr = (curMinute) + "";
 
-			ZogUtils.printLog(getClass(), yearStr + "-" + monthStr + "-"
+			ZogUtils.i(getClass(), yearStr + "-" + monthStr + "-"
                     + dayStr + " " + hourStr + ":" + minuteStr);
 
 			Intent intent = new Intent();

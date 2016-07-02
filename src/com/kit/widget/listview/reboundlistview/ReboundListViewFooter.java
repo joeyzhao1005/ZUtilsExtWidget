@@ -89,7 +89,7 @@ public class ReboundListViewFooter extends LinearLayout {
 	 */
 	public void normal() {
 
-		// LogUtils.printLog(getClass(), "normal()");
+		// LogUtils.i(getClass(), "normal()");
 		if (footerTextViewEnabled) {
 			mHintView.setVisibility(View.VISIBLE);
 			mHintView.setText(R.string.rebound_listview_footer_hint_normal);

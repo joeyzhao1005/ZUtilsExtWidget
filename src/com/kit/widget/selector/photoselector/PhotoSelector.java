@@ -263,7 +263,7 @@ public class PhotoSelector {
         intent.setType("image/*");
         intent.putExtra("return-data", true);
 
-        ZogUtils.printLog(PhotoSelector.class, WHICH_ACTION_SELETE_PHOTO);
+        ZogUtils.i(PhotoSelector.class, WHICH_ACTION_SELETE_PHOTO);
 
 
         return intent;

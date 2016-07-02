@@ -113,7 +113,7 @@ public class ReboundListViewSampleActivity extends BaseActivity implements
 	@Override
 	public void onLoadMore() {
 
-		ZogUtils.printLog(getClass(), "onLoadMore()");
+		ZogUtils.i(getClass(), "onLoadMore()");
 
 		mHandler.postDelayed(new Runnable() {
 			@Override

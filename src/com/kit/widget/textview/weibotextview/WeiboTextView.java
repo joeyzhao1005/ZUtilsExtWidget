@@ -99,7 +99,7 @@ public class WeiboTextView extends TextView implements GifDrawableExtend.UpdateL
         public boolean onTouchEvent(TextView widget, Spannable buffer, MotionEvent event) {
             int action = event.getAction();
 
-//            LogUtils.printLog(WeiboTextView.class, "MotionEvent:" + action);
+//            LogUtils.i(WeiboTextView.class, "MotionEvent:" + action);
 
 //            if (action == MotionEvent.ACTION_MOVE) {
 //                isPressed = false;
@@ -140,7 +140,7 @@ public class WeiboTextView extends TextView implements GifDrawableExtend.UpdateL
                     int start = buffer.getSpanStart(link[0]);
                     int end = buffer.getSpanEnd(link[0]);
 
-//                    LogUtils.printLog(WebViewUtils.class, "start:" + start + " end:" + end);
+//                    LogUtils.i(WebViewUtils.class, "start:" + start + " end:" + end);
 
                     if (action == MotionEvent.ACTION_UP) {
                         link[0].onClick(widget);
@@ -244,8 +244,11 @@ public class WeiboTextView extends TextView implements GifDrawableExtend.UpdateL
             }
 
         }
-
-        setImageSpan.setSpan(context, text, builder, emotions, getLineHeight(), this, isUseGifAnim);
+        if (isUseGifAnim) {
+            setImageSpan.setSpan(context, text, builder, emotions, getLineHeight(), this, isUseGifAnim);
+        } else {
+            setImageSpan.setSpan(context, text, builder, emotions, getLineHeight(), null, isUseGifAnim);
+        }
 //        if (movementMethod != null){
 //            textView.setMovementMethod(LinkMovementMethod.getInstance());
         setMovementMethod(localLinkMovementMethod);

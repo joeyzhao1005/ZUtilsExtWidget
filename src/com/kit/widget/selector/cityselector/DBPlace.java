@@ -50,7 +50,7 @@ public class DBPlace extends DB {
 
         sql.append(");");
 
-        // LogUtils.printLog(getClass(), sql.toString());
+        // LogUtils.i(getClass(), sql.toString());
 
         db.execSQL(sql.toString());
     }
@@ -194,7 +194,7 @@ public class DBPlace extends DB {
         } catch (Exception e) {
             ZogUtils.showException(e);
         }
-//        LogUtils.printLog(getClass(), "list.size():" + list.size());
+//        LogUtils.i(getClass(), "list.size():" + list.size());
         return list;
     }
 
@@ -227,7 +227,7 @@ public class DBPlace extends DB {
         } catch (Exception e) {
 //            e.printStackTrace();
 
-            ZogUtils.printLog(DBPlace.class, "insert error");
+            ZogUtils.i(DBPlace.class, "insert error");
 
             mDb.endTransaction();
 

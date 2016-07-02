@@ -59,7 +59,7 @@ public class SwipeShowDeleteListView extends ListView {
 	@Override
 	public boolean onInterceptTouchEvent(MotionEvent ev) {
 
-		ZogUtils.printLog(getClass(), "onInterceptTouchEvent");
+		ZogUtils.i(getClass(), "onInterceptTouchEvent");
 
 		float lastX = ev.getX();
 		float lastY = ev.getY();
@@ -130,7 +130,7 @@ public class SwipeShowDeleteListView extends ListView {
 	@Override
 	public boolean onTouchEvent(MotionEvent ev) {
 
-		ZogUtils.printLog(getClass(), "onTouchEvent");
+		ZogUtils.i(getClass(), "onTouchEvent");
 
 		float lastX = ev.getX();
 		float lastY = ev.getY();

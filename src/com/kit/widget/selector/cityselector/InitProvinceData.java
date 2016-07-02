@@ -23,7 +23,7 @@ public class InitProvinceData {
 
 		dbPlace.close();
 
-		ZogUtils.printLog(mContext.getClass(),
+		ZogUtils.i(mContext.getClass(),
                 "initProvinceFromLocal:" + list.size());
 
 		return list;

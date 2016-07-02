@@ -161,7 +161,7 @@ public class PhotoSelectorUtils {
             String uriStr = selectedImage.toString();
             String path = uriStr.substring(10, uriStr.length());
             if (path.startsWith("com.sec.android.gallery3d")) {
-                ZogUtils.printLog(PhotoSelectorUtils.class, "It's auto backup pic path:" + selectedImage.toString());
+                ZogUtils.i(PhotoSelectorUtils.class, "It's auto backup pic path:" + selectedImage.toString());
                 return null;
             }
         }
