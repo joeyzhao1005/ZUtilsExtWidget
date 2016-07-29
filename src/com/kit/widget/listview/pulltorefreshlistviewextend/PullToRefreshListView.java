@@ -14,7 +14,7 @@ import android.widget.Scroller;
 import android.widget.TextView;
 
 import com.kit.extend.widget.R;
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 import com.kit.utils.ScrollUtils;
 
 public class PullToRefreshListView extends ListView implements OnScrollListener {
@@ -185,7 +185,7 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
      * 开始刷新
      */
     private void startRefresh() {
-        ZogUtils.i(PullToRefreshListView.class, "startRefresh!!!!!!!!!!!!!!!!");
+        ZogUtils.i( "startRefresh!!!!!!!!!!!!!!!!");
 
 
         preRefresh();
@@ -229,7 +229,7 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
      * stop load more, reset footer view.
      */
     public void stopLoadMore() {
-        ZogUtils.i(PullToRefreshListView.class, "stopLoadMore!!!!!!!!!!!!!!!!");
+        ZogUtils.i( "stopLoadMore!!!!!!!!!!!!!!!!");
 
         if (mPullLoading == true) {
             mPullLoading = false;

@@ -144,7 +144,7 @@ public class PullToRefreshListViewFooter extends LinearLayout {
 				.inflate(R.layout.pulltorefresh_listview_footer, null);
 		addView(moreView);
 		moreView.setLayoutParams(new LinearLayout.LayoutParams(
-				LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
 		mContentView = moreView
 				.findViewById(R.id.pulltorefresh_listview_footer_content);

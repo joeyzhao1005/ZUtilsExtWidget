@@ -189,7 +189,7 @@ public class PullToRefreshListViewHeader extends LinearLayout {
 
 		// 初始情况，设置下拉刷新view高度为0
 		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-				LayoutParams.FILL_PARENT, 0);
+				LayoutParams.MATCH_PARENT, 0);
 		mContentView = (LinearLayout) LayoutInflater.from(context).inflate(
 				R.layout.pulltorefresh_listview_header, null);
 		addView(mContentView, lp);

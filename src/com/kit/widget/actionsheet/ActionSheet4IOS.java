@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 import com.kit.extend.widget.R;
 import com.kit.utils.DensityUtils;
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 import com.kit.widget.actionsheet.ActionSheet.OnActionSheetItemSelected;
 
 /**

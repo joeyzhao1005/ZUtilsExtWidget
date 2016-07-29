@@ -10,7 +10,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 import com.kit.utils.StringUtils;
 import com.kit.utils.bitmap.BitmapUtils;
 
@@ -263,7 +263,7 @@ public class PhotoSelector {
         intent.setType("image/*");
         intent.putExtra("return-data", true);
 
-        ZogUtils.i(PhotoSelector.class, WHICH_ACTION_SELETE_PHOTO);
+        ZogUtils.i( WHICH_ACTION_SELETE_PHOTO);
 
 
         return intent;

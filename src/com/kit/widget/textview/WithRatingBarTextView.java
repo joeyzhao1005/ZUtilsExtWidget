@@ -13,7 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.kit.extend.widget.R;
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 
 public class WithRatingBarTextView extends LinearLayout {
 
@@ -101,7 +101,6 @@ public class WithRatingBarTextView extends LinearLayout {
                     .setProgressDrawable(WithRatingBarTextView_ratingbar_progressDrawable);
         }
 
-        ZogUtils.e(WithRatingBarTextView.class, "WithRatingBarTextView_ratingbar_num:" + WithRatingBarTextView_ratingbar_num);
 
         ratingBar.setNumStars(WithRatingBarTextView_ratingbar_num);
 

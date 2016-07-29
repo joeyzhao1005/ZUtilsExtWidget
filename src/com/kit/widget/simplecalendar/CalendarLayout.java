@@ -36,11 +36,11 @@ public class CalendarLayout extends FrameLayout implements OnGestureListener {
 		super(context, attrs);
 		this.context = context;
 		mainView = new CalendarView(context, null);
-		mainView.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
+		mainView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
 				LayoutParams.WRAP_CONTENT));
 
 		anotherView = new CalendarView(context, null);
-		anotherView.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
+		anotherView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
 				LayoutParams.WRAP_CONTENT));
 
 		this.addView(anotherView);

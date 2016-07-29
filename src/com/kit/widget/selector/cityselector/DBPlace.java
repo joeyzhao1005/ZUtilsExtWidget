@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.kit.db.DB;
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -227,7 +227,7 @@ public class DBPlace extends DB {
         } catch (Exception e) {
 //            e.printStackTrace();
 
-            ZogUtils.i(DBPlace.class, "insert error");
+            ZogUtils.i( "insert error");
 
             mDb.endTransaction();
 

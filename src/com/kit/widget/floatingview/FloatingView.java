@@ -22,7 +22,7 @@ import android.widget.FrameLayout;
 
 import com.kit.extend.widget.R;
 import com.kit.utils.AnimUtils;
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 import com.kit.widget.scrollview.defaultscrollview.KitOnScrollListener;
 import com.kit.widget.scrollview.defaultscrollview.KitScrollView;
 import com.nineoldandroids.view.ViewHelper;
@@ -163,7 +163,7 @@ public class FloatingView extends FrameLayout {
 //            ObjectAnimator animator = ObjectAnimator.ofFloat(this, "y", mHidden ? mYHidden : mYDisplayed).setDuration(500);
 //            animator.setInterpolator(mInterpolator);
 //            animator.start();
-            ZogUtils.i(FloatingView.class, "mHidden:" + mHidden + " " + resAnimInID + "#" + resAnimOutID);
+            ZogUtils.i("mHidden:" + mHidden + " " + resAnimInID + "#" + resAnimOutID);
 
             if (mHidden) {//隐藏
                 AnimUtils.hidden(context, this, resAnimOutID);
@@ -180,7 +180,7 @@ public class FloatingView extends FrameLayout {
     }
 
     public void listenTo(AbsListView listView) {
-        ZogUtils.i(FloatingView.class, "listenTo listView: " + listView);
+        ZogUtils.i("listenTo listView: " + listView);
 
         if (null != listView) {
             listView.setOnScrollListener(new DirectionScrollListener(this));

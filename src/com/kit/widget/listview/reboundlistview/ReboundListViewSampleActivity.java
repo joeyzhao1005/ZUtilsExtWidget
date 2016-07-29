@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 
 import com.kit.extend.widget.R;
 import com.kit.ui.BaseActivity;
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 import com.kit.widget.listview.reboundlistview.ReboundListView.IPullListViewListener;
 
 public class ReboundListViewSampleActivity extends BaseActivity implements
@@ -113,7 +113,7 @@ public class ReboundListViewSampleActivity extends BaseActivity implements
 	@Override
 	public void onLoadMore() {
 
-		ZogUtils.i(getClass(), "onLoadMore()");
+		ZogUtils.i( "onLoadMore()");
 
 		mHandler.postDelayed(new Runnable() {
 			@Override

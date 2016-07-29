@@ -2,7 +2,7 @@ package com.kit.widget.listview.swipeshowdeletelistview;
 
 import com.kit.extend.widget.R;
 import com.kit.utils.DensityUtils;
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -59,7 +59,7 @@ public class SwipeShowDeleteListView extends ListView {
 	@Override
 	public boolean onInterceptTouchEvent(MotionEvent ev) {
 
-		ZogUtils.i(getClass(), "onInterceptTouchEvent");
+		ZogUtils.i( "onInterceptTouchEvent");
 
 		float lastX = ev.getX();
 		float lastY = ev.getY();
@@ -130,7 +130,7 @@ public class SwipeShowDeleteListView extends ListView {
 	@Override
 	public boolean onTouchEvent(MotionEvent ev) {
 
-		ZogUtils.i(getClass(), "onTouchEvent");
+		ZogUtils.i( "onTouchEvent");
 
 		float lastX = ev.getX();
 		float lastY = ev.getY();

@@ -11,7 +11,7 @@ import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 
 /**
  * Created by Zhao on 14-9-14.
@@ -161,7 +161,7 @@ public class PhotoSelectorUtils {
             String uriStr = selectedImage.toString();
             String path = uriStr.substring(10, uriStr.length());
             if (path.startsWith("com.sec.android.gallery3d")) {
-                ZogUtils.i(PhotoSelectorUtils.class, "It's auto backup pic path:" + selectedImage.toString());
+                ZogUtils.i("It's auto backup pic path:" + selectedImage.toString());
                 return null;
             }
         }

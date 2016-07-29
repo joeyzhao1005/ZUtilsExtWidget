@@ -7,7 +7,7 @@ import java.util.Locale;
 import com.kit.extend.widget.R;
 import com.kit.ui.BaseActivity;
 import com.kit.utils.DateUtils;
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 import com.kit.widget.wheel.OnWheelChangedListener;
 import com.kit.widget.wheel.WheelConstant;
 import com.kit.widget.wheel.WheelView;
@@ -117,7 +117,7 @@ public class YearMonthDayActivity extends BaseActivity implements
 
 		// year
 		curYear = calendar.get(Calendar.YEAR);
-		ZogUtils.i(getClass(), "ymd:" + curYear + " " + curMonth + " "
+		ZogUtils.i( "ymd:" + curYear + " " + curMonth + " "
                 + curDay);
 
 		// month
@@ -238,7 +238,7 @@ public class YearMonthDayActivity extends BaseActivity implements
 			String monthStr = (monthIndex + 1) + "";
 			String dayStr = (curDay) + "";
 
-			ZogUtils.i(getClass(), yearStr + "-" + monthStr + "-"
+			ZogUtils.i( yearStr + "-" + monthStr + "-"
                     + dayStr);
 
 			Intent intent = new Intent();

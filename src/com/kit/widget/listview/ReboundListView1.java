@@ -5,7 +5,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import com.kit.extend.widget.R;
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -114,8 +114,8 @@ public class ReboundListView1 extends ListView implements OnScrollListener {
 	 */
 	@SuppressWarnings("deprecation")
 	private void init(boolean isHeadViewNeed, boolean isTailViewNeed) {
-		ZogUtils.i(getClass(), "isHeadViewNeed=" + isHeadViewNeed);
-		ZogUtils.i(getClass(), "isTailViewNeed=" + isTailViewNeed);
+		ZogUtils.i( "isHeadViewNeed=" + isHeadViewNeed);
+		ZogUtils.i( "isTailViewNeed=" + isTailViewNeed);
 		if (isHeadViewNeed) {
 			// 监听滚动状态
 			setOnScrollListener(this);
@@ -126,7 +126,7 @@ public class ReboundListView1 extends ListView implements OnScrollListener {
 					R.color.transparent));
 			// 默认高度为0
 			mHeadView.setLayoutParams(new AbsListView.LayoutParams(
-					LayoutParams.FILL_PARENT, 0));
+					LayoutParams.MATCH_PARENT, 0));
 			this.addHeaderView(mHeadView);
 		}
 
@@ -140,7 +140,7 @@ public class ReboundListView1 extends ListView implements OnScrollListener {
 					R.color.transparent));
 			// 默认高度为0
 			mTailView.setLayoutParams(new AbsListView.LayoutParams(
-					LayoutParams.FILL_PARENT, 0));
+					LayoutParams.MATCH_PARENT, 0));
 			this.addFooterView(mTailView);
 		}
 	}
@@ -159,12 +159,12 @@ public class ReboundListView1 extends ListView implements OnScrollListener {
 		case MotionEvent.ACTION_UP:
 			if (!isRecordPullDown && !isRecordPullUp) {
 				// it's not in pull down state or pull up state, break
-				ZogUtils.i(getClass(),
+				ZogUtils.i(
                         "ACTION_UP it's not in pull down state or pull up state, break");
 				break;
 			}
 			if (isPullDownState()) {
-				ZogUtils.i(getClass(), "isRecordPullDown="
+				ZogUtils.i( "isRecordPullDown="
                         + isRecordPullDown);
 				// 以一定的频率递减HeadView的高度,实现平滑回弹
 				schedulor = Executors.newScheduledThreadPool(1);
@@ -179,7 +179,7 @@ public class ReboundListView1 extends ListView implements OnScrollListener {
 
 				setPullDownState(!isRecordPullDown);
 			} else if (isPullUpState()) {
-				ZogUtils.i(getClass(), "isRecordPullUp="
+				ZogUtils.i( "isRecordPullUp="
                         + isRecordPullUp);
 				// 以一定的频率递减HeadView的高度,实现平滑回弹
 				schedulor = Executors.newScheduledThreadPool(1);
@@ -198,14 +198,14 @@ public class ReboundListView1 extends ListView implements OnScrollListener {
 			break;
 
 		case MotionEvent.ACTION_MOVE:
-			ZogUtils.i(getClass(), "firstItemIndex=" + firstItemIndex);
+			ZogUtils.i( "firstItemIndex=" + firstItemIndex);
 			if (!isRecordPullDown && firstItemIndex == 0) {
-				ZogUtils.i(getClass(), "firstItemIndex="
+				ZogUtils.i( "firstItemIndex="
                         + firstItemIndex + " set isRecordPullDown=true");
 				startPullDownY = (int) event.getY();
 				setPullType(PULL_DOWN_BACK_ACTION);
 			} else if (!isRecordPullUp && lastItemIndex == getCount()) {
-				ZogUtils.i(getClass(), "lastItemIndex == getCount()"
+				ZogUtils.i( "lastItemIndex == getCount()"
                         + " set isRecordPullUp=true");
 				startPullUpY = (int) event.getY();
 				setPullType(PULL_UP_BACK_ACTION);
@@ -213,7 +213,7 @@ public class ReboundListView1 extends ListView implements OnScrollListener {
 
 			if (!isRecordPullDown && !isRecordPullUp) {
 				// it's not in pull down state or pull up state, break
-				ZogUtils.i(getClass(),
+				ZogUtils.i(
                         "ACTION_MOVE it's not in pull down state or pull up state, break");
 				break;
 			}
@@ -226,12 +226,12 @@ public class ReboundListView1 extends ListView implements OnScrollListener {
 					break;
 				}
 
-				ZogUtils.i(getClass(), "tempY=" + tempY);
-				ZogUtils.i(getClass(), "startPullDownY="
+				ZogUtils.i( "tempY=" + tempY);
+				ZogUtils.i( "startPullDownY="
                         + startPullDownY);
-				ZogUtils.i(getClass(), "moveY=" + moveY);
+				ZogUtils.i( "moveY=" + moveY);
 				mHeadView.setLayoutParams(new AbsListView.LayoutParams(
-						LayoutParams.FILL_PARENT, (int) (moveY * PULL_FACTOR)));
+						LayoutParams.MATCH_PARENT, (int) (moveY * PULL_FACTOR)));
 				mHeadView.invalidate();
 			} else if (isRecordPullUp) {
 				int tempY = (int) event.getY();
@@ -241,11 +241,11 @@ public class ReboundListView1 extends ListView implements OnScrollListener {
 					break;
 				}
 
-				ZogUtils.i(getClass(), "tempY=" + tempY);
-				ZogUtils.i(getClass(), "startPullUpY=" + startPullUpY);
-				ZogUtils.i(getClass(), "moveY=" + moveY);
+				ZogUtils.i( "tempY=" + tempY);
+				ZogUtils.i( "startPullUpY=" + startPullUpY);
+				ZogUtils.i( "moveY=" + moveY);
 				mTailView.setLayoutParams(new AbsListView.LayoutParams(
-						LayoutParams.FILL_PARENT, (int) (moveY * PULL_FACTOR)));
+						LayoutParams.MATCH_PARENT, (int) (moveY * PULL_FACTOR)));
 				mTailView.invalidate();
 			}
 
@@ -299,7 +299,7 @@ public class ReboundListView1 extends ListView implements OnScrollListener {
 	@Override
 	public void onScrollStateChanged(AbsListView view, int scrollState) {
 		currentScrollState = scrollState;
-		ZogUtils.i(getClass(), "scrollState: "
+		ZogUtils.i( "scrollState: "
                 + getScrollStateString(currentScrollState));
 	}
 

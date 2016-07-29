@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 
 import java.lang.reflect.Constructor;
 
@@ -240,7 +240,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
 
     @Override
     protected void onRestoreInstanceState(Parcelable state) {
-        ZogUtils.e(SlidingTabLayout.class, "state.getClass().getName():" + state.getClass().getName());
+        ZogUtils.e("state.getClass().getName():" + state.getClass().getName());
 
         if (state.getClass().getName().contains("android.view.AbsSavedState")) {
             //state的Class名或为android.view.AbsSavedState$1

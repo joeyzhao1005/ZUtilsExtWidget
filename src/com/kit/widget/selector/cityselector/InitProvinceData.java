@@ -4,7 +4,7 @@ import java.util.List;
 
 import android.content.Context;
 
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 
 public class InitProvinceData {
 
@@ -23,7 +23,7 @@ public class InitProvinceData {
 
 		dbPlace.close();
 
-		ZogUtils.i(mContext.getClass(),
+		ZogUtils.i(
                 "initProvinceFromLocal:" + list.size());
 
 		return list;

@@ -23,7 +23,7 @@ import android.widget.RelativeLayout;
 import android.widget.Scroller;
 
 import com.kit.extend.widget.R;
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 import com.kit.utils.ScrollUtils;
 
 public class ReboundListView extends ListView implements OnScrollListener {
@@ -163,7 +163,7 @@ public class ReboundListView extends ListView implements OnScrollListener {
 			mFooterViewContent.setVisibility(GONE);
 			mFooterView.setOnClickListener(null);
 
-			ZogUtils.i(getClass(), "mEnablePullLoad:" + mEnablePullLoad);
+			ZogUtils.i( "mEnablePullLoad:" + mEnablePullLoad);
 		} else {
 			mPullLoading = false;
 			mFooterView.show();
@@ -233,7 +233,7 @@ public class ReboundListView extends ListView implements OnScrollListener {
 		}
 		int finalHeight = 0;
 
-		ZogUtils.i(getClass(), "finalHeight:" + finalHeight);
+		ZogUtils.i( "finalHeight:" + finalHeight);
 		// is refreshing, just scroll back to show all the header.
 		if (mPullRefreshing && height > mHeaderViewHeight) {
 			finalHeight = mHeaderViewHeight;

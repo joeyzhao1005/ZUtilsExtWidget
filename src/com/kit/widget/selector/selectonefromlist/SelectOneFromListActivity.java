@@ -12,7 +12,7 @@ import android.widget.ListView;
 
 import com.kit.extend.widget.R;
 import com.kit.ui.BaseActivity;
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 import com.kit.utils.intentutils.IntentUtils;
 
 import java.util.ArrayList;
@@ -118,7 +118,7 @@ public class SelectOneFromListActivity extends BaseActivity implements
                         item.get(position));
 
 
-                ZogUtils.i(getClass(),
+                ZogUtils.i(
                         selectedPosition + " " + item.get(position));
 
                 IntentUtils

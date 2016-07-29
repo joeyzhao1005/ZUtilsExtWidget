@@ -14,7 +14,7 @@ import android.widget.ImageView;
 
 import com.kit.extend.widget.R;
 import com.kit.ui.BaseActivity;
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 import com.kit.utils.bitmap.BitmapUtils;
 import com.kit.widget.actionsheet.ActionSheet;
 import com.kit.widget.actionsheet.ActionSheet.OnActionSheetItemSelected;
@@ -90,7 +90,7 @@ public class PhotoSeletorSampleActivity extends BaseActivity implements
             asc.actionSheetStrings = s;
             asc.colors = colors;
 
-            ZogUtils.i(getClass(), "sun" + asc + "--"
+            ZogUtils.i( "sun" + asc + "--"
                     + asc.actionSheetStrings);
             new ActionSheet().show(this, asc,
                     new OnActionSheetItemSelectedSample(), null);

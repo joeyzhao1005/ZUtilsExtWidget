@@ -23,7 +23,7 @@ import android.widget.Scroller;
 import android.widget.TextView;
 
 import com.kit.extend.widget.R;
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 import com.kit.utils.ScrollUtils;
 
 public class PullToRefreshListView extends ListView implements OnScrollListener {
@@ -268,7 +268,7 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
         }
         int finalHeight = 0;
 
-        ZogUtils.i(getClass(), "finalHeight:" + finalHeight);
+        ZogUtils.i( "finalHeight:" + finalHeight);
         // is refreshing, just scroll back to show all the header.
         if (mPullRefreshing && height > mHeaderViewHeight) {
             finalHeight = mHeaderViewHeight;

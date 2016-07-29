@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.kit.extend.widget.R;
 import com.kit.ui.BaseActivity;
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 
 /**
  * @author Zhao laozhao1005@gmail.com
@@ -59,7 +59,7 @@ public class CitySelectorActivity extends BaseActivity implements
             isProvinceHaveDefaultAll = bundle
                     .getBoolean(CitySelectorConstant.CITY_SELECTOR_EXTRAS_KEY_ISPROVINCEHAVEDEFAULTALL);
         } catch (Exception e) {
-            ZogUtils.i(getClass(), "getDefaultAll return value is empty");
+            ZogUtils.i( "getDefaultAll return value is empty");
             // LogUtils.showException(e);
         }
 
@@ -67,7 +67,7 @@ public class CitySelectorActivity extends BaseActivity implements
             isCityHaveDefaultAll = bundle
                     .getBoolean(CitySelectorConstant.CITY_SELECTOR_EXTRAS_KEY_ISCITYHAVEDEFAULTALL);
         } catch (Exception e) {
-            ZogUtils.i(getClass(), "getDefaultAll return value is empty");
+            ZogUtils.i( "getDefaultAll return value is empty");
             // LogUtils.showException(e);
         }
 
@@ -76,11 +76,11 @@ public class CitySelectorActivity extends BaseActivity implements
                     .getBoolean(CitySelectorConstant.CITY_SELECTOR_EXTRAS_KEY_ISDISTRICTHAVEDEFAULTALL);
 
         } catch (Exception e) {
-            ZogUtils.i(getClass(), "getDefaultAll return value is empty");
+            ZogUtils.i( "getDefaultAll return value is empty");
             // LogUtils.showException(e);
         }
 
-        ZogUtils.i(getClass(), isProvinceHaveDefaultAll + " " + isCityHaveDefaultAll + " " + isDistrictHaveDefaultAll);
+        ZogUtils.i( isProvinceHaveDefaultAll + " " + isCityHaveDefaultAll + " " + isDistrictHaveDefaultAll);
 
 
         try {
@@ -92,7 +92,7 @@ public class CitySelectorActivity extends BaseActivity implements
                     .getSerializable(CitySelectorConstant.CITY_SELECTOR_EXTRAS_KEY_DISTRICT);
 
         } catch (Exception e) {
-            ZogUtils.i(getClass(), "getExtra() return value is empty");
+            ZogUtils.i( "getExtra() return value is empty");
             // LogUtils.showException(e);
         }
 
@@ -101,7 +101,7 @@ public class CitySelectorActivity extends BaseActivity implements
                     .getBoolean(CitySelectorConstant.CITY_SELECTOR_EXTRAS_KEY_ISPROVINCEDISABLED);
         } catch (Exception e) {
             isProvinceDisabled = false;
-            ZogUtils.i(getClass(), "isProvinceDisabled:" + isProvinceDisabled);
+            ZogUtils.i( "isProvinceDisabled:" + isProvinceDisabled);
 
         }
 
@@ -110,7 +110,7 @@ public class CitySelectorActivity extends BaseActivity implements
                     .getBoolean(CitySelectorConstant.CITY_SELECTOR_EXTRAS_KEY_ISCITYDISABLED);
         } catch (Exception e) {
             isCityDisabled = false;
-            ZogUtils.i(getClass(), "isProvinceDisabled:" + isProvinceDisabled);
+            ZogUtils.i( "isProvinceDisabled:" + isProvinceDisabled);
 
         }
 
@@ -119,7 +119,7 @@ public class CitySelectorActivity extends BaseActivity implements
                     .getBoolean(CitySelectorConstant.CITY_SELECTOR_EXTRAS_KEY_ISDISTRICTDISABLED);
         } catch (Exception e) {
             isDistrictDisabled = false;
-            ZogUtils.i(getClass(), "isProvinceDisabled:" + isProvinceDisabled);
+            ZogUtils.i( "isProvinceDisabled:" + isProvinceDisabled);
 
         }
         return super.getExtra();
