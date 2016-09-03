@@ -73,7 +73,7 @@ public class UpdateService extends Service {
                             , Notification.FLAG_AUTO_CANCEL
                             , 0, 0);
 
-                    ToastUtils.mkShortTimeToast(context, "更新包下载完成");
+                    ToastUtils.mkShortTimeToast( "更新包下载完成");
 
 
                     // 停止服务
@@ -162,14 +162,14 @@ public class UpdateService extends Service {
                         , 0, 0);
 
 
-                ToastUtils.mkShortTimeToast(context,
+                ToastUtils.mkShortTimeToast(
                         updateNotification.tickerText.toString());
 
                 // 开启一个新的线程下载，如果使用Service同步下载，会导致ANR问题，Service本身也会阻塞
                 new Thread(new updateRunnable()).start();// 这个是下载的重点，是下载的过程
             } else {
                 String msg = "请插入sd卡之后再进行更新操作";
-                ToastUtils.mkLongTimeToast(context, msg);
+                ToastUtils.mkLongTimeToast( msg);
             }
 
         }

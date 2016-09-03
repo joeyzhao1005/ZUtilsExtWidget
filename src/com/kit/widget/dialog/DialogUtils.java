@@ -5,8 +5,8 @@ import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import com.kit.utils.intentutils.IntentUtils;
 import com.kit.extend.widget.R;
+import com.kit.utils.intentutils.IntentUtils;
 
 public class DialogUtils {
 	public static DefaultDialog showNetWorkErrorDialog(final Context context,
@@ -32,5 +32,25 @@ public class DialogUtils {
 		return dd;
 
 	}
+
+
+	/**
+	 * 展示只有一个按钮的对话框
+	 * @param context
+	 * @param onClickListener
+     * @return
+     */
+	public static DefaultDialog showOneButtonDialog(final Context context,String msg,OnClickListener onClickListener) {
+		final DefaultDialog dd = new DefaultDialog(context, msg,
+				R.layout.dialog_ok, false);
+		dd.show();
+		dd.mButtonOK.setOnClickListener(onClickListener);
+
+		return dd;
+
+	}
+
+
+
 
 }

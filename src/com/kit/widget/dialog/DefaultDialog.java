@@ -1,24 +1,13 @@
 package com.kit.widget.dialog;
 
-import java.util.ArrayList;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 
 public class DefaultDialog extends AbstractDialog {
 
 	private ProgressDialog pd;
-	private Context context;
 
 	private boolean isAbleGotoNext;
 
@@ -30,7 +19,7 @@ public class DefaultDialog extends AbstractDialog {
 	public DefaultDialog(Context context, String content, int layoutId,
 			boolean haveCancel) {
 		super(context, content, layoutId);
-		this.context = context;
+		this.mContext = context;
 		this.content = content;
 		this.layoutId = layoutId;
 		this.haveCancel = haveCancel;

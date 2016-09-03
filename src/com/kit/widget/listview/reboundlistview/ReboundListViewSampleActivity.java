@@ -60,15 +60,11 @@ public class ReboundListViewSampleActivity extends BaseActivity implements
 
 	}
 
-	public boolean initWidget() {
-
-		mContext = ReboundListViewSampleActivity.this;
+	public void initWidget() {
 
 		setContentView(R.layout.rebound_listview_activity);
 
 		initListView();
-
-		return true;
 
 	}
 

@@ -185,7 +185,7 @@ public class CalendarLayout extends FrameLayout implements OnGestureListener {
 
 	@Override
 	public void onLongPress(MotionEvent e) {
-		ToastUtils.mkLongTimeToast(context, "long");
+		ToastUtils.mkLongTimeToast( "long");
 	}
 
 	@Override

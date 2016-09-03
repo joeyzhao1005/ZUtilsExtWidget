@@ -19,7 +19,7 @@ public class MyCalendarLayout extends CalendarLayout{
 	}
 
 	public void OnDayClickListener(){
-		ToastUtils.mkShortTimeToast(context, "dgadgasdgas");
+		ToastUtils.mkShortTimeToast( "dgadgasdgas");
 	}
 
 

@@ -52,7 +52,7 @@ public class PhotoSeletorSampleActivity extends BaseActivity implements
     }
 
     @Override
-    public boolean initWidget() {
+    public void initWidget() {
         mContext = this;
         setContentView(R.layout.photo_seletor_activity);
 
@@ -60,8 +60,6 @@ public class PhotoSeletorSampleActivity extends BaseActivity implements
         ivCarTop = (ImageView) findViewById(R.id.ivCarTop);
         ivCarBottom.setOnClickListener(this);
         ivCarTop.setOnClickListener(this);
-
-        return true;
     }
 
     @Override
@@ -84,7 +82,7 @@ public class PhotoSeletorSampleActivity extends BaseActivity implements
             // 弹出ActionSheet
             focus = 1;
             String s[] = {"手机相册", "手机拍照"};
-            int colors[] = {0xff037bff, 0xff037bff};
+            Integer colors[] = {0xff037bff, 0xff037bff};
             asc = new ActionSheetConfig();
 
             asc.actionSheetStrings = s;
@@ -98,7 +96,7 @@ public class PhotoSeletorSampleActivity extends BaseActivity implements
             // 弹出ActionSheet
             focus = 0;
             String s1[] = {"手机相册", "手机拍照"};
-            int colors1[] = {0xff037bff, 0xff037bff};
+            Integer colors1[] = {0xff037bff, 0xff037bff};
             asc = new ActionSheetConfig();
             asc.actionSheetStrings = s1;
             asc.colors = colors1;

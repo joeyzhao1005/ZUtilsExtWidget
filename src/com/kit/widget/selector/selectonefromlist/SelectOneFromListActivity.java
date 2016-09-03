@@ -75,7 +75,7 @@ public class SelectOneFromListActivity extends BaseActivity implements
     }
 
     @Override
-    public boolean initWidget() {
+    public void initWidget() {
         mContext = this;
         setContentView(R.layout.select_one_from_list_activity);
         setTitle(title);
@@ -132,7 +132,6 @@ public class SelectOneFromListActivity extends BaseActivity implements
             // }
         });
 
-        return true;
     }
 
     public void doTask1() {

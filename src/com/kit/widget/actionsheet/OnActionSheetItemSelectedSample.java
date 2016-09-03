@@ -10,7 +10,7 @@ public class OnActionSheetItemSelectedSample implements
 
 	@Override
 	public void onActionSheetItemSelected(Activity activity, int whichButton) {
-		ToastUtils.mkToast(activity, "whichButton:" + whichButton, 1000);
+		ToastUtils.mkToast("whichButton:" + whichButton, 1000);
 	}
 
 }

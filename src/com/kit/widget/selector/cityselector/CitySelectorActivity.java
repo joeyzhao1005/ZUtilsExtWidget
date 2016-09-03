@@ -59,7 +59,7 @@ public class CitySelectorActivity extends BaseActivity implements
             isProvinceHaveDefaultAll = bundle
                     .getBoolean(CitySelectorConstant.CITY_SELECTOR_EXTRAS_KEY_ISPROVINCEHAVEDEFAULTALL);
         } catch (Exception e) {
-            ZogUtils.i( "getDefaultAll return value is empty");
+            ZogUtils.i("getDefaultAll return value is empty");
             // LogUtils.showException(e);
         }
 
@@ -67,7 +67,7 @@ public class CitySelectorActivity extends BaseActivity implements
             isCityHaveDefaultAll = bundle
                     .getBoolean(CitySelectorConstant.CITY_SELECTOR_EXTRAS_KEY_ISCITYHAVEDEFAULTALL);
         } catch (Exception e) {
-            ZogUtils.i( "getDefaultAll return value is empty");
+            ZogUtils.i("getDefaultAll return value is empty");
             // LogUtils.showException(e);
         }
 
@@ -76,11 +76,11 @@ public class CitySelectorActivity extends BaseActivity implements
                     .getBoolean(CitySelectorConstant.CITY_SELECTOR_EXTRAS_KEY_ISDISTRICTHAVEDEFAULTALL);
 
         } catch (Exception e) {
-            ZogUtils.i( "getDefaultAll return value is empty");
+            ZogUtils.i("getDefaultAll return value is empty");
             // LogUtils.showException(e);
         }
 
-        ZogUtils.i( isProvinceHaveDefaultAll + " " + isCityHaveDefaultAll + " " + isDistrictHaveDefaultAll);
+        ZogUtils.i(isProvinceHaveDefaultAll + " " + isCityHaveDefaultAll + " " + isDistrictHaveDefaultAll);
 
 
         try {
@@ -92,7 +92,7 @@ public class CitySelectorActivity extends BaseActivity implements
                     .getSerializable(CitySelectorConstant.CITY_SELECTOR_EXTRAS_KEY_DISTRICT);
 
         } catch (Exception e) {
-            ZogUtils.i( "getExtra() return value is empty");
+            ZogUtils.i("getExtra() return value is empty");
             // LogUtils.showException(e);
         }
 
@@ -101,7 +101,7 @@ public class CitySelectorActivity extends BaseActivity implements
                     .getBoolean(CitySelectorConstant.CITY_SELECTOR_EXTRAS_KEY_ISPROVINCEDISABLED);
         } catch (Exception e) {
             isProvinceDisabled = false;
-            ZogUtils.i( "isProvinceDisabled:" + isProvinceDisabled);
+            ZogUtils.i("isProvinceDisabled:" + isProvinceDisabled);
 
         }
 
@@ -110,7 +110,7 @@ public class CitySelectorActivity extends BaseActivity implements
                     .getBoolean(CitySelectorConstant.CITY_SELECTOR_EXTRAS_KEY_ISCITYDISABLED);
         } catch (Exception e) {
             isCityDisabled = false;
-            ZogUtils.i( "isProvinceDisabled:" + isProvinceDisabled);
+            ZogUtils.i("isProvinceDisabled:" + isProvinceDisabled);
 
         }
 
@@ -119,14 +119,14 @@ public class CitySelectorActivity extends BaseActivity implements
                     .getBoolean(CitySelectorConstant.CITY_SELECTOR_EXTRAS_KEY_ISDISTRICTDISABLED);
         } catch (Exception e) {
             isDistrictDisabled = false;
-            ZogUtils.i( "isProvinceDisabled:" + isProvinceDisabled);
+            ZogUtils.i("isProvinceDisabled:" + isProvinceDisabled);
 
         }
         return super.getExtra();
     }
 
     @Override
-    public boolean initWidget() {
+    public void initWidget() {
         mContext = this;
         setContentView(R.layout.city_selector_activity);
 
@@ -164,12 +164,13 @@ public class CitySelectorActivity extends BaseActivity implements
         llLeft.setOnClickListener(this);
 
 
-        return super.initWidget();
     }
 
 
     @Override
-    protected boolean initWidgetWithData() {
+    public void initWidgetWithExtra() {
+        super.initWidgetWithExtra();
+
         citySelectorInitializer = new CitySelectorInitializer(mContext, listView,
                 isProvinceHaveDefaultAll, isCityHaveDefaultAll, isDistrictHaveDefaultAll);
 
@@ -185,7 +186,6 @@ public class CitySelectorActivity extends BaseActivity implements
             // LogUtils.i(getClass(), "第一次选择 initProvince");
             citySelectorInitializer.initProvince();
         }
-        return super.initWidgetWithData();
     }
 
     public void changetTV(int selectorType) {

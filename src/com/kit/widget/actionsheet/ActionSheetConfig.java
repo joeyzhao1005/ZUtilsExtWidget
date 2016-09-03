@@ -25,7 +25,7 @@ public class ActionSheetConfig {
 	/**
 	 * actionSheet 按钮item的文字颜色
 	 */
-	public int[] colors;
+	public Integer[] colors;
 
 	/**
 	 * actionSheet 按钮item的文字大小

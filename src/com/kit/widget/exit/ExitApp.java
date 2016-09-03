@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.kit.extend.widget.R;
+import com.kit.utils.ResWrapper;
 import com.kit.utils.ToastUtils;
 import com.kit.widget.dialog.DefaultDialog;
 
@@ -27,7 +28,7 @@ public class ExitApp {
         if (isExit == false) {
             isExit = true; // 准备退出
 
-            ToastUtils.mkShortTimeToast(mContext, msg);
+            ToastUtils.mkShortTimeToast(msg);
             tExit = new Timer();
             tExit.schedule(new TimerTask() {
                 @Override
@@ -44,7 +45,8 @@ public class ExitApp {
         }
     }
 
-    public static void showExitDialog(final Context mContext, String msg, final boolean isExitSys) {
+    public static void showExitDialog(String msg, final boolean isExitSys) {
+        final Context mContext = ResWrapper.getInstance().getContext();
         // 截获按键事件
         final DefaultDialog mDialog = new DefaultDialog(mContext, msg,
                 R.layout.dialog_default, true);
@@ -67,6 +69,7 @@ public class ExitApp {
 
     /**
      * 退出APP
+     *
      * @param mContext
      * @param msg
      * @param exit_type 退出的样式
@@ -76,10 +79,10 @@ public class ExitApp {
         if (exit_type == 1) {
             exitByDoubleClick(mContext, msg, isExitSys);
         } else if (exit_type == 2) {
-            showExitDialog(mContext, msg, isExitSys);
+            showExitDialog(msg, isExitSys);
         } else {
             String errormsg = "error exit_type";
-            ToastUtils.mkLongTimeToast(mContext, errormsg);
+            ToastUtils.mkLongTimeToast(errormsg);
         }
     }
 }

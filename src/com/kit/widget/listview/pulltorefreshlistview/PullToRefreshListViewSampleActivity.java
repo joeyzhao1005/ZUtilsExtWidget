@@ -1,7 +1,5 @@
 package com.kit.widget.listview.pulltorefreshlistview;
 
-import java.util.ArrayList;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ArrayAdapter;
@@ -11,6 +9,8 @@ import com.kit.ui.BaseActivity;
 import com.kit.utils.DateUtils;
 import com.kit.utils.log.ZogUtils;
 import com.kit.widget.listview.pulltorefreshlistview.PullToRefreshListView.IPullToRefreshListViewListener;
+
+import java.util.ArrayList;
 
 public class PullToRefreshListViewSampleActivity extends BaseActivity implements
 		IPullToRefreshListViewListener {
@@ -63,15 +63,12 @@ public class PullToRefreshListViewSampleActivity extends BaseActivity implements
 
 	}
 
-	public boolean initWidget() {
+	public void initWidget() {
 
-		mContext = PullToRefreshListViewSampleActivity.this;
 
 		setContentView(R.layout.pulltorefresh_listview_activity);
 
 		initListView();
-
-		return true;
 
 	}
 
