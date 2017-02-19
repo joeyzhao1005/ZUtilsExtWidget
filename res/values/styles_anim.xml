@@ -1,7 +1,7 @@
 <resources>
 
 
-    <!-- 右侧滑入 右侧滑出Activity -->
+    <!-- 没有动画或系统动画 -->
     <style name="Animation.Activity.Default" parent="@android:style/Animation.Activity">
 
         <!-- 第一个表示新的activity创建进入效果 -->
