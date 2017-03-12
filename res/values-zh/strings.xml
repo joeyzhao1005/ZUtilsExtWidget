@@ -3,7 +3,7 @@
 
     <!--<string name="app_name">kit</string>-->
     <!--<string name="app_name_en">kit</string>-->
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">设置</string>
     <string name="hello_world">Hello world!</string>
     <string name="msg_exit">确定退出吗？</string>
     <string name="confirm">确定</string>
