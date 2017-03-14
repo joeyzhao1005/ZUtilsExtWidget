@@ -21,9 +21,14 @@ public class ScrollRecyclerView extends RecyclerView {
         super(context, attrs);
     }
 
+    public ScrollRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+    }
+
     OnScrollCallback callback;
 
     public OnScrollCallback getOnScrollCallback() {
+
         return callback;
     }
 
