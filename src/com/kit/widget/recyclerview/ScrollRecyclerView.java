@@ -62,10 +62,13 @@ public class ScrollRecyclerView extends RecyclerView {
                 if (callback != null) {
                     callback.onScrolled(recyclerView, dx, dy);
 
-                    if (dy > 0) {
-                        callback.onScrollDown(ScrollRecyclerView.this, dy);
-                    } else {
-                        callback.onScrollUp(ScrollRecyclerView.this, dy);
+
+                    if (dy != 0) {
+                        if (dy > 0) {
+                            callback.onScrollDown(ScrollRecyclerView.this, dy);
+                        } else {
+                            callback.onScrollUp(ScrollRecyclerView.this, dy);
+                        }
                     }
                 }
             }
