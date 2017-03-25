@@ -66,7 +66,7 @@ public class Place implements Serializable {
      * @return
      */
     public Long getLongCode() {
-        if (StringUtils.isEmptyOrNullOrNullStr(code))
+        if (StringUtils.isEmptyOrNullStr(code))
             return null;
         else
             return Long.parseLong(code);
