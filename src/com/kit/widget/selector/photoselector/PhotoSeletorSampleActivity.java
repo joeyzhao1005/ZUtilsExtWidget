@@ -167,7 +167,7 @@ public class PhotoSeletorSampleActivity extends BaseActivity implements
                             // this.getContentResolver(), mImageCaptureUri);
 
                             // 这个是获取缩略图，如果只做小图展示，可用缩略图做显示，如果需要上传，需要将uri记录，获取图片，并转化为byte[]保存下来，以防止内存溢出
-                            image = BitmapUtils.getBitmapThumbnailFromUri(mContext,
+                            image = BitmapUtils.getBitmapFromUri(mContext,
                                     mImageCaptureUri, scale);
                             if (image != null) {
                                 // commentphoto.setImageBitmap(image);
