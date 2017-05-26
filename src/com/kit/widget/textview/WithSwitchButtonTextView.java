@@ -196,7 +196,6 @@ public class WithSwitchButtonTextView extends BaseLinearLayout {
 
     /**
      * 设置是否选中
-     * @param b
      */
     public boolean isChecked() {
         return switchButton.isChecked();
