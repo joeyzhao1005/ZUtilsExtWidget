@@ -154,6 +154,11 @@ public class WithSwitchButtonTextView extends BaseLinearLayout {
 
     }
 
+
+    public SwitchCompat getSwitchButton() {
+        return switchButton;
+    }
+
     /**
      * @param text activity返回过来的文字
      * @return void 返回类型
@@ -174,6 +179,8 @@ public class WithSwitchButtonTextView extends BaseLinearLayout {
     public void setTitle(CharSequence text) {
         tvTitle.setText(text);
     }
+
+
 
 
     /**
