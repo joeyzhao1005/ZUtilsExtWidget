@@ -194,6 +194,16 @@ public class WithTitleTextView extends BaseLinearLayout {
         tvContent.setText(text);
     }
 
+    /**
+     * @param textResId activity返回过来的文字
+     * @return void 返回类型
+     * @Title setContent
+     * @Description 设置activity返回过来的文字
+     */
+    public void setContent(int textResId) {
+        tvContent.setText(textResId);
+    }
+
 
     public int getContentColor() {
         return content_color;
