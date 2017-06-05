@@ -2,6 +2,7 @@ package com.kit.widget.textview;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.SwitchCompat;
@@ -160,10 +161,10 @@ public class WithSwitchButtonTextView extends BaseLinearLayout {
     }
 
     /**
-     * @param text activity返回过来的文字
+     * @param text 
      * @return void 返回类型
      * @Title setContent
-     * @Description 设置activity返回过来的文字
+     * @Description 设置
      */
     public void setContent(CharSequence text) {
         tvContent.setText(text);
@@ -171,16 +172,37 @@ public class WithSwitchButtonTextView extends BaseLinearLayout {
 
 
     /**
-     * @param text activity返回过来的文字
+     * @param color 文字颜色
      * @return void 返回类型
      * @Title setTitle
-     * @Description 设置activity返回过来的文字
+     * @Description 
+     */
+    public void setTitleColor(ColorStateList color) {
+        tvTitle. setTextColor(color);
+    }
+
+
+    /**
+     * @param color 文字颜色
+     * @return void 返回类型
+     * @Title setTitle
+     * @Description
+     */
+    public void setTitleColor(int color) {
+        tvTitle. setTextColor(color);
+    }
+
+
+
+    /**
+     * @param text 
+     * @return void 返回类型
+     * @Title setTitle
+     * @Description 设置
      */
     public void setTitle(CharSequence text) {
         tvTitle.setText(text);
     }
-
-
 
 
     /**
