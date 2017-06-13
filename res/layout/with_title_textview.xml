@@ -60,7 +60,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:gravity="right|center_vertical"
-                    android:singleLine="true"
+                    android:lines="1"
                     android:text=""
                     android:textSize="16sp" />
             </LinearLayout>
