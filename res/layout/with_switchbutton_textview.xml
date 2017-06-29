@@ -28,7 +28,18 @@
                 android:layout_height="match_parent"
                 android:gravity="left|center_vertical"
                 android:text="title"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
+
+            <ImageButton
+                android:id="@+id/ibInfo"
+                android:layout_width="30dp"
+                android:visibility="gone"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/tvTitle"
+                android:background="@color/transparent"
+                android:src="@drawable/btn_info" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -51,7 +62,7 @@
                 android:singleLine="true"
                 android:text=""
                 android:textColor="#60000000"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <android.support.v7.widget.SwitchCompat
                 android:id="@+id/switchButton"

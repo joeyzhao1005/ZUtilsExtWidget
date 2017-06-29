@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ public class WithSwitchButtonTextView extends BaseLinearLayout {
     // private ImageView ivGo;
     // private EditText et;
     private TextView tvTitle, tvContent;
+    private ImageButton ibInfo;
     private String contentString, WithSwitchButtonTextView_title,
             WithSwitchButtonTextView_suffix_string;
     private Drawable WithSwitchButtonTextViewDeleteIcon,
@@ -82,6 +84,7 @@ public class WithSwitchButtonTextView extends BaseLinearLayout {
                 .findViewById(R.id.llWithSwitchButtonTextView);
 
         tvTitle = (TextView) view.findViewById(R.id.tvTitle);
+        ibInfo = (ImageButton) view.findViewById(R.id.ibInfo);
 
         tvContent = (TextView) view.findViewById(R.id.tvContent);
 
@@ -214,6 +217,21 @@ public class WithSwitchButtonTextView extends BaseLinearLayout {
         switchButton.setOnCheckedChangeListener(onCheckedChangeListener);
     }
 
+
+    /**
+     * 设置info点击监听器
+     *
+     * @param
+     */
+    public void setOnIbInfoClickListener(OnClickListener onClickListener) {
+        ibInfo.setVisibility(VISIBLE);
+        ibInfo.setOnClickListener(onClickListener);
+    }
+
+
+    public ImageButton getIbInfo() {
+        return ibInfo;
+    }
 
     /**
      * 设置是否选中
