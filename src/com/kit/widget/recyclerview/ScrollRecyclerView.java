@@ -65,15 +65,27 @@ public class ScrollRecyclerView extends RecyclerView {
 
                     if (dy != 0) {
                         if (dy > 0) {
-                            callback.onScrollDown(ScrollRecyclerView.this, dy);
+                            if (Math.abs(dy) > Math.abs(sensitivity)) {
+                                callback.onScrollDown(ScrollRecyclerView.this, dy);
+                            }
                         } else {
-                            callback.onScrollUp(ScrollRecyclerView.this, dy);
+                            if (Math.abs(dy) > Math.abs(sensitivity)) {
+                                callback.onScrollUp(ScrollRecyclerView.this, dy);
+                            }
                         }
                     }
                 }
             }
         });
     }
+
+
+    public void setSensitivity(int sensitivity) {
+        this.sensitivity = sensitivity;
+    }
+
+    //上下滑动监听灵敏度
+    private int sensitivity = 10;
 
 
 }
