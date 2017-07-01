@@ -33,13 +33,15 @@
             <ImageButton
                 android:id="@+id/ibInfo"
                 android:layout_width="30dp"
-                android:visibility="gone"
                 android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_toRightOf="@+id/tvTitle"
                 android:background="@color/transparent"
-                android:src="@drawable/ic_info_gray" />
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_info_gray"
+                android:visibility="gone" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -59,7 +61,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_toLeftOf="@+id/switchButton"
                 android:gravity="center_vertical"
-                android:singleLine="true"
+                android:lines="1"
                 android:text=""
                 android:textColor="#60000000"
                 android:textSize="16sp" />
