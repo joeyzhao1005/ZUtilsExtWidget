@@ -9,10 +9,12 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.kit.extend.widget.R;
 import com.kit.utils.DensityUtils;
+import com.kit.utils.TextViewUtils;
 import com.kit.widget.base.BaseLinearLayout;
 
 public class WithTitleTextView extends BaseLinearLayout {
@@ -25,8 +27,8 @@ public class WithTitleTextView extends BaseLinearLayout {
     private LinearLayout llWithTitleTextView, llContainer, llContent;
 
     private float title_size, content_size;
-    private int title_margin, title_margin_left, title_margin_right,
-            content_margin, content_margin_left, content_margin_right,
+    private int title_gravity;
+    private int title_margin, title_margin_left, title_margin_right, title_margin_top, title_margin_bottom, content_margin, content_margin_left, content_margin_right,
             margin, margin_left, margin_right;
     private boolean is_content_left, go_enabled;
     private int title_color, content_color;
@@ -46,15 +48,54 @@ public class WithTitleTextView extends BaseLinearLayout {
         title_size = a.getDimension(
                 R.styleable.WithTitleTextView_WithTitleTextView_title_size, -1);
 
+        title_gravity = a.getInt(
+                R.styleable.WithTitleTextView_WithTitleTextView_title_gravity, Gravity.LEFT | Gravity.CENTER_VERTICAL);
+
+        switch (title_gravity) {
+            case 0:
+                title_gravity = Gravity.LEFT;
+                break;
+            case 1:
+                title_gravity = Gravity.TOP;
+                break;
+            case 2:
+                title_gravity = Gravity.CENTER;
+                break;
+            case 3:
+                title_gravity = Gravity.RIGHT;
+                break;
+            case 4:
+                title_gravity = Gravity.BOTTOM;
+                break;
+            case 5:
+                title_gravity = Gravity.CENTER_VERTICAL;
+                break;
+            case 6:
+                title_gravity = Gravity.CENTER_HORIZONTAL;
+                break;
+        }
+
+        if (title_gravity == (0 | 5)) {
+            title_gravity = Gravity.LEFT | Gravity.CENTER_VERTICAL;
+        } else if (title_gravity == (0 | 4)) {
+            title_gravity = Gravity.LEFT | Gravity.BOTTOM;
+        }
 
 //        title_margin = (int) a.getDimension(
 //                R.styleable.WithTitleTextView_WithTitleTextView_title_margin, -1);
 //
-//        title_margin_left = (int) a.getDimension(
-//                R.styleable.WithTitleTextView_WithTitleTextView_title_margin_left, 0);
-//
-//        title_margin_right = (int) a.getDimension(
-//                R.styleable.WithTitleTextView_WithTitleTextView_title_margin_right, 0);
+        title_margin_left = (int) a.getDimension(
+                R.styleable.WithTitleTextView_WithTitleTextView_title_margin_left, 0);
+
+        title_margin_right = (int) a.getDimension(
+                R.styleable.WithTitleTextView_WithTitleTextView_title_margin_right, 0);
+
+        title_margin_top = (int) a.getDimension(
+                R.styleable.WithTitleTextView_WithTitleTextView_title_margin_top, 0);
+
+
+        title_margin_bottom = (int) a.getDimension(
+                R.styleable.WithTitleTextView_WithTitleTextView_title_margin_bottom, 0);
 
         content_color = a.getColor(
                 R.styleable.WithTitleTextView_WithTitleTextView_content_color,
@@ -94,12 +135,24 @@ public class WithTitleTextView extends BaseLinearLayout {
 
         //title
         tvTitle = (TextView) view.findViewById(R.id.tvWithTitleTextViewTitle);
+        tvTitle.setGravity(title_gravity);
 
-//        if (title_margin != -1) {
-//            TextViewUtils.setMargin(tvTitle, title_margin, 0, title_margin, 0);
-//        } else {
-//            TextViewUtils.setMargin(tvTitle, title_margin_left, 0, title_margin_right, 0);
-//        }
+
+        ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).setMargins(
+                DensityUtils.dip2px(context, title_margin_left)
+                , DensityUtils.dip2px(context, title_margin_top)
+                , DensityUtils.dip2px(context, title_margin_right)
+                , DensityUtils.dip2px(context, title_margin_bottom)
+        );
+
+
+        ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).setMargins(
+                title_margin_left
+                , title_margin_top
+                , title_margin_right
+                , title_margin_bottom
+        );
+
 
         if (title_size != -1)
             tvTitle.setTextSize(DensityUtils.px2dip(context, title_size));
@@ -155,6 +208,7 @@ public class WithTitleTextView extends BaseLinearLayout {
 
         margin_right = (int) a.getDimension(
                 R.styleable.WithTitleTextView_WithTitleTextView_margin_right, 0);
+
 
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);

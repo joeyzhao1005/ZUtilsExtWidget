@@ -8,6 +8,18 @@
 
         <!-- 标题文字 -->
         <attr name="WithTitleTextView_title" format="string" />
+
+        <!-- 标题位置 -->
+        <attr name="WithTitleTextView_title_gravity">
+            <flag name="left" value="0" />
+            <flag name="top" value="1" />
+            <flag name="center" value="2" />
+            <flag name="right" value="3" />
+            <flag name="bottom" value="4" />
+            <flag name="center_vertical" value="5" />
+            <flag name="center_horizontal" value="6" />
+        </attr>
+
         <!-- 标题文字颜色 -->
         <attr name="WithTitleTextView_title_color" format="color" />
         <!-- 标题文字大小 -->
@@ -19,6 +31,11 @@
         <!-- 标题文字 -->
         <attr name="WithTitleTextView_title_margin_right" format="dimension" />
 
+        <attr name="WithTitleTextView_title_margin_bottom" format="dimension" />
+
+        <attr name="WithTitleTextView_title_margin_top" format="dimension" />
+
+
         <!-- 内容文字 -->
         <attr name="WithTitleTextView_content" format="string" />
 
@@ -26,7 +43,7 @@
         <!--<attr name="WithTitleTextView_content_margin" format="dimension" />-->
         <!-- 内容文字间距 -->
         <!--<attr name="WithTitleTextView_content_margin_left" format="dimension" />-->
-         <!--内容文字间距 -->
+        <!--内容文字间距 -->
         <!--<attr name="WithTitleTextView_content_margin_right" format="dimension" />-->
 
         <!-- 内容文字颜色 -->
