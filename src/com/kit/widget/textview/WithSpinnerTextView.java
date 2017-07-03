@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Filterable;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.RelativeLayout;
@@ -24,6 +25,7 @@ public class WithSpinnerTextView extends LinearLayout {
     // private ImageView ivGo;
     // private EditText et;
     private TextView tvTitle, tvContent;
+    private ImageButton ibInfo;
     private String contentString, WithSpinnerTextView_title,
             WithSpinnerTextView_suffix_string;
     private Drawable WithSpinnerTextViewDeleteIcon,
@@ -83,6 +85,8 @@ public class WithSpinnerTextView extends LinearLayout {
                 .findViewById(R.id.ll);
 
         tvTitle = (TextView) view.findViewById(R.id.tvTitle);
+
+        ibInfo = (ImageButton) view.findViewById(R.id.ibInfo);
 
         tvContent = (TextView) view.findViewById(R.id.tvContent);
 
@@ -176,6 +180,19 @@ public class WithSpinnerTextView extends LinearLayout {
      */
     public void setTitle(CharSequence text) {
         tvTitle.setText(text);
+    }
+
+
+
+
+    /**
+     * 设置info点击监听器
+     *
+     * @param
+     */
+    public void setOnIbInfoClickListener(OnClickListener onClickListener) {
+        ibInfo.setVisibility(VISIBLE);
+        ibInfo.setOnClickListener(onClickListener);
     }
 
 
