@@ -228,6 +228,11 @@ public class WithTitleTextView extends BaseLinearLayout {
         addView(view);
     }
 
+
+//    public void setPadding(int left, int top, int right, int bottom){
+//        llContainer.setPadding( left,  top,  right,  bottom);
+//    }
+
     /**
      * @param text title文字
      * @return void 返回类型

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/llWithTitleEditText"
-              android:layout_width="match_parent"
-              android:layout_height="48dp"
-              android:background="@color/white"
-              android:focusable="true"
-              android:focusableInTouchMode="true"
-              android:gravity="center_vertical"
-              android:orientation="horizontal">
+    android:id="@+id/llWithTitleEditText"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="@color/white"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
 
     <LinearLayout
         android:id="@+id/llContainer"
@@ -28,8 +28,7 @@
                 android:layout_height="match_parent"
                 android:gravity="left|center_vertical"
                 android:text=""
-                android:textSize="16sp">
-            </TextView>
+                android:textSize="16sp"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -63,8 +62,7 @@
                         android:layout_marginLeft="5dp"
                         android:gravity="left|center_vertical"
                         android:text=""
-                        android:textSize="16sp">
-                    </TextView>
+                        android:textSize="16sp"></TextView>
 
                     <ImageView
                         android:id="@+id/iv_with_del_eidttext_delete"
@@ -74,7 +72,7 @@
                         android:layout_marginRight="10dp"
                         android:scaleType="fitCenter"
                         android:src="@drawable/delete"
-                        android:visibility="gone"/>
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <EditText
@@ -90,20 +88,19 @@
                     android:imeOptions="actionSearch"
                     android:textColor="@color/black"
                     android:textColorHint="#60000000"
-                    android:textSize="15sp">
-                </EditText>
+                    android:textSize="15sp"></EditText>
             </RelativeLayout>
 
             <ImageView
                 android:id="@+id/ivRight"
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_launcher"
-                android:visibility="gone"/>
+                android:visibility="gone" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>
