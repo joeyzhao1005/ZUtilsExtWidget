@@ -78,7 +78,7 @@ public class SearchBar extends LinearLayout {
 			ivSearchBarIcon.setImageDrawable(searchbarIcon);
 
 		ivSearchbarDeleteIcon = (ImageView) view
-				.findViewById(R.id.iv_searchbar_delete);
+				.findViewById(R.id.ivSearchClear);
 		if (ivSearchbarDeleteIcon != null)
 			ivSearchbarDeleteIcon.setImageDrawable(searchbarDeleteIcon);
 
