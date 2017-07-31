@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ public class WithTitleTextView extends BaseLinearLayout {
 
     // private EditText et;
     private TextView tvTitle, tvContent;
+    private ImageButton ibInfo;
     private String contentString, WithTitleTextView_title;
     private Drawable WithTitleTextView_background, goSrc;
 
@@ -137,6 +139,7 @@ public class WithTitleTextView extends BaseLinearLayout {
         tvTitle = (TextView) view.findViewById(R.id.tvWithTitleTextViewTitle);
         tvTitle.setGravity(title_gravity);
 
+        ibInfo = (ImageButton) view.findViewById(R.id.ibInfo);
 
         ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).setMargins(
                 DensityUtils.dip2px(context, title_margin_left)
@@ -277,6 +280,21 @@ public class WithTitleTextView extends BaseLinearLayout {
         return tvContent;
     }
 
+
+    /**
+     * 设置info点击监听器
+     *
+     * @param
+     */
+    public void setOnIbInfoClickListener(OnClickListener onClickListener) {
+        ibInfo.setVisibility(VISIBLE);
+        ibInfo.setOnClickListener(onClickListener);
+    }
+
+
+    public ImageButton getIbInfo() {
+        return ibInfo;
+    }
 
     /**
      * @return void 返回类型
