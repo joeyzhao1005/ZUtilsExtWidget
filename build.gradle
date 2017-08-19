@@ -2,7 +2,8 @@ apply plugin: 'com.android.library'
 
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
-    compile project(':ZUtilsExt')
+    implementation project(':ZUtils')
+    implementation project(':ZUtilsExt')
 
     compile 'com.android.support:design:26.0.1'
     compile 'com.nineoldandroids:library:2.4.0'
