@@ -1,14 +1,14 @@
 apply plugin: 'com.android.library'
 
 dependencies {
-    compile fileTree(dir: 'libs', include: '*.jar')
+    implementation fileTree(dir: 'libs', include: '*.jar')
     implementation project(':ZUtils')
     implementation project(':ZUtilsExt')
 
-    compile 'com.android.support:design:26.0.1'
-    compile 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.android.support:design:26.0.1'
+    implementation 'com.nineoldandroids:library:2.4.0'
 
-//    compile 'info.hoang8f:android-segmented:1.0.6'
+//    implementation 'info.hoang8f:android-segmented:1.0.6'
 
 }
 
@@ -18,7 +18,7 @@ android {
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 25
+        targetSdkVersion 26
     }
 
     compileOptions {
