@@ -305,6 +305,11 @@ public class WithTitleTextView extends BaseLinearLayout {
         return tvContent.getText();
     }
 
+
+    public TextView getTvTitle() {
+        return tvTitle;
+    }
+
     public TextView getTvContent() {
         return tvContent;
     }
