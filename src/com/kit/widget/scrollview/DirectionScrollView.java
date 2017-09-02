@@ -38,10 +38,11 @@ public class DirectionScrollView extends ScrollView {
 
         if (scrollViewListener != null) {
 
-            if (oldt < t && ((t - oldt) > 15)) {// 向上
-                scrollViewListener.onScrollUp(this, t - oldt);
-            } else if (oldt > t && (oldt - t) > 15) {// 向下
+            if (oldt < t && ((t - oldt) > 15)) {//列表向下
                 scrollViewListener.onScrollDown(this, oldt - t);
+            } else if (oldt > t && (oldt - t) > 15) {//列表向上
+                scrollViewListener.onScrollUp(this, t - oldt);
+
             }
 
             if (getScrollY() == 0) {

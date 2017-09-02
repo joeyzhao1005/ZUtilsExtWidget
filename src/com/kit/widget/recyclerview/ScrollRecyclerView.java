@@ -68,10 +68,14 @@ public class ScrollRecyclerView extends RecyclerView {
                             if (Math.abs(dy) > Math.abs(sensitivity)) {
                                 callback.onScrollDown(ScrollRecyclerView.this, dy);
                             }
+//                            callback.onScrollDown(ScrollRecyclerView.this, dy);
+
                         } else {
                             if (Math.abs(dy) > Math.abs(sensitivity)) {
                                 callback.onScrollUp(ScrollRecyclerView.this, dy);
                             }
+//                            callback.onScrollUp(ScrollRecyclerView.this, dy);
+
                         }
                     }
                 }
