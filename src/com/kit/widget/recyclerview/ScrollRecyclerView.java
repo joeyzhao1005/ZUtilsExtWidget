@@ -48,8 +48,10 @@ public class ScrollRecyclerView extends RecyclerView {
 
                         if (!recyclerView.canScrollVertically(1)) {
                             callback.onScrollToBottom();
+                            isAtBottom = true;
                         }
                         if (!recyclerView.canScrollVertically(-1)) {
+                            isAtTop = true;
                             callback.onScrollToTop();
                         }
                     }
@@ -62,6 +64,8 @@ public class ScrollRecyclerView extends RecyclerView {
                 if (callback != null) {
                     callback.onScrolled(recyclerView, dx, dy);
 
+                    isAtBottom = false;
+                    isAtTop = false;
 
                     if (dy != 0) {
                         if (dy > 0) {
@@ -88,8 +92,15 @@ public class ScrollRecyclerView extends RecyclerView {
         this.sensitivity = sensitivity;
     }
 
+    public boolean isAtTop() {
+        return isAtTop;
+    }
+
     //上下滑动监听灵敏度
     private int sensitivity = 10;
+
+    private boolean isAtTop;
+    private boolean isAtBottom;
 
 
 }
