@@ -2,6 +2,7 @@ package com.kit.widget.scrollview;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.widget.ScrollView;
 
 import com.kit.widget.recyclerview.ScrollRecyclerView;
@@ -55,6 +56,22 @@ public class DirectionScrollView extends ScrollView {
 
     }
 
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        return super.onInterceptTouchEvent(ev) && isScrollable();
+    }
+
+
+    public boolean isScrollable() {
+        return isScrollable;
+    }
+
+    public void setScrollable(boolean scrollable) {
+        isScrollable = scrollable;
+    }
+
+    private boolean isScrollable = true;
 
     private OnScrollViewListener scrollViewListener = null;
 
