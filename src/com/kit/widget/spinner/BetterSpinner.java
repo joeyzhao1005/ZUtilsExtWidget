@@ -3,6 +3,7 @@ package com.kit.widget.spinner;
 import android.content.Context;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.support.v7.widget.AppCompatAutoCompleteTextView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,7 +15,7 @@ import com.kit.extend.widget.R;
 
 import java.util.Calendar;
 
-public class BetterSpinner extends AutoCompleteTextView implements AdapterView.OnItemClickListener {
+public class BetterSpinner extends AppCompatAutoCompleteTextView implements AdapterView.OnItemClickListener {
 
     private static final int MAX_CLICK_DURATION = 200;
     private long startClickTime;
@@ -22,16 +23,21 @@ public class BetterSpinner extends AutoCompleteTextView implements AdapterView.O
 
     public BetterSpinner(Context context) {
         super(context);
-        setOnItemClickListener(this);
+        init();
     }
 
     public BetterSpinner(Context arg0, AttributeSet arg1) {
         super(arg0, arg1);
-        setOnItemClickListener(this);
+        init();
     }
 
     public BetterSpinner(Context arg0, AttributeSet arg1, int arg2) {
         super(arg0, arg1, arg2);
+        init();
+    }
+
+    private void init(){
+        setLines(1);
         setOnItemClickListener(this);
     }
 
