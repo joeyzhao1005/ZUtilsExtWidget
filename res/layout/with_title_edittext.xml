@@ -62,7 +62,7 @@
                         android:layout_marginLeft="5dp"
                         android:gravity="left|center_vertical"
                         android:text=""
-                        android:textSize="16sp"></TextView>
+                        android:textSize="16sp"/>
 
                     <ImageView
                         android:id="@+id/iv_with_del_eidttext_delete"
@@ -83,12 +83,12 @@
                     android:layout_centerHorizontal="true"
                     android:layout_toLeftOf="@+id/llSuffixAndDel"
                     android:background="@color/transparent"
-                    android:gravity="left|center_vertical"
+                    android:gravity="end|center_vertical"
                     android:hint="@string/with_del_edittext_hint"
                     android:imeOptions="actionSearch"
                     android:textColor="@color/black"
                     android:textColorHint="#60000000"
-                    android:textSize="15sp"></EditText>
+                    android:textSize="15sp"/>
             </RelativeLayout>
 
             <ImageView
