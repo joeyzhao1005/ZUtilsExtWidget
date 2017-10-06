@@ -13,6 +13,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -31,6 +32,8 @@ public class WithTitleEditText extends LinearLayout {
 
 
     private TextView tvTitle, tvSuffix;
+    private ImageButton ibInfo;
+
     private Drawable WithTitleEditTextDeleteIcon, WithTitleEditText_background,
             WithTitleEditText_edittext_background;
 
@@ -128,6 +131,7 @@ public class WithTitleEditText extends LinearLayout {
                 .findViewById(R.id.llWithTitleEditText);
 
         tvTitle = (TextView) view.findViewById(R.id.tvTitle);
+        ibInfo = (ImageButton) view.findViewById(R.id.ibInfo);
 
         tvSuffix = (TextView) view.findViewById(R.id.tvSuffix);
 
@@ -201,10 +205,11 @@ public class WithTitleEditText extends LinearLayout {
                 break;
         }
 
-        if (WithTitleEditText_title != null)
+        if (WithTitleEditText_title != null) {
             tvTitle.setText(WithTitleEditText_title);
-        else
+        } else {
             tvTitle.setText("");
+        }
 
         if (WithTitleEditTextDeleteIcon != null)
             ivWithTitleEditTextDeleteIcon
@@ -213,18 +218,21 @@ public class WithTitleEditText extends LinearLayout {
         if (WithTitleEditText_suffix_iv_right_src != null) {
             ivRight.setVisibility(View.VISIBLE);
             ivRight.setImageDrawable(WithTitleEditText_suffix_iv_right_src);
-        } else
+        } else {
             ivRight.setVisibility(View.GONE);
+        }
 
-        if (is_edittext_left)
-            et.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
-        else
-            et.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+        if (is_edittext_left) {
+            et.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
+        } else {
+            et.setGravity(Gravity.END | Gravity.CENTER_VERTICAL);
+        }
 
-        if (hintString != null)
+        if (hintString != null) {
             et.setHint(hintString);
-        else
+        } else {
             et.setHint("");
+        }
 
         if (WithTitleEditText_edittext_background != null)
             rlEditText.setBackground(WithTitleEditText_edittext_background);
@@ -372,6 +380,21 @@ public class WithTitleEditText extends LinearLayout {
             ivWithTitleEditTextDeleteIcon.setVisibility(GONE);
 
 
+    }
+
+
+    /**
+     * 设置info点击监听器
+     *
+     * @param
+     */
+    public void setOnIbInfoClickListener(OnClickListener onClickListener) {
+        ibInfo.setVisibility(VISIBLE);
+        ibInfo.setOnClickListener(onClickListener);
+    }
+
+    public ImageButton getIbInfo() {
+        return ibInfo;
     }
 
     /**
