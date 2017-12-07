@@ -1,4 +1,4 @@
-package com.kit.widget.dialog;
+package com.kit.dialog;
 
 import java.lang.reflect.Field;
 

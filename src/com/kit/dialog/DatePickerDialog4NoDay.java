@@ -1,4 +1,4 @@
-package com.kit.widget.dialog;
+package com.kit.dialog;
 
 import android.app.DatePickerDialog;
 import android.content.Context;

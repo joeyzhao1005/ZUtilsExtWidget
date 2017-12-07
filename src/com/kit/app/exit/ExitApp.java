@@ -1,4 +1,4 @@
-package com.kit.widget.exit;
+package com.kit.app.exit;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,7 +8,7 @@ import android.view.View.OnClickListener;
 import com.kit.extend.widget.R;
 import com.kit.utils.ResWrapper;
 import com.kit.utils.ToastUtils;
-import com.kit.widget.dialog.DefaultDialog;
+import com.kit.dialog.DefaultDialog;
 
 import java.util.Timer;
 import java.util.TimerTask;

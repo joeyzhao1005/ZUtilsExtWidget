@@ -1,4 +1,4 @@
-package com.kit.widget.dialog;
+package com.kit.dialog;
 //package com.kit.widget;
 //
 //import java.util.Calendar;

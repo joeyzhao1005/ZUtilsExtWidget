@@ -1,4 +1,4 @@
-package com.kit.widget.dialog;
+package com.kit.dialog;
 
 import com.kit.extend.widget.R;
 
