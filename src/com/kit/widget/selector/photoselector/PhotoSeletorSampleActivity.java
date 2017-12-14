@@ -13,7 +13,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
 import com.kit.extend.widget.R;
-import com.kit.ui.BaseActivity;
+import com.kit.ui.base.BaseActivity;
 import com.kit.utils.log.ZogUtils;
 import com.kit.utils.bitmap.BitmapUtils;
 import com.kit.widget.actionsheet.ActionSheet;

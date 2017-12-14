@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.widget.ArrayAdapter;
 
 import com.kit.extend.widget.R;
-import com.kit.ui.BaseActivity;
+import com.kit.ui.base.BaseActivity;
 import com.kit.utils.log.ZogUtils;
 import com.kit.widget.listview.reboundlistview.ReboundListView.IPullListViewListener;
 

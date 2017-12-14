@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.kit.extend.widget.R;
-import com.kit.ui.BaseActivity;
+import com.kit.ui.base.BaseActivity;
 import com.kit.utils.log.ZogUtils;
 import com.kit.utils.intentutils.IntentUtils;
 

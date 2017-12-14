@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import com.kit.extend.widget.R;
-import com.kit.ui.BaseActivity;
+import com.kit.ui.base.BaseActivity;
 import com.kit.utils.DateUtils;
 import com.kit.utils.log.ZogUtils;
 import com.kit.widget.wheel.OnWheelChangedListener;

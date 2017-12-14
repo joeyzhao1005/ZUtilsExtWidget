@@ -12,7 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.kit.extend.widget.R;
-import com.kit.ui.BaseActivity;
+import com.kit.ui.base.BaseActivity;
 import com.kit.utils.log.ZogUtils;
 
 /**
