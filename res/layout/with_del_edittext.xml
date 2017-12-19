@@ -30,7 +30,7 @@
             android:id="@+id/rl"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:background="@drawable/bg_edittext_input"
+            android:background="@color/white"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:orientation="horizontal">
