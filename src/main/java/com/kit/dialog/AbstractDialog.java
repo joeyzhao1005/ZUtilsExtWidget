@@ -1,20 +1,18 @@
 package com.kit.dialog;
 
-import com.kit.extend.widget.R;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.kit.extend.widget.R;
 
 public class AbstractDialog extends Dialog implements OnClickListener {
 
@@ -35,6 +33,7 @@ public class AbstractDialog extends Dialog implements OnClickListener {
 	public AbstractDialog(Context context, String content, int layoutId) {
 		super(context);
 		// TODO Auto-generated constructor stub
+
 
 		this.mContext = context;
 		this.content = content;
