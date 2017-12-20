@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import com.kit.extend.widget.R;
 import com.kit.utils.DensityUtils;
-import com.kit.utils.log.ZogUtils;
+import com.kit.utils.log.Zog;
 import com.kit.widget.actionsheet.ActionSheet.OnActionSheetItemSelected;
 
 /**
@@ -189,7 +189,7 @@ public class ActionSheet4WeChat {
 				tv.setTextColor(actionSheetConfig.colors[index - 1]);
 			} catch (Exception e) {
 				tv.setTextColor(activity.getResources().getColor(R.color.black));
-				ZogUtils.showException(e);
+				Zog.showException(e);
 			}
 			try {
 				tv.setTextSize(actionSheetConfig.actionSheetTextSize[index - 1]);

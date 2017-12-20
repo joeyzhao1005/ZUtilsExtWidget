@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 import com.kit.extend.widget.R;
 import com.kit.utils.DensityUtils;
-import com.kit.utils.log.ZogUtils;
+import com.kit.utils.log.Zog;
 import com.kit.widget.actionsheet.ActionSheet.OnActionSheetItemSelected;
 
 /**
@@ -205,13 +205,13 @@ public class ActionSheet4IOS {
 				tv.setTextColor(actionSheetConfig.colors[index - 1]);
 			} catch (Exception e) {
 				tv.setTextColor(0xff037bff);
-				ZogUtils.showException(e);
+				Zog.showException(e);
 			}
 			try {
 				tv.setTextSize(actionSheetConfig.actionSheetTextSize[index - 1]);
 			} catch (Exception e) {
 				tv.setTextSize(16.0f);
-				ZogUtils.showException(e);
+				Zog.showException(e);
 			}
 			tv.setText(actionSheetConfig.actionSheetStrings[index - 1]);
 		}
