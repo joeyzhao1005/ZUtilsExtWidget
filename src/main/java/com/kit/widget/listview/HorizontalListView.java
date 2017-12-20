@@ -1408,7 +1408,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
         if (mFlingTracker == null || mFlingTracker.isFinished()) {
             // If currently scrolled off the left side of the list and the adapter is not empty
             if (nextScrollPosition < 0) {
-//                ZogUtils.e(HorizontalListView.class,"start");
+//                Zog.e(HorizontalListView.class,"start");
                 if (mOnScrollBorderChangedListener != null) {
                     mOnScrollBorderChangedListener.onScrollBorderChanged(OnScrollBorderChangedListener.ScrollState.SCROLL_STATE_START);
                 }
@@ -1424,7 +1424,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
                 }
             } else if (nextScrollPosition > mMaxX) {
                 // Scrolled off the right of the list
-//                ZogUtils.e(HorizontalListView.class,"end");
+//                Zog.e(HorizontalListView.class,"end");
                 if (mOnScrollBorderChangedListener != null) {
                     mOnScrollBorderChangedListener.onScrollBorderChanged(OnScrollBorderChangedListener.ScrollState.SCROLL_STATE_END);
                 }
@@ -1439,7 +1439,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
                     mEdgeGlowLeft.onRelease();
                 }
             } else {
-//                ZogUtils.e(HorizontalListView.class,"center");
+//                Zog.e(HorizontalListView.class,"center");
                 if (mOnScrollBorderChangedListener != null) {
                     mOnScrollBorderChangedListener.onScrollBorderChanged(OnScrollBorderChangedListener.ScrollState.SCROLL_STATE_CENTER);
                 }
