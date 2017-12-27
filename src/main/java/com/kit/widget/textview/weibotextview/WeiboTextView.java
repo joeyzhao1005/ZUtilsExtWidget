@@ -206,7 +206,7 @@ public class WeiboTextView extends TextView implements GifDrawableExtend.UpdateL
         builder = new SpannableStringBuilder(text);
 
         for (String patternStr : patternStrings) {
-            if (StringUtils.isNullOrEmpty(patternStr)) {
+            if (StringUtils.isEmptyOrNullStr(patternStr)) {
                 return;
             }
             Pattern pattern = Pattern.compile(patternStr);

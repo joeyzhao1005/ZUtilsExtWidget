@@ -344,7 +344,7 @@ public class WithTitleEditText extends LinearLayout {
      * @param suffixString
      */
     public void setSuffixString(CharSequence suffixString) {
-        if (!StringUtils.isNullOrEmpty(suffixString.toString())) {
+        if (!StringUtils.isEmptyOrNullStr(suffixString.toString())) {
             WithTitleEditText_suffix_string = suffixString.toString();
             tvSuffix.setVisibility(View.VISIBLE);
             tvSuffix.setText(WithTitleEditText_suffix_string);
