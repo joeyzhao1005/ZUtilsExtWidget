@@ -15,10 +15,8 @@ import android.widget.TextView;
 
 import com.kit.extend.widget.R;
 import com.kit.utils.DensityUtils;
-import com.kit.utils.TextViewUtils;
-import com.kit.widget.base.BaseLinearLayout;
 
-public class WithTitleTextView extends BaseLinearLayout {
+public class WithTitleTextView extends LinearLayout {
 
     // private EditText et;
     private TextView tvTitle, tvContent;

@@ -1,8 +1,10 @@
 package com.kit.widget.textview;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,29 +14,32 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kit.extend.widget.R;
-import com.kit.widget.base.BaseLinearLayout;
 
 /**
  * Created by wjwu on 2015/11/23.
  */
-public class WithItemTextView extends BaseLinearLayout {
+public class WithItemTextView extends LinearLayout {
     public WithItemTextView(Context context) {
         super(context);
+        init(context, null);
     }
 
-    public WithItemTextView(Context context, AttributeSet attrs) {
+    public WithItemTextView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
 
-    public WithItemTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public WithItemTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
+
     }
 
+    @TargetApi(21)
     public WithItemTextView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context, attrs);
+
     }
 
     private TextView mTv_content, mTv_name;

@@ -1,35 +1,41 @@
 package com.kit.widget.textview;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kit.extend.widget.R;
-import com.kit.widget.base.BaseLinearLayout;
 
 /**
  * Created by wjwu on 2015/11/23.
  */
-public class WithTwoItemTextView extends BaseLinearLayout implements View.OnClickListener {
+public class WithTwoItemTextView extends LinearLayout implements View.OnClickListener {
     public WithTwoItemTextView(Context context) {
         super(context);
+        init(context, null);
+
     }
 
-    public WithTwoItemTextView(Context context, AttributeSet attrs) {
+    public WithTwoItemTextView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
 
-    public WithTwoItemTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public WithTwoItemTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
+
     }
 
+    @TargetApi(21)
     public WithTwoItemTextView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context, attrs);

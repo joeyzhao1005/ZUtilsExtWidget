@@ -18,9 +18,8 @@ import android.widget.TextView;
 
 import com.kit.extend.widget.R;
 import com.kit.utils.DensityUtils;
-import com.kit.widget.base.BaseLinearLayout;
 
-public class WithSwitchButtonTextView extends BaseLinearLayout {
+public class WithSwitchButtonTextView extends LinearLayout {
 
     // private ImageView ivGo;
     // private EditText et;
