@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.kit.extend.widget.R;
-import com.kit.utils.intentutils.IntentManager;
+import com.kit.utils.intent.IntentManager;
 
 public class DialogUtils {
     public static DefaultDialog showNetWorkErrorDialog(final Context context,
