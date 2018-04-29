@@ -97,7 +97,9 @@ public class XRTextView extends TextView{
   int lineCount = 0;
 
   text = this.getText().toString();//.replaceAll("\n", "\r\n");
-  if(text==null)return;
+  if(text==null) {
+      return;
+  }
   char[] textCharArray = text.toCharArray();
   // 已绘的宽度
   float drawedWidth = 0;

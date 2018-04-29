@@ -66,26 +66,30 @@ public class PasswordEditText extends LinearLayout {
 		tbPasswordEditTextToggle = (ToggleButton) view
 				.findViewById(R.id.tb_password_eidttext_toggle);
 
-		if (passwordEditTextToggle != null)
-			tbPasswordEditTextToggle
-					.setBackgroundDrawable(passwordEditTextToggle);
+		if (passwordEditTextToggle != null) {
+            tbPasswordEditTextToggle
+                    .setBackgroundDrawable(passwordEditTextToggle);
+        }
 
 		et = (EditText) view.findViewById(R.id.et_password_eidttext_edittext);
-		if (!TextUtils.isEmpty(hintString))
-			et.setHint(hintString);
+		if (!TextUtils.isEmpty(hintString)) {
+            et.setHint(hintString);
+        }
 
 		et.setHintTextColor(hintColor);
 
 
 		rl = (RelativeLayout) view
 				.findViewById(R.id.rl);
-		if(passwordEditTextBackground !=null)
-			rl.setBackgroundDrawable(passwordEditTextBackground);
+		if(passwordEditTextBackground !=null) {
+            rl.setBackgroundDrawable(passwordEditTextBackground);
+        }
 
 		ivPasswordEditTextIcon = (ImageView) view.findViewById(R.id.iv_with_del_eidttext_icon);
-		if (passwordEditTextIcon != null)
-			ivPasswordEditTextIcon
-					.setImageDrawable(passwordEditTextIcon);
+		if (passwordEditTextIcon != null) {
+            ivPasswordEditTextIcon
+                    .setImageDrawable(passwordEditTextIcon);
+        }
 
 
 

@@ -43,8 +43,9 @@ class ScrollableImageView extends View {
 	@Override
 	protected void onDraw(Canvas canvas) {
 
-		if (adaptedImage != null)
-			canvas.drawBitmap(adaptedImage, 0, 0, paint);
+		if (adaptedImage != null) {
+            canvas.drawBitmap(adaptedImage, 0, 0, paint);
+        }
 
 	}
 

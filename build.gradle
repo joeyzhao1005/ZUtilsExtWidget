@@ -1,11 +1,13 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
     implementation project(':ZUtils')
     implementation project(':ZUtilsExt')
 
-    implementation 'com.android.support:design:27.1.0'
+    implementation 'com.android.support:design:27.1.1'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 //    implementation 'com.nineoldandroids:library:2.4.0'
 
 //    implementation 'info.hoang8f:android-segmented:1.0.6'
@@ -28,4 +30,7 @@ android {
 
     sourceSets {
     }
+}
+repositories {
+    mavenCentral()
 }

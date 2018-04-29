@@ -98,8 +98,9 @@ public class HiddenPickerDialog extends DatePickerDialog {
                     return (DatePicker) child;
                 } else if (child instanceof ViewGroup) {
                     DatePicker result = findDatePicker((ViewGroup) child);
-                    if (result != null)
+                    if (result != null) {
                         return result;
+                    }
                 }
             }
         }

@@ -155,13 +155,15 @@ public class WithTitleTextView extends LinearLayout {
         );
 
 
-        if (title_size != -1)
+        if (title_size != -1) {
             tvTitle.setTextSize(DensityUtils.px2dip(context, title_size));
+        }
 
         tvTitle.setTextColor(title_color);
 
-        if (WithTitleTextView_title != null)
+        if (WithTitleTextView_title != null) {
             tvTitle.setText(WithTitleTextView_title);
+        }
 
 
         //content
@@ -176,18 +178,21 @@ public class WithTitleTextView extends LinearLayout {
 //            TextViewUtils.setMargin(tvContent, content_margin_left, 0, content_margin_right, 0);
 //        }
 
-        if (is_content_left)
+        if (is_content_left) {
             llContent.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
-        else
+        } else {
             llContent.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+        }
 
-        if (content_size != -1)
+        if (content_size != -1) {
             tvContent.setTextSize(DensityUtils.px2dip(context, content_size));
+        }
 
         tvContent.setTextColor(content_color);
 
-        if (contentString != null)
+        if (contentString != null) {
             tvContent.setText(contentString);
+        }
 
 
         //whole
@@ -198,8 +203,9 @@ public class WithTitleTextView extends LinearLayout {
         llContainer = (LinearLayout) view
                 .findViewById(R.id.llContainer);
 
-        if (WithTitleTextView_background != null)
+        if (WithTitleTextView_background != null) {
             llWithTitleTextView.setBackground(WithTitleTextView_background);
+        }
 
         margin = (int) a.getDimension(
                 R.styleable.WithTitleTextView_WithTitleTextView_margin, -1);

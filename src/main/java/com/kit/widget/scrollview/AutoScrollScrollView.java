@@ -112,8 +112,9 @@ public class AutoScrollScrollView extends ScrollView {
 
 		for (int i = 0; i < count; i++) {
 			View child = getChildAt(i);
-			if (child.getVisibility() == View.GONE)
-				continue;
+			if (child.getVisibility() == View.GONE) {
+                continue;
+            }
 
 			// child.setVisibility(View.VISIBLE);
 			final int childWidth = child.getMeasuredWidth();
@@ -135,8 +136,9 @@ public class AutoScrollScrollView extends ScrollView {
 
 	@Override
 	public boolean onTouchEvent(MotionEvent ev) {
-		if (getChildCount() == 0)
-			return false;
+		if (getChildCount() == 0) {
+            return false;
+        }
 		final int action = ev.getAction();
 		final float y = ev.getY();
 		switch (action) {
@@ -160,8 +162,9 @@ public class AutoScrollScrollView extends ScrollView {
 			final int deltaY = (int) (mLastMotionY - y);
 			System.out.println("deltaX: " + deltaY);
 			boolean xMoved = Math.abs(deltaY) > 4;
-			if (!moving && !xMoved)
-				break;
+			if (!moving && !xMoved) {
+                break;
+            }
 			mLastMotionY = y;
 
 			scrollBy(0, deltaY);
@@ -195,8 +198,9 @@ public class AutoScrollScrollView extends ScrollView {
 		// if (!scroller.isFinished())
 		// return;
 		// Log.e("TAG","scrollToScreen:"+whichScreen);
-		if (whichScreen >= getChildCount())
-			whichScreen = getChildCount() - 1;
+		if (whichScreen >= getChildCount()) {
+            whichScreen = getChildCount() - 1;
+        }
 
 		int delta = 0;
 

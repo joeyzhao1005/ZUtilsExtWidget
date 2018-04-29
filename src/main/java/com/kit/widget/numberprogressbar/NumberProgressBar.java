@@ -252,8 +252,9 @@ public class NumberProgressBar extends View {
             canvas.drawRect(mUnreachedRectF, mUnreachedBarPaint);
         }
 
-        if (mIfDrawText)
+        if (mIfDrawText) {
             canvas.drawText(mCurrentDrawText, mDrawTextStart, mDrawTextEnd, mTextPaint);
+        }
     }
 
     private void initializePainters() {
@@ -412,9 +413,9 @@ public class NumberProgressBar extends View {
     }
 
     public void setPrefix(String prefix) {
-        if (prefix == null)
+        if (prefix == null) {
             mPrefix = "";
-        else {
+        } else {
             mPrefix = prefix;
         }
     }

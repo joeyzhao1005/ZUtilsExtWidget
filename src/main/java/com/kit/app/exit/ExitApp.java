@@ -40,8 +40,9 @@ public class ExitApp {
         } else {
             ((Activity) mContext).finish();
 
-            if (isExitSys)
+            if (isExitSys) {
                 System.exit(0);
+            }
         }
     }
 
@@ -60,8 +61,9 @@ public class ExitApp {
 
                 ((Activity) mContext).finish();
                 mDialog.dismiss();
-                if (isExitSys)
+                if (isExitSys) {
                     System.exit(0);
+                }
 
             }
         });

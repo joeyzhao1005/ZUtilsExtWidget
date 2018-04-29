@@ -54,11 +54,13 @@ public class LoopPagerAdapterWrapper extends PagerAdapter {
 
     int toRealPosition(int position) {
         int realCount = getRealCount();
-        if (realCount == 0)
+        if (realCount == 0) {
             return 0;
+        }
         int realPosition = (position-1) % realCount;
-        if (realPosition < 0)
+        if (realPosition < 0) {
             realPosition += realCount;
+        }
 
         return realPosition;
     }

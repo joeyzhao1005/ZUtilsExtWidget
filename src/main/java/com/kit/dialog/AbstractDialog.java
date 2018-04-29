@@ -66,8 +66,9 @@ public class AbstractDialog extends Dialog implements OnClickListener {
 
 		ColorDrawable dw = new ColorDrawable(0x0000ff00);
 		dialogWindow.setBackgroundDrawable(dw);
-		if (mTVContent != null)
-			mTVContent.setText(content);
+		if (mTVContent != null) {
+            mTVContent.setText(content);
+        }
 	}
 
 	public void setContent(String content) {

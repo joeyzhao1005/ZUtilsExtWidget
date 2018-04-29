@@ -145,11 +145,13 @@ public class WithTitleEditText extends LinearLayout {
 
         ivRight = (ImageView) view.findViewById(R.id.ivRight);
 
-        if (WithTitleEditText_background != null)
+        if (WithTitleEditText_background != null) {
             llWithTitleEditText.setBackground(WithTitleEditText_background);
+        }
 
-        if (title_size != -1)
+        if (title_size != -1) {
             tvTitle.setTextSize(DensityUtils.px2dip(context, title_size));
+        }
         tvTitle.setTextColor(title_color);
 
         if (!TextUtils.isEmpty(WithTitleEditText_suffix_string)) {
@@ -158,14 +160,17 @@ public class WithTitleEditText extends LinearLayout {
             tvSuffix.setTextColor(edittext_text_color);
         }
 
-        if (etSingLine)
+        if (etSingLine) {
             et.setSingleLine();
+        }
 
-        if (etMaxHeight > 0)
+        if (etMaxHeight > 0) {
             et.setMaxHeight(etMaxHeight);
+        }
 
-        if (etMaxLines > 0)
+        if (etMaxLines > 0) {
             et.setMaxLines(etMaxLines);
+        }
 
         et.setTextColor(edittext_text_color);
 
@@ -211,9 +216,10 @@ public class WithTitleEditText extends LinearLayout {
             tvTitle.setText("");
         }
 
-        if (WithTitleEditTextDeleteIcon != null)
+        if (WithTitleEditTextDeleteIcon != null) {
             ivWithTitleEditTextDeleteIcon
                     .setImageDrawable(WithTitleEditTextDeleteIcon);
+        }
 
         if (WithTitleEditText_suffix_iv_right_src != null) {
             ivRight.setVisibility(View.VISIBLE);
@@ -234,8 +240,9 @@ public class WithTitleEditText extends LinearLayout {
             et.setHint("");
         }
 
-        if (WithTitleEditText_edittext_background != null)
+        if (WithTitleEditText_edittext_background != null) {
             rlEditText.setBackground(WithTitleEditText_edittext_background);
+        }
 
         ivWithTitleEditTextDeleteIcon.setOnClickListener(new OnClickListener() {
             @Override
@@ -374,10 +381,11 @@ public class WithTitleEditText extends LinearLayout {
 
         et.setEnabled(abled);
 
-        if (abled)
+        if (abled) {
             ivWithTitleEditTextDeleteIcon.setVisibility(VISIBLE);
-        else
+        } else {
             ivWithTitleEditTextDeleteIcon.setVisibility(GONE);
+        }
 
 
     }

@@ -138,8 +138,9 @@ public class MarqueeTextView extends TextView implements OnClickListener {
 			super(in);
 			boolean[] b = null;
 			in.readBooleanArray(b);
-			if (b != null && b.length > 0)
-				isStarting = b[0];
+			if (b != null && b.length > 0) {
+                isStarting = b[0];
+            }
 			step = in.readFloat();
 		}
 	}
@@ -164,18 +165,20 @@ public class MarqueeTextView extends TextView implements OnClickListener {
 			return;
 		}
 		step += speed;
-		if (step > temp_view_plus_two_text_length)
-			step = textLength;
+		if (step > temp_view_plus_two_text_length) {
+            step = textLength;
+        }
 		invalidate();
 
 	}
 
 	@Override
 	public void onClick(View v) {
-		if (isStarting)
-			stopScroll();
-		else
-			startScroll();
+		if (isStarting) {
+            stopScroll();
+        } else {
+            startScroll();
+        }
 
 	}
 }

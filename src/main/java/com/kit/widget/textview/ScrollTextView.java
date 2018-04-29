@@ -84,10 +84,11 @@ public class ScrollTextView extends TextView {
 					+ getPaddingTop() + getPaddingBottom())
 					- getHeight();
 			boolean toEdge = scrollY < 0 || scrollY > maxY;
-			if (scrollY < 0)
-				scrollY = 0;
-			else if (scrollY > maxY)
-				scrollY = maxY;
+			if (scrollY < 0) {
+                scrollY = 0;
+            } else if (scrollY > maxY) {
+                scrollY = maxY;
+            }
 
 			/*
 			 * 下面等同于： mScrollY = scrollY; awakenScrollBars(); //显示滚动条，必须在xml中配置。
@@ -95,7 +96,9 @@ public class ScrollTextView extends TextView {
 			 */
 			scrollTo(0, scrollY);
 			if (toEdge) // 移到两端，由于位置没有发生变化，导致滚动条不显示
-				awakenScrollBars();
+            {
+                awakenScrollBars();
+            }
 		}
 	}
 

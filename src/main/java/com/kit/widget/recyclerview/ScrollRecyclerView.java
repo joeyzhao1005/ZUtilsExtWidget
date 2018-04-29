@@ -40,8 +40,9 @@ public class ScrollRecyclerView extends RecyclerView {
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
 
-                if (callback != null)
+                if (callback != null) {
                     callback.onScrollStateChanged(ScrollRecyclerView.this, newState);
+                }
 
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     if (Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH) {

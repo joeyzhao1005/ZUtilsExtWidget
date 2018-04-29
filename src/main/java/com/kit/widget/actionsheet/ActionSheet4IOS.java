@@ -78,8 +78,9 @@ public class ActionSheet4IOS {
 		lp.gravity = Gravity.BOTTOM;
 		dlg.onWindowAttributesChanged(lp);
 		dlg.setCanceledOnTouchOutside(false);
-		if (cancelListener != null)
-			dlg.setOnCancelListener(cancelListener);
+		if (cancelListener != null) {
+            dlg.setOnCancelListener(cancelListener);
+        }
 
 		dlg.setContentView(layout);
 		dlg.show();

@@ -72,18 +72,21 @@ public class WithDelEditText extends LinearLayout {
 
         ivWithDelEditTextDeleteIcon = (ImageView) view
                 .findViewById(R.id.iv_with_del_eidttext_delete);
-        if (WithDelEditTextDeleteIcon != null)
+        if (WithDelEditTextDeleteIcon != null) {
             ivWithDelEditTextDeleteIcon
                     .setImageDrawable(WithDelEditTextDeleteIcon);
+        }
 
         rl = (RelativeLayout) view
                 .findViewById(R.id.rl);
-        if (WithDelEditTextBackground != null)
+        if (WithDelEditTextBackground != null) {
             rl.setBackgroundDrawable(WithDelEditTextBackground);
+        }
 
         et = (EditText) view.findViewById(R.id.et_with_del_edittext);
-        if (!TextUtils.isEmpty(hintString))
+        if (!TextUtils.isEmpty(hintString)) {
             et.setHint(hintString);
+        }
 
         et.setHintTextColor(hintColor);
 

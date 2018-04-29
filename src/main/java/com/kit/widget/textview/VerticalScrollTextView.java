@@ -118,8 +118,9 @@ public class VerticalScrollTextView extends TextView {
 	// 下面代码是利用上面计算的显示行数，将文字画在画布上，实时更新。
 	@Override
 	public void onDraw(Canvas canvas) {
-		if (textList.size() == 0)
-			return;
+		if (textList.size() == 0) {
+            return;
+        }
 		for (int i = 0; i < textList.size(); i++) {
 
 			if (step < this.getHeight() + textList.size() * tp.getTextSize()) {

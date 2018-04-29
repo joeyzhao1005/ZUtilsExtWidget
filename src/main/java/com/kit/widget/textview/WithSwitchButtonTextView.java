@@ -91,28 +91,32 @@ public class WithSwitchButtonTextView extends LinearLayout {
 
         switchButton = (SwitchCompat) view.findViewById(R.id.switchButton);
 
-        if (WithSwitchButtonTextView_background != null)
+        if (WithSwitchButtonTextView_background != null) {
             llWithSwitchButtonTextView
                     .setBackground(WithSwitchButtonTextView_background);
+        }
 
-        if (WithSwitchButtonTextView_title != null)
+        if (WithSwitchButtonTextView_title != null) {
             tvTitle.setText(WithSwitchButtonTextView_title);
-        else
+        } else {
             tvContent.setText("");
+        }
 
-        if (contentString != null)
+        if (contentString != null) {
             tvContent.setText(contentString);
-        else
+        } else {
             tvContent.setText("");
+        }
 
         tvTitle.setTextColor(title_color);
 
         tvContent.setTextColor(content_color);
 
-        if (is_content_text_left)
+        if (is_content_text_left) {
             tvContent.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
-        else
+        } else {
             tvContent.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+        }
 
 
         llContainer = (LinearLayout) view
@@ -136,11 +140,13 @@ public class WithSwitchButtonTextView extends LinearLayout {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
 
-        if (title_size != -1)
+        if (title_size != -1) {
             tvContent.setTextSize(DensityUtils.px2dip(context, title_size));
+        }
 
-        if (content_size != -1)
+        if (content_size != -1) {
             tvContent.setTextSize(DensityUtils.px2dip(context, content_size));
+        }
 
 
         if (margin != -1) {

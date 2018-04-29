@@ -35,8 +35,9 @@ public class LoadingView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (mFgBitmap != null && !mFgBitmap.isRecycled())
+        if (mFgBitmap != null && !mFgBitmap.isRecycled()) {
             canvas.drawBitmap(mFgBitmap, mFgMatrix, null);
+        }
     }
 
     private Handler myHandler = new Handler() {
