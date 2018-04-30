@@ -310,7 +310,7 @@ public class WithTitleEditText extends LinearLayout {
     }
 
     public void setText(CharSequence text) {
-        this.setVisibility(VISIBLE);
+//        this.setVisibility(VISIBLE);
         // if (!TextUtils.isEmpty(WithTitleEditText_suffix_string)) {
         // et.setText(WithTitleEditText_suffix_string);
         // text = text + "" + WithTitleEditText_suffix_string;

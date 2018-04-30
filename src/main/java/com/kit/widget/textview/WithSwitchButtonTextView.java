@@ -229,7 +229,7 @@ public class WithSwitchButtonTextView extends LinearLayout {
      * @param
      */
     public void setOnIbInfoClickListener(OnClickListener onClickListener) {
-        ibInfo.setVisibility(VISIBLE);
+//        ibInfo.setVisibility(VISIBLE);
         ibInfo.setOnClickListener(onClickListener);
     }
 
