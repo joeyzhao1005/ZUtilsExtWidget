@@ -30,6 +30,20 @@ android {
 
     sourceSets {
     }
+
+    flavorDimensions "default"
+    productFlavors {
+        zhao {}
+//        yingyongbao {}
+//        baidu {}
+//        xiaomi {}
+    }
+
+    buildTypes {
+        debug {}
+        prePublish {}
+        release {}
+    }
 }
 repositories {
     mavenCentral()
