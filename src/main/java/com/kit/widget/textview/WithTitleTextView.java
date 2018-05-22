@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.kit.extend.widget.R;
 import com.kit.utils.DensityUtils;
+import com.kit.utils.StringUtils;
 
 public class WithTitleTextView extends LinearLayout {
 
@@ -24,7 +25,7 @@ public class WithTitleTextView extends LinearLayout {
     private String contentString, WithTitleTextView_title;
     private Drawable WithTitleTextView_background, goSrc;
 
-    private LinearLayout llWithTitleTextView, llContainer, llContent;
+    private LinearLayout llWithTitleTextView;
 
     private float title_size, content_size;
     private int title_gravity;
@@ -48,38 +49,6 @@ public class WithTitleTextView extends LinearLayout {
         title_size = a.getDimension(
                 R.styleable.WithTitleTextView_WithTitleTextView_title_size, -1);
 
-        title_gravity = a.getInt(
-                R.styleable.WithTitleTextView_WithTitleTextView_title_gravity, Gravity.LEFT | Gravity.CENTER_VERTICAL);
-
-        switch (title_gravity) {
-            case 0:
-                title_gravity = Gravity.LEFT;
-                break;
-            case 1:
-                title_gravity = Gravity.TOP;
-                break;
-            case 2:
-                title_gravity = Gravity.CENTER;
-                break;
-            case 3:
-                title_gravity = Gravity.RIGHT;
-                break;
-            case 4:
-                title_gravity = Gravity.BOTTOM;
-                break;
-            case 5:
-                title_gravity = Gravity.CENTER_VERTICAL;
-                break;
-            case 6:
-                title_gravity = Gravity.CENTER_HORIZONTAL;
-                break;
-        }
-
-        if (title_gravity == (0 | 5)) {
-            title_gravity = Gravity.LEFT | Gravity.CENTER_VERTICAL;
-        } else if (title_gravity == (0 | 4)) {
-            title_gravity = Gravity.LEFT | Gravity.BOTTOM;
-        }
 
 //        title_margin = (int) a.getDimension(
 //                R.styleable.WithTitleTextView_WithTitleTextView_title_margin, -1);
@@ -98,12 +67,16 @@ public class WithTitleTextView extends LinearLayout {
                 R.styleable.WithTitleTextView_WithTitleTextView_title_margin_bottom, 0);
 
         content_color = a.getColor(
-                R.styleable.WithTitleTextView_WithTitleTextView_content_color,
-                getResources().getColor(R.color.black));
+                R.styleable.WithTitleTextView_WithTitleTextView_content_color,getResources().getColor(R.color.gray));
 
         content_size = a.getDimension(
                 R.styleable.WithTitleTextView_WithTitleTextView_content_size,
                 -1);
+
+
+        contentString = a.getString(
+                R.styleable.WithTitleTextView_WithTitleTextView_content);
+
 
 //        content_margin = (int) a.getDimension(
 //                R.styleable.WithTitleTextView_WithTitleTextView_content_margin, -1);
@@ -127,17 +100,26 @@ public class WithTitleTextView extends LinearLayout {
                 .getBoolean(
                         R.styleable.WithTitleTextView_WithTitleTextView_is_content_left,
                         false);
+        margin = (int) a.getDimension(
+                R.styleable.WithTitleTextView_WithTitleTextView_margin, -1);
 
+        margin_left = (int) a.getDimension(
+                R.styleable.WithTitleTextView_WithTitleTextView_margin_left, 0);
 
-        View view = LayoutInflater.from(context).inflate(
-                R.layout.with_title_textview, null);
+        margin_right = (int) a.getDimension(
+                R.styleable.WithTitleTextView_WithTitleTextView_margin_right, 0);
+
+        a.recycle();
+
+        LayoutInflater.from(context).inflate(
+                R.layout.with_title_textview, this);
 
 
         //title
-        tvTitle = (TextView) view.findViewById(R.id.tvWithTitleTextViewTitle);
+        tvTitle = (TextView) findViewById(R.id.tvWithTitleTextViewTitle);
         tvTitle.setGravity(title_gravity);
 
-        ibInfo = (ImageButton) view.findViewById(R.id.ibInfo);
+        ibInfo = (ImageButton) findViewById(R.id.ibInfo);
 
         ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).setMargins(
                 DensityUtils.dip2px(context, title_margin_left)
@@ -167,10 +149,8 @@ public class WithTitleTextView extends LinearLayout {
 
 
         //content
-        llContent = (LinearLayout) view.findViewById(R.id.llContent);
 
-        tvContent = (TextView) view
-                .findViewById(R.id.tvWithTitleTextViewContent);
+        tvContent = (TextView) findViewById(R.id.tvWithTitleTextViewContent);
 
 //        if (content_margin != -1) {
 //            TextViewUtils.setMargin(tvContent, content_margin, 0, content_margin, 0);
@@ -178,11 +158,6 @@ public class WithTitleTextView extends LinearLayout {
 //            TextViewUtils.setMargin(tvContent, content_margin_left, 0, content_margin_right, 0);
 //        }
 
-        if (is_content_left) {
-            llContent.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
-        } else {
-            llContent.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
-        }
 
         if (content_size != -1) {
             tvContent.setTextSize(DensityUtils.px2dip(context, content_size));
@@ -190,31 +165,16 @@ public class WithTitleTextView extends LinearLayout {
 
         tvContent.setTextColor(content_color);
 
-        if (contentString != null) {
-            tvContent.setText(contentString);
+        if (!StringUtils.isEmptyOrNullStr(contentString)) {
+            setContent(contentString);
         }
 
+        llWithTitleTextView = (LinearLayout) findViewById(R.id.llWithTitleTextView);
 
-        //whole
-
-        llWithTitleTextView = (LinearLayout) view
-                .findViewById(R.id.llWithTitleTextView);
-
-        llContainer = (LinearLayout) view
-                .findViewById(R.id.llContainer);
 
         if (WithTitleTextView_background != null) {
             llWithTitleTextView.setBackground(WithTitleTextView_background);
         }
-
-        margin = (int) a.getDimension(
-                R.styleable.WithTitleTextView_WithTitleTextView_margin, -1);
-
-        margin_left = (int) a.getDimension(
-                R.styleable.WithTitleTextView_WithTitleTextView_margin_left, 0);
-
-        margin_right = (int) a.getDimension(
-                R.styleable.WithTitleTextView_WithTitleTextView_margin_right, 0);
 
 
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
@@ -227,12 +187,9 @@ public class WithTitleTextView extends LinearLayout {
             lp.setMargins(margin_left, 0, margin_right, 0);
         }
 
-        llContainer.setLayoutParams(lp);
+        llWithTitleTextView.setLayoutParams(lp);
 
-        a.recycle();
 
-        // 把获得的view加载到这个控件中
-        addView(view);
     }
 
 
@@ -257,7 +214,12 @@ public class WithTitleTextView extends LinearLayout {
      * @Description 设置activity返回过来的文字
      */
     public void setContent(CharSequence text) {
-        tvContent.setText(text);
+        if (text == null || StringUtils.isEmptyOrNullStr(text.toString())) {
+            tvContent.setVisibility(GONE);
+        } else {
+            tvContent.setVisibility(VISIBLE);
+            tvContent.setText(text);
+        }
     }
 
     /**
@@ -267,6 +229,7 @@ public class WithTitleTextView extends LinearLayout {
      * @Description 设置activity返回过来的文字
      */
     public void setContent(int textResId) {
+        tvContent.setVisibility(VISIBLE);
         tvContent.setText(textResId);
     }
 

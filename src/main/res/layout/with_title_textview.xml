@@ -3,81 +3,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/llWithTitleTextView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/transparent"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:gravity="center_vertical"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/llContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center_vertical"
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:orientation="horizontal">
 
-        <RelativeLayout
+        <TextView
+            android:id="@+id/tvWithTitleTextViewTitle"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/tvWithTitleTextViewTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                tools:text="title"
-                android:gravity="left|center_vertical"
-                android:text=""
-                android:textSize="16sp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            tools:text="title" />
+
+        <ImageButton
+            android:id="@+id/ibInfo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/tvWithTitleTextViewTitle"
+            android:background="@color/transparent"
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_info_gray"
+            android:visibility="gone"
+            tools:visibility="visible" />
+    </RelativeLayout>
 
 
-            <ImageButton
-                android:id="@+id/ibInfo"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/tvWithTitleTextViewTitle"
-                android:background="@color/transparent"
-                android:padding="5dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_info_gray"
-                android:visibility="gone" />
-        </RelativeLayout>
+    <TextView
+        android:id="@+id/tvWithTitleTextViewContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="right|center_vertical"
+        android:text=""
+        android:textSize="12dp"
+        android:visibility="gone"
+        android:textColor="#878787"
+        tools:text="dfdfdfdf"
+        tools:visibility="visible" />
 
-        <RelativeLayout
-            android:id="@+id/rlEditText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:id="@+id/llContent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:text="content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true">
-
-                <TextView
-                    android:id="@+id/tvWithTitleTextViewContent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:gravity="right|center_vertical"
-                    android:lines="1"
-                    android:text=""
-                    android:textSize="16sp" />
-            </LinearLayout>
-        </RelativeLayout>
-    </LinearLayout>
 </LinearLayout>

@@ -17,7 +17,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.kit.extend.widget.R;
+import com.kit.utils.ApiLevel;
 import com.kit.utils.DensityUtils;
+import com.kit.utils.StringUtils;
 
 public class WithSwitchButtonTextView extends LinearLayout {
 
@@ -25,12 +27,11 @@ public class WithSwitchButtonTextView extends LinearLayout {
     // private EditText et;
     private TextView tvTitle, tvContent;
     private ImageButton ibInfo;
-    private String contentString, WithSwitchButtonTextView_title,
-            WithSwitchButtonTextView_suffix_string;
+    private String contentString, WithSwitchButtonTextView_title;
     private Drawable WithSwitchButtonTextViewDeleteIcon,
             WithSwitchButtonTextView_background, goSrc;
 
-    private LinearLayout llWithSwitchButtonTextView, llContainer;
+    private RelativeLayout llWithSwitchButtonTextView;
     private RelativeLayout rlEditText;
 
     private boolean is_content_text_left;
@@ -42,8 +43,6 @@ public class WithSwitchButtonTextView extends LinearLayout {
 
     public SwitchCompat switchButton;
 
-    @SuppressLint("NewApi")
-    @SuppressWarnings("deprecation")
     public WithSwitchButtonTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
@@ -76,52 +75,6 @@ public class WithSwitchButtonTextView extends LinearLayout {
                         true);
 
 
-        View view = LayoutInflater.from(context).inflate(
-                R.layout.with_switchbutton_textview, null);
-
-        llWithSwitchButtonTextView = (LinearLayout) view
-                .findViewById(R.id.llWithSwitchButtonTextView);
-
-        tvTitle = (TextView) view.findViewById(R.id.tvTitle);
-        ibInfo = (ImageButton) view.findViewById(R.id.ibInfo);
-
-        tvContent = (TextView) view.findViewById(R.id.tvContent);
-
-        rlEditText = (RelativeLayout) view.findViewById(R.id.rlEditText);
-
-        switchButton = (SwitchCompat) view.findViewById(R.id.switchButton);
-
-        if (WithSwitchButtonTextView_background != null) {
-            llWithSwitchButtonTextView
-                    .setBackground(WithSwitchButtonTextView_background);
-        }
-
-        if (WithSwitchButtonTextView_title != null) {
-            tvTitle.setText(WithSwitchButtonTextView_title);
-        } else {
-            tvContent.setText("");
-        }
-
-        if (contentString != null) {
-            tvContent.setText(contentString);
-        } else {
-            tvContent.setText("");
-        }
-
-        tvTitle.setTextColor(title_color);
-
-        tvContent.setTextColor(content_color);
-
-        if (is_content_text_left) {
-            tvContent.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
-        } else {
-            tvContent.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
-        }
-
-
-        llContainer = (LinearLayout) view
-                .findViewById(R.id.llContainer);
-
         title_size = (int) a.getDimension(
                 R.styleable.WithSwitchButtonTextView_WithSwitchButtonTextView_title_size, -1);
 
@@ -136,6 +89,50 @@ public class WithSwitchButtonTextView extends LinearLayout {
 
         margin_right = (int) a.getDimension(
                 R.styleable.WithSwitchButtonTextView_WithSwitchButtonTextView_margin_right, 0);
+        a.recycle();
+
+         LayoutInflater.from(context).inflate(
+                R.layout.with_switchbutton_textview, this);
+
+        llWithSwitchButtonTextView =  findViewById(R.id.llWithSwitchButtonTextView);
+
+        tvTitle = (TextView) findViewById(R.id.tvTitle);
+        ibInfo = (ImageButton) findViewById(R.id.ibInfo);
+
+        tvContent = (TextView) findViewById(R.id.tvContent);
+
+        rlEditText = (RelativeLayout) findViewById(R.id.rlEditText);
+
+        switchButton = (SwitchCompat) findViewById(R.id.switchButton);
+
+        if (WithSwitchButtonTextView_background != null) {
+            if (ApiLevel.ATLEAST_JELLY_BEAN) {
+                llWithSwitchButtonTextView
+                        .setBackground(WithSwitchButtonTextView_background);
+            }
+        }
+
+        if (WithSwitchButtonTextView_title != null) {
+            tvTitle.setText(WithSwitchButtonTextView_title);
+        }
+
+        if (!StringUtils.isEmptyOrNullStr(contentString)) {
+            tvContent.setText(contentString);
+        } else {
+            tvContent.setText("");
+            tvContent.setVisibility(GONE);
+        }
+
+        tvTitle.setTextColor(title_color);
+
+        tvContent.setTextColor(content_color);
+
+        if (is_content_text_left) {
+            tvContent.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
+        } else {
+            tvContent.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+        }
+
 
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
@@ -155,12 +152,7 @@ public class WithSwitchButtonTextView extends LinearLayout {
             lp.setMargins(margin_left, 0, margin_right, 0);
         }
 
-        llContainer.setLayoutParams(lp);
-        a.recycle();
-
-        // 把获得的view加载到这个控件中
-        addView(view);
-
+        llWithSwitchButtonTextView.setLayoutParams(lp);
     }
 
 
@@ -169,7 +161,7 @@ public class WithSwitchButtonTextView extends LinearLayout {
     }
 
     /**
-     * @param text 
+     * @param text
      * @return void 返回类型
      * @Title setContent
      * @Description 设置
@@ -183,10 +175,10 @@ public class WithSwitchButtonTextView extends LinearLayout {
      * @param color 文字颜色
      * @return void 返回类型
      * @Title setTitle
-     * @Description 
+     * @Description
      */
     public void setTitleColor(ColorStateList color) {
-        tvTitle. setTextColor(color);
+        tvTitle.setTextColor(color);
     }
 
 
@@ -197,13 +189,12 @@ public class WithSwitchButtonTextView extends LinearLayout {
      * @Description
      */
     public void setTitleColor(int color) {
-        tvTitle. setTextColor(color);
+        tvTitle.setTextColor(color);
     }
 
 
-
     /**
-     * @param text 
+     * @param text
      * @return void 返回类型
      * @Title setTitle
      * @Description 设置
@@ -240,6 +231,7 @@ public class WithSwitchButtonTextView extends LinearLayout {
 
     /**
      * 设置是否选中
+     *
      * @param b
      */
     public void setChecked(boolean b) {
@@ -252,7 +244,6 @@ public class WithSwitchButtonTextView extends LinearLayout {
     public boolean isChecked() {
         return switchButton.isChecked();
     }
-
 
 
 }

@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.kit.extend.widget.R;
 import com.kit.utils.DensityUtils;
+import com.kit.utils.StringUtils;
 import com.kit.widget.spinner.BetterSpinner;
 
 public class WithSpinnerTextView extends LinearLayout {
@@ -31,8 +32,7 @@ public class WithSpinnerTextView extends LinearLayout {
     private Drawable WithSpinnerTextViewDeleteIcon,
             WithSpinnerTextView_background, goSrc;
 
-    private LinearLayout llWithSpinnerTextView, llContainer;
-    private RelativeLayout rlEditText;
+    private RelativeLayout llWithSpinnerTextView;
 
     private boolean is_content_text_left;
     private int title_size, content_size, title_margin_right,
@@ -81,7 +81,7 @@ public class WithSpinnerTextView extends LinearLayout {
         View view = LayoutInflater.from(context).inflate(
                 R.layout.with_spinner_textview, null);
 
-        llWithSpinnerTextView = (LinearLayout) view
+        llWithSpinnerTextView =  view
                 .findViewById(R.id.ll);
 
         tvTitle = (TextView) view.findViewById(R.id.tvTitle);
@@ -90,7 +90,6 @@ public class WithSpinnerTextView extends LinearLayout {
 
         tvContent = (TextView) view.findViewById(R.id.tvContent);
 
-        rlEditText = (RelativeLayout) view.findViewById(R.id.rlEditText);
 
         spinner = (BetterSpinner) view.findViewById(R.id.spinner);
 
@@ -102,14 +101,13 @@ public class WithSpinnerTextView extends LinearLayout {
 
         if (WithSpinnerTextView_title != null) {
             tvTitle.setText(WithSpinnerTextView_title);
-        } else {
-            tvContent.setText("");
         }
 
-        if (contentString != null) {
+        if (!StringUtils.isEmptyOrNullStr(contentString)) {
             tvContent.setText(contentString);
         } else {
             tvContent.setText("");
+            tvContent.setVisibility(GONE);
         }
 
         tvTitle.setTextColor(title_color);
@@ -122,9 +120,6 @@ public class WithSpinnerTextView extends LinearLayout {
             tvContent.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
         }
 
-
-        llContainer = (LinearLayout) view
-                .findViewById(R.id.llContainer);
 
         title_size = (int) a.getDimension(
                 R.styleable.WithSpinnerTextView_WithSpinnerTextView_title_size, -1);
@@ -159,7 +154,7 @@ public class WithSpinnerTextView extends LinearLayout {
             lp.setMargins(margin_left, 0, margin_right, 0);
         }
 
-        llContainer.setLayoutParams(lp);
+        llWithSpinnerTextView.setLayoutParams(lp);
         a.recycle();
 
         // 把获得的view加载到这个控件中
@@ -174,6 +169,12 @@ public class WithSpinnerTextView extends LinearLayout {
      * @Description 设置activity返回过来的文字
      */
     public void setContent(CharSequence text) {
+        if(text==null||StringUtils.isEmpty(text.toString())){
+            tvContent.setText("");
+            tvContent.setVisibility(GONE);
+            return;
+        }
+        tvContent.setVisibility(VISIBLE);
         tvContent.setText(text);
     }
 
