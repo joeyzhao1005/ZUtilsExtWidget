@@ -28,7 +28,7 @@ public class ExitApp {
         if (isExit == false) {
             isExit = true; // 准备退出
 
-            ToastUtils.mkShortTimeToast(msg);
+            ToastUtils.s(msg);
             tExit = new Timer();
             tExit.schedule(new TimerTask() {
                 @Override
@@ -84,7 +84,7 @@ public class ExitApp {
             showExitDialog(msg, isExitSys);
         } else {
             String errormsg = "error exit_type";
-            ToastUtils.mkLongTimeToast(errormsg);
+            ToastUtils.l(errormsg);
         }
     }
 }

@@ -25,8 +25,6 @@ public class ActionSheet {
 	 * 
 	 * @Title showSheet
 	 * @Description TODO(这里用一句话描述这个方法的作用)
-	 * @param mContext
-	 *            上下文环境
 	 * @param actionSheetConfig
 	 *            ActionSheet配置项
 	 * @param actionSheetItemSelected
