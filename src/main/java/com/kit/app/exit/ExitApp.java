@@ -47,7 +47,7 @@ public class ExitApp {
     }
 
     public static void showExitDialog(String msg, final boolean isExitSys) {
-        final Context mContext = ResWrapper.getInstance().getApplicationContext();
+        final Context mContext = ResWrapper.getApplicationContext();
         // 截获按键事件
         final DefaultDialog mDialog = new DefaultDialog(mContext, msg,
                 R.layout.dialog_default, true);

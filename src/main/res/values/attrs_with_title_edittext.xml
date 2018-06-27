@@ -30,6 +30,18 @@
         <attr name="WithTitleEditText_edittext_maxLines" format="integer" />
         <!-- edittext输入文字的颜色 -->
         <attr name="WithTitleEditText_edittext_maxHeight" format="dimension" />
+
+
+        <!-- 描述文字 -->
+        <attr name="WithTitleEditText_content" format="string" />
+
+        <!-- 描述文字大小 -->
+        <attr name="WithTitleEditText_content_size" format="dimension" />
+
+        <!-- 描述文字颜色 -->
+        <attr name="WithTitleEditText_content_color" format="color" />
+
+
         <!-- integer正整数、signed带符号整数、decimal带小数点浮点数 -->
         <attr name="WithTitleEditText_edittext_numeric">
             <flag name="integer" value="0x0" />

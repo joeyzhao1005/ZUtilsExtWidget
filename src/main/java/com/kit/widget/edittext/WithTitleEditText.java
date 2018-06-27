@@ -31,7 +31,7 @@ public class WithTitleEditText extends LinearLayout {
     private EditText et;
 
 
-    private TextView tvTitle, tvSuffix;
+    private TextView tvTitle, tvContent, tvSuffix;
     private ImageButton ibInfo;
 
     private Drawable WithTitleEditTextDeleteIcon, WithTitleEditText_background,
@@ -47,7 +47,7 @@ public class WithTitleEditText extends LinearLayout {
     private int title_margin, title_margin_left, title_margin_right,
             content_margin, content_margin_left, content_margin_right,
             margin, margin_left, margin_right;
-    private int title_color, edittext_text_color;
+    private int title_color, content_color, edittext_text_color;
 
     private int etMaxLines, etMaxHeight;
     private boolean etSingLine;
@@ -57,6 +57,7 @@ public class WithTitleEditText extends LinearLayout {
 
     private int edittext_numeric, inputType;
     private boolean is_edittext_left;
+    private String contentString;
 
     @SuppressLint("NewApi")
     @SuppressWarnings("deprecation")
@@ -73,6 +74,12 @@ public class WithTitleEditText extends LinearLayout {
 
         title_size = a.getDimension(
                 R.styleable.WithTitleEditText_WithTitleEditText_title_size, -1);
+
+        content_color = a.getColor(
+                R.styleable.WithTitleEditText_WithTitleEditText_content_color,
+                getResources().getColor(R.color.light_gray));
+        contentString = a
+                .getString(R.styleable.WithTitleEditText_WithTitleEditText_content);
 
         WithTitleEditText_background = a
                 .getDrawable(R.styleable.WithTitleEditText_WithTitleEditText_background);
@@ -124,26 +131,25 @@ public class WithTitleEditText extends LinearLayout {
                 .getInt(R.styleable.WithTitleEditText_WithTitleEditText_edittext_maxLines,
                         0);
 
-        View view = LayoutInflater.from(context).inflate(
-                R.layout.with_title_edittext, null);
+        LayoutInflater.from(context).inflate(
+                R.layout.with_title_edittext, this);
 
-        llWithTitleEditText = (LinearLayout) view
-                .findViewById(R.id.llWithTitleEditText);
+        llWithTitleEditText = findViewById(R.id.llWithTitleEditText);
 
-        tvTitle = (TextView) view.findViewById(R.id.tvTitle);
-        ibInfo = (ImageButton) view.findViewById(R.id.ibInfo);
+        tvTitle = (TextView) findViewById(R.id.tvTitle);
+        ibInfo = (ImageButton) findViewById(R.id.ibInfo);
 
-        tvSuffix = (TextView) view.findViewById(R.id.tvSuffix);
+        tvSuffix = (TextView) findViewById(R.id.tvSuffix);
 
-        rlEditText = (RelativeLayout) view.findViewById(R.id.rlEditText);
+        rlEditText = (RelativeLayout) findViewById(R.id.rlEditText);
 
-        et = (EditText) view.findViewById(R.id.et_with_del_edittext);
+        et = findViewById(R.id.et_with_del_edittext);
+        tvContent = findViewById(R.id.tvContent);
 
 
-        ivWithTitleEditTextDeleteIcon = (ImageView) view
-                .findViewById(R.id.iv_with_del_eidttext_delete);
+        ivWithTitleEditTextDeleteIcon = (ImageView) findViewById(R.id.iv_with_del_eidttext_delete);
 
-        ivRight = (ImageView) view.findViewById(R.id.ivRight);
+        ivRight = (ImageView) findViewById(R.id.ivRight);
 
         if (WithTitleEditText_background != null) {
             llWithTitleEditText.setBackground(WithTitleEditText_background);
@@ -153,6 +159,17 @@ public class WithTitleEditText extends LinearLayout {
             tvTitle.setTextSize(DensityUtils.px2dip(context, title_size));
         }
         tvTitle.setTextColor(title_color);
+
+
+        if (!StringUtils.isEmptyOrNullStr(contentString)) {
+            tvContent.setText(contentString);
+            tvContent.setVisibility(VISIBLE);
+        } else {
+            tvContent.setText("");
+
+            tvContent.setVisibility(GONE);
+        }
+        tvContent.setTextColor(content_color);
 
         if (!TextUtils.isEmpty(WithTitleEditText_suffix_string)) {
             tvSuffix.setVisibility(View.VISIBLE);
@@ -253,8 +270,7 @@ public class WithTitleEditText extends LinearLayout {
         // 给编辑框添加文本改变事件
         et.addTextChangedListener(new MyTextWatcher());
 
-        llContainer = (LinearLayout) view
-                .findViewById(R.id.llContainer);
+        llContainer = (LinearLayout) findViewById(R.id.llContainer);
 
         margin = (int) a.getDimension(
                 R.styleable.WithTitleEditText_WithTitleEditText_margin, -1);
@@ -277,8 +293,6 @@ public class WithTitleEditText extends LinearLayout {
 
         llContainer.setLayoutParams(lp);
         a.recycle();
-        // 把获得的view加载到这个控件中
-        addView(view);
     }
 
     // 文本观察者

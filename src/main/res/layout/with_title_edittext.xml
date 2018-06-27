@@ -27,15 +27,15 @@
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="30dp"
                 android:gravity="left|center_vertical"
                 android:text=""
-                android:textSize="15dp"/>
+                android:textSize="15dp" />
 
             <TextView
                 android:id="@+id/tvContent"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_below="@+id/tvTitle"
                 android:gravity="center_vertical"
                 android:lines="1"
@@ -45,8 +45,8 @@
                 tools:text="ddddd"
                 tools:visibility="visible" />
 
-
         </RelativeLayout>
+
         <ImageButton
             android:id="@+id/ibInfo"
             android:layout_width="30dp"
@@ -89,17 +89,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="5dp"
-                        android:gravity="left|center_vertical"
+                        android:gravity="center_vertical"
                         android:text=""
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <ImageView
                         android:id="@+id/iv_with_del_eidttext_delete"
                         android:layout_width="16dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:padding="2dp"
                         android:layout_marginRight="10dp"
+                        android:padding="2dp"
                         android:scaleType="fitCenter"
                         android:src="@drawable/delete"
                         android:visibility="gone" />
@@ -118,7 +118,7 @@
                     android:imeOptions="actionSearch"
                     android:textColor="@color/black"
                     android:textColorHint="#60000000"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp" />
             </RelativeLayout>
 
             <ImageView
@@ -129,8 +129,8 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="5dp"
                 android:scaleType="fitCenter"
-                android:tint="@color/black"
                 android:src="@drawable/go_white"
+                android:tint="@color/black"
                 android:visibility="gone" />
         </RelativeLayout>
     </LinearLayout>

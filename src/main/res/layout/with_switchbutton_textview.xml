@@ -12,49 +12,50 @@
 
     <LinearLayout
         android:id="@+id/layoutTitle"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/switchButton"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/ibInfo"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/ibInfo"
-            android:gravity="left|center_vertical"
+            android:gravity="center_vertical"
             android:text="title"
             android:textSize="15dp" />
 
-        <ImageButton
-            android:id="@+id/ibInfo"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="80dp"
-            android:background="@color/transparent"
-            android:padding="5dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_info_gray"
-            android:visibility="gone" />
+        <TextView
+            android:id="@+id/tvContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layoutTitle"
+            android:layout_toLeftOf="@+id/switchButton"
+            android:gravity="center_vertical"
+            android:textColor="#787878"
+            android:textSize="12dp"
+            android:visibility="gone"
+            tools:text="fdfdfdfdfd"
+            tools:visibility="visible" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvContent"
-        android:layout_width="match_parent"
+    <ImageButton
+        android:id="@+id/ibInfo"
+        android:layout_width="30dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layoutTitle"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="80dp"
         android:layout_toLeftOf="@+id/switchButton"
-        android:gravity="center_vertical"
-        android:textColor="#787878"
-        android:textSize="12dp"
+        android:background="@color/transparent"
+        android:padding="5dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_info_gray"
         android:visibility="gone"
-        tools:text="fdfdfdfdfd"
-        tools:visibility="visible" />
-
+        tools:visibility="gone" />
 
     <android.support.v7.widget.SwitchCompat
         android:id="@+id/switchButton"
