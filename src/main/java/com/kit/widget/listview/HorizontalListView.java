@@ -1263,7 +1263,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
     }
 
     /**
-     * This listener is used to allow notification when the HorizontalListView is running low on data to display.
+     * This listener is used to allow com.zhao.withu.notification when the HorizontalListView is running low on data to display.
      */
     public static interface RunningOutOfDataListener {
         /**
@@ -1281,7 +1281,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
         if (mRunningOutOfDataListener != null && mAdapter != null &&
                 mAdapter.getCount() - (mRightViewAdapterIndex + 1) < mRunningOutOfDataThreshold) {
 
-            // Prevent notification more than once
+            // Prevent com.zhao.withu.notification more than once
             if (!mHasNotifiedRunningLowOnData) {
                 mHasNotifiedRunningLowOnData = true;
                 mRunningOutOfDataListener.onRunningOutOfData();
