@@ -29,7 +29,6 @@
     <string name="hint">请点击输入</string>
     <string name="camera">拍照</string>
     <string name="pick">从相册选择</string>
-    <string name="delete">删除</string>
     <string name="tips_exit">再按一次，就退出咯~</string>
 
     <string name="get_pic_failed">图片加载失败</string>
