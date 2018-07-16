@@ -3,9 +3,6 @@
 
     <declare-styleable name="WithTitleTextView">
 
-        <!-- 控件背景 -->
-        <attr name="WithTitleTextView_background" format="reference" />
-
         <!-- 标题文字 -->
         <attr name="WithTitleTextView_title" format="string" />
 
@@ -14,17 +11,6 @@
         <attr name="WithTitleTextView_title_color" format="color" />
         <!-- 标题文字大小 -->
         <attr name="WithTitleTextView_title_size" format="dimension" />
-        <!-- 标题文字 -->
-        <attr name="WithTitleTextView_title_margin" format="dimension" />
-        <!-- 标题文字 -->
-        <attr name="WithTitleTextView_title_margin_left" format="dimension" />
-        <!-- 标题文字 -->
-        <attr name="WithTitleTextView_title_margin_right" format="dimension" />
-
-        <attr name="WithTitleTextView_title_margin_bottom" format="dimension" />
-
-        <attr name="WithTitleTextView_title_margin_top" format="dimension" />
-
 
         <!-- 内容文字 -->
         <attr name="WithTitleTextView_content" format="string" />
@@ -49,7 +35,10 @@
         <attr name="WithTitleTextView_margin_right" format="dimension" />
 
         <!-- 内容文字,是否居左 -->
-        <attr name="WithTitleTextView_is_content_left" format="boolean" />
+        <attr name="WithTitleTextView_content_position" format="enum">
+            <enum name="bottom" value="0"/>
+            <enum name="end" value="1"/>
+        </attr>
     </declare-styleable>
 
 </resources>

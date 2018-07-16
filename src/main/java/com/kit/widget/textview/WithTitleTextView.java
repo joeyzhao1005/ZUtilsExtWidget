@@ -3,17 +3,15 @@ package com.kit.widget.textview;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.kit.extend.widget.R;
+import com.kit.utils.ApiLevel;
 import com.kit.utils.DensityUtils;
 import com.kit.utils.StringUtils;
 
@@ -23,15 +21,10 @@ public class WithTitleTextView extends LinearLayout {
     private TextView tvTitle, tvContent;
     private ImageButton ibInfo;
     private String contentString, WithTitleTextView_title;
-    private Drawable WithTitleTextView_background, goSrc;
 
-    private LinearLayout llWithTitleTextView;
 
     private float title_size, content_size;
-    private int title_gravity;
-    private int title_margin, title_margin_left, title_margin_right, title_margin_top, title_margin_bottom, content_margin, content_margin_left, content_margin_right,
-            margin, margin_left, margin_right;
-    private boolean is_content_left, go_enabled;
+    private int content_position = 0;
     private int title_color, content_color;
 
     @SuppressLint("NewApi")
@@ -49,25 +42,8 @@ public class WithTitleTextView extends LinearLayout {
         title_size = a.getDimension(
                 R.styleable.WithTitleTextView_WithTitleTextView_title_size, -1);
 
-
-//        title_margin = (int) a.getDimension(
-//                R.styleable.WithTitleTextView_WithTitleTextView_title_margin, -1);
-//
-        title_margin_left = (int) a.getDimension(
-                R.styleable.WithTitleTextView_WithTitleTextView_title_margin_left, 0);
-
-        title_margin_right = (int) a.getDimension(
-                R.styleable.WithTitleTextView_WithTitleTextView_title_margin_right, 0);
-
-        title_margin_top = (int) a.getDimension(
-                R.styleable.WithTitleTextView_WithTitleTextView_title_margin_top, 0);
-
-
-        title_margin_bottom = (int) a.getDimension(
-                R.styleable.WithTitleTextView_WithTitleTextView_title_margin_bottom, 0);
-
         content_color = a.getColor(
-                R.styleable.WithTitleTextView_WithTitleTextView_content_color,getResources().getColor(R.color.gray));
+                R.styleable.WithTitleTextView_WithTitleTextView_content_color, getResources().getColor(R.color.gray));
 
         content_size = a.getDimension(
                 R.styleable.WithTitleTextView_WithTitleTextView_content_size,
@@ -87,8 +63,6 @@ public class WithTitleTextView extends LinearLayout {
 //        content_margin_right = (int) a.getDimension(
 //                R.styleable.WithTitleTextView_WithTitleTextView_content_margin_right, 0);
 
-        WithTitleTextView_background = a
-                .getDrawable(R.styleable.WithTitleTextView_WithTitleTextView_background);
 
         WithTitleTextView_title = a
                 .getString(R.styleable.WithTitleTextView_WithTitleTextView_title);
@@ -96,18 +70,10 @@ public class WithTitleTextView extends LinearLayout {
         contentString = a
                 .getString(R.styleable.WithTitleTextView_WithTitleTextView_content);
 
-        is_content_left = a
-                .getBoolean(
-                        R.styleable.WithTitleTextView_WithTitleTextView_is_content_left,
-                        false);
-        margin = (int) a.getDimension(
-                R.styleable.WithTitleTextView_WithTitleTextView_margin, -1);
-
-        margin_left = (int) a.getDimension(
-                R.styleable.WithTitleTextView_WithTitleTextView_margin_left, 0);
-
-        margin_right = (int) a.getDimension(
-                R.styleable.WithTitleTextView_WithTitleTextView_margin_right, 0);
+        content_position = a
+                .getInt(
+                        R.styleable.WithTitleTextView_WithTitleTextView_content_position,
+                        0);
 
         a.recycle();
 
@@ -117,24 +83,8 @@ public class WithTitleTextView extends LinearLayout {
 
         //title
         tvTitle = (TextView) findViewById(R.id.tvWithTitleTextViewTitle);
-        tvTitle.setGravity(title_gravity);
 
         ibInfo = (ImageButton) findViewById(R.id.ibInfo);
-
-        ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).setMargins(
-                DensityUtils.dip2px(context, title_margin_left)
-                , DensityUtils.dip2px(context, title_margin_top)
-                , DensityUtils.dip2px(context, title_margin_right)
-                , DensityUtils.dip2px(context, title_margin_bottom)
-        );
-
-
-        ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).setMargins(
-                title_margin_left
-                , title_margin_top
-                , title_margin_right
-                , title_margin_bottom
-        );
 
 
         if (title_size != -1) {
@@ -151,6 +101,15 @@ public class WithTitleTextView extends LinearLayout {
         //content
 
         tvContent = (TextView) findViewById(R.id.tvWithTitleTextViewContent);
+        if (content_position == 1) {
+            ((RelativeLayout.LayoutParams) tvContent.getLayoutParams()).removeRule(RelativeLayout.BELOW);
+            ((RelativeLayout.LayoutParams) tvContent.getLayoutParams()).addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).addRule(RelativeLayout.LEFT_OF, R.id.tvWithTitleTextViewContent);
+        } else {
+            ((RelativeLayout.LayoutParams) tvContent.getLayoutParams()).removeRule(RelativeLayout.LEFT_OF);
+            ((RelativeLayout.LayoutParams) tvContent.getLayoutParams()).removeRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).addRule(RelativeLayout.BELOW, R.id.tvWithTitleTextViewTitle);
+        }
 
 //        if (content_margin != -1) {
 //            TextViewUtils.setMargin(tvContent, content_margin, 0, content_margin, 0);
@@ -168,26 +127,6 @@ public class WithTitleTextView extends LinearLayout {
         if (!StringUtils.isEmptyOrNullStr(contentString)) {
             setContent(contentString);
         }
-
-        llWithTitleTextView = (LinearLayout) findViewById(R.id.llWithTitleTextView);
-
-
-        if (WithTitleTextView_background != null) {
-            llWithTitleTextView.setBackground(WithTitleTextView_background);
-        }
-
-
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
-
-        if (margin != -1) {
-            lp.setMargins(margin, 0, margin, 0);
-        } else {
-            lp.setMargins(margin_left, 0, margin_right, 0);
-        }
-
-        llWithTitleTextView.setLayoutParams(lp);
 
 
     }
@@ -216,9 +155,13 @@ public class WithTitleTextView extends LinearLayout {
     public void setContent(CharSequence text) {
         if (text == null || StringUtils.isEmptyOrNullStr(text.toString())) {
             tvContent.setVisibility(GONE);
+            ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).addRule(RelativeLayout.CENTER_VERTICAL);
         } else {
             tvContent.setVisibility(VISIBLE);
             tvContent.setText(text);
+            if (ApiLevel.ATLEAST_JB_MR1) {
+                ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).removeRule(RelativeLayout.CENTER_VERTICAL);
+            }
         }
     }
 
@@ -229,8 +172,7 @@ public class WithTitleTextView extends LinearLayout {
      * @Description 设置activity返回过来的文字
      */
     public void setContent(int textResId) {
-        tvContent.setVisibility(VISIBLE);
-        tvContent.setText(textResId);
+        setContent(getResources().getString(textResId));
     }
 
 
