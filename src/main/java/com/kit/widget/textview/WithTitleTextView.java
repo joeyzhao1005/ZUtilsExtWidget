@@ -106,9 +106,9 @@ public class WithTitleTextView extends LinearLayout {
             ((RelativeLayout.LayoutParams) tvContent.getLayoutParams()).addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
             ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).addRule(RelativeLayout.LEFT_OF, R.id.tvWithTitleTextViewContent);
         } else {
-            ((RelativeLayout.LayoutParams) tvContent.getLayoutParams()).removeRule(RelativeLayout.LEFT_OF);
+            ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).removeRule(RelativeLayout.LEFT_OF);
             ((RelativeLayout.LayoutParams) tvContent.getLayoutParams()).removeRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-            ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).addRule(RelativeLayout.BELOW, R.id.tvWithTitleTextViewTitle);
+            ((RelativeLayout.LayoutParams) tvContent.getLayoutParams()).addRule(RelativeLayout.BELOW, R.id.tvWithTitleTextViewTitle);
         }
 
 //        if (content_margin != -1) {
@@ -127,7 +127,6 @@ public class WithTitleTextView extends LinearLayout {
         if (!StringUtils.isEmptyOrNullStr(contentString)) {
             setContent(contentString);
         }
-
 
     }
 
@@ -159,8 +158,12 @@ public class WithTitleTextView extends LinearLayout {
         } else {
             tvContent.setVisibility(VISIBLE);
             tvContent.setText(text);
-            if (ApiLevel.ATLEAST_JB_MR1) {
-                ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).removeRule(RelativeLayout.CENTER_VERTICAL);
+            if (content_position == 0) {
+                if (ApiLevel.ATLEAST_JB_MR1) {
+                    ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).removeRule(RelativeLayout.CENTER_VERTICAL);
+                }
+            }else {
+                ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).addRule(RelativeLayout.CENTER_VERTICAL);
             }
         }
     }
