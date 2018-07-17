@@ -7,6 +7,12 @@
         <attr name="WithTitleTextView_title" format="string" />
 
 
+        <!-- 内容位置 -->
+        <attr name="WithTitleTextView_content_align" format="enum" >
+            <enum name="bottom" value="0"/>
+            <enum name="end" value="1"/>
+        </attr>
+
         <!-- 标题文字颜色 -->
         <attr name="WithTitleTextView_title_color" format="color" />
         <!-- 标题文字大小 -->
@@ -15,30 +21,12 @@
         <!-- 内容文字 -->
         <attr name="WithTitleTextView_content" format="string" />
 
-        <!-- 内容文字间距 -->
-        <!--<attr name="WithTitleTextView_content_margin" format="dimension" />-->
-        <!-- 内容文字间距 -->
-        <!--<attr name="WithTitleTextView_content_margin_left" format="dimension" />-->
-        <!--内容文字间距 -->
-        <!--<attr name="WithTitleTextView_content_margin_right" format="dimension" />-->
-
         <!-- 内容文字颜色 -->
         <attr name="WithTitleTextView_content_color" format="color" />
         <!-- 内容文字大小 -->
         <attr name="WithTitleTextView_content_size" format="dimension" />
 
-        <!-- 标题文字 -->
-        <attr name="WithTitleTextView_margin" format="dimension" />
-        <!-- 标题文字 -->
-        <attr name="WithTitleTextView_margin_left" format="dimension" />
-        <!-- 标题文字 -->
-        <attr name="WithTitleTextView_margin_right" format="dimension" />
 
-        <!-- 内容文字,是否居左 -->
-        <attr name="WithTitleTextView_content_position" format="enum">
-            <enum name="bottom" value="0"/>
-            <enum name="end" value="1"/>
-        </attr>
     </declare-styleable>
 
 </resources>
