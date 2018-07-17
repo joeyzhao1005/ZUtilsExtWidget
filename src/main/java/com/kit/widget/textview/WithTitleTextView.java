@@ -1,13 +1,10 @@
 package com.kit.widget.textview;
 
-import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -18,7 +15,6 @@ import com.kit.extend.widget.R;
 import com.kit.utils.ApiLevel;
 import com.kit.utils.DensityUtils;
 import com.kit.utils.StringUtils;
-import com.kit.utils.log.Zog;
 
 public class WithTitleTextView extends LinearLayout {
 
@@ -106,9 +102,6 @@ public class WithTitleTextView extends LinearLayout {
         //content
 
         tvContent = (TextView) findViewById(R.id.tvWithTitleTextViewContent);
-        Zog.d("content_position:" + contentPosition);
-        Zog.d("WithTitleTextView_title:" + WithTitleTextView_title);
-        Zog.d("contentString:" + contentString);
         switch (contentPosition) {
             case 1:
                 if (ApiLevel.ATLEAST_JB_MR1) {
@@ -117,6 +110,7 @@ public class WithTitleTextView extends LinearLayout {
                 ((RelativeLayout.LayoutParams) tvContent.getLayoutParams()).addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
                 ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).addRule(RelativeLayout.LEFT_OF, R.id.tvWithTitleTextViewContent);
                 break;
+
             default:
                 if (ApiLevel.ATLEAST_JB_MR1) {
                     ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).removeRule(RelativeLayout.LEFT_OF);
