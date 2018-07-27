@@ -121,17 +121,6 @@
                     android:textSize="15sp" />
             </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/ivRight"
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/go_white"
-                android:tint="@color/black"
-                android:visibility="gone" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

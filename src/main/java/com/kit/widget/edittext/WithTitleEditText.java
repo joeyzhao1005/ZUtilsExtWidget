@@ -26,7 +26,6 @@ import com.kit.utils.StringUtils;
 public class WithTitleEditText extends LinearLayout {
 
     private ImageView ivWithTitleEditTextDeleteIcon;
-    public ImageView ivRight;
 
     private EditText et;
 
@@ -40,7 +39,6 @@ public class WithTitleEditText extends LinearLayout {
     private LinearLayout llWithTitleEditText, llContainer;
     private RelativeLayout rlEditText;
 
-    private Drawable WithTitleEditText_suffix_iv_right_src;
 
     private String hintString, WithTitleEditText_title,
             WithTitleEditText_suffix_string;
@@ -99,8 +97,6 @@ public class WithTitleEditText extends LinearLayout {
         WithTitleEditTextDeleteIcon = a
                 .getDrawable(R.styleable.WithTitleEditText_WithTitleEditText_delete_icon);
 
-        WithTitleEditText_suffix_iv_right_src = a
-                .getDrawable(R.styleable.WithTitleEditText_WithTitleEditText_iv_right_src);
 
         WithTitleEditText_suffix_string = a
                 .getString(R.styleable.WithTitleEditText_WithTitleEditText_suffix_string);
@@ -149,7 +145,6 @@ public class WithTitleEditText extends LinearLayout {
 
         ivWithTitleEditTextDeleteIcon = (ImageView) findViewById(R.id.iv_with_del_eidttext_delete);
 
-        ivRight = (ImageView) findViewById(R.id.ivRight);
 
         if (WithTitleEditText_background != null) {
             llWithTitleEditText.setBackground(WithTitleEditText_background);
@@ -238,12 +233,6 @@ public class WithTitleEditText extends LinearLayout {
                     .setImageDrawable(WithTitleEditTextDeleteIcon);
         }
 
-        if (WithTitleEditText_suffix_iv_right_src != null) {
-            ivRight.setVisibility(View.VISIBLE);
-            ivRight.setImageDrawable(WithTitleEditText_suffix_iv_right_src);
-        } else {
-            ivRight.setVisibility(View.GONE);
-        }
 
         if (is_edittext_left) {
             et.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
