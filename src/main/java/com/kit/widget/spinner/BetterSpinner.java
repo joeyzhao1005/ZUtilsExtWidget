@@ -1,6 +1,7 @@
 package com.kit.widget.spinner;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.AppCompatAutoCompleteTextView;
@@ -12,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 
 import com.kit.extend.widget.R;
+import com.kit.utils.ApiLevel;
 
 import java.util.Calendar;
 
@@ -36,7 +38,7 @@ public class BetterSpinner extends AppCompatAutoCompleteTextView implements Adap
         init();
     }
 
-    private void init(){
+    private void init() {
         setLines(1);
         setOnItemClickListener(this);
     }
@@ -109,9 +111,12 @@ public class BetterSpinner extends AppCompatAutoCompleteTextView implements Adap
 
     @Override
     public void setCompoundDrawablesWithIntrinsicBounds(Drawable left, Drawable top, Drawable right, Drawable bottom) {
-        Drawable dropdownIcon = getContext().getResources().getDrawable(R.drawable.ic_expand_more_black_18dp_new);
+        Drawable dropdownIcon = getContext().getResources().getDrawable(android.R.drawable.arrow_down_float);
         if (dropdownIcon != null) {
             right = dropdownIcon;
+            if (ApiLevel.ATLEAST_LOLLIPOP) {
+                right.mutate().setTint(Color.BLACK);
+            }
             right.mutate().setAlpha(128);
         }
         super.setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom);
