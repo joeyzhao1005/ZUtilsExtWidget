@@ -8,9 +8,7 @@ import android.util.AttributeSet;
 
 /**
  * 可监听滚动事件的RecyclerView
- * Created by zyz on 2016/6/13.
  */
-
 public class ScrollRecyclerView extends RecyclerView {
 
     public ScrollRecyclerView(Context context) {
