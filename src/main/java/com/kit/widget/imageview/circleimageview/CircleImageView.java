@@ -97,6 +97,15 @@ public class CircleImageView extends AppCompatImageView {
     }
 
     @Override
+    public int getSolidColor() {
+        return mSolidColor;
+    }
+
+    public void setSolidColor(int solidColor) {
+        this.mSolidColor = solidColor;
+    }
+
+    @Override
     public ScaleType getScaleType() {
         return SCALE_TYPE;
     }
