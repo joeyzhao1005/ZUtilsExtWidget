@@ -33,8 +33,8 @@ public class ShapeImageView extends ImageView {
     private Paint paint;
     private int shadowRadius;
     private int shadowColor = 0x80000000;
-    private int shadowDx = 0;
-    private int shadowDy = 0;
+//    private int shadowDx = 0;
+//    private int shadowDy = 0;
 
 
     public ShapeImageView(Context context) {
@@ -60,9 +60,9 @@ public class ShapeImageView extends ImageView {
             shapeColor = ta.getColor(R.styleable.ShapeImageView_ShapeImageView_shape_color, Color.TRANSPARENT);
             isShapeImageShow = ta.getBoolean(R.styleable.ShapeImageView_ShapeImageView_is_shape_image_show, false);
             contentPadding = ta.getDimensionPixelSize(R.styleable.ShapeImageView_ShapeImageView_content_padding, 0);
-            shadowDx = ta.getDimensionPixelSize(R.styleable.ShapeImageView_ShapeImageView_shadow_dx, 0);
-            shadowDy = ta.getDimensionPixelSize(R.styleable.ShapeImageView_ShapeImageView_shadow_dy, 0);
-            this.shadowRadius = (int) Math.floor(shadowDy > 0 && shadowDx > shadowDy ? shadowDy : shadowDx == 0 ? shadowDy : 0);
+//            shadowDx = ta.getDimensionPixelSize(R.styleable.ShapeImageView_ShapeImageView_shadow_dx, 0);
+//            shadowDy = ta.getDimensionPixelSize(R.styleable.ShapeImageView_ShapeImageView_shadow_dy, 0);
+            this.shadowRadius = ta.getDimensionPixelSize(R.styleable.ShapeImageView_ShapeImageView_shadow_radius, 0);
 
             ta.recycle();
         }
@@ -87,7 +87,7 @@ public class ShapeImageView extends ImageView {
     @Override
     protected void onDraw(Canvas canvas) {
 
-        if (shapeLayerDrawable == null && shapeBitmap == null) {
+        if (shapeLayerDrawable == null && shapeBitmap == null && shadowRadius == 0) {
             super.onDraw(canvas);
         } else {
             bitmap = createImage();
@@ -131,17 +131,15 @@ public class ShapeImageView extends ImageView {
         Canvas canvas = new Canvas(finalBmp);
 
 
-        if (shadowRadius > 0) {
-            if (null != shapeBitmap) {
+        if (null != shapeBitmap) {
+            if (shadowRadius > 0) {
                 bgShadowBmp = Bitmap.createBitmap((viewWidth - shadowRadius * 2), (viewHeight - shadowRadius * 2), Bitmap.Config.ARGB_8888);
                 bgShadowBmp.eraseColor(Color.BLACK);
                 canvas.drawBitmap(bgShadowBmp, (0 + shadowRadius), (0 + shadowRadius), paint);
             } else {
                 finalBmp.eraseColor(Color.BLACK);
             }
-        }
 
-        if (null != shapeBitmap) {
             shapeBitmap = getCenterInsideBitmap(shapeBitmap, (int) (viewWidth - shadowRadius * 2), (int) (viewHeight - shadowRadius * 2));
 
             paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
@@ -152,20 +150,36 @@ public class ShapeImageView extends ImageView {
         }
 
         if (null != showLayerBitmap) {
-            paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
+            if (shapeBitmap != null) {
+                paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
+            }else {
+                paint.setXfermode(null);
+            }
             paint.setColorFilter(null);
             showLayerBitmap = getCenterCropBitmap(showLayerBitmap, viewWidth - shadowRadius * 2, viewHeight - shadowRadius * 2);
             canvas.drawBitmap(showLayerBitmap, 0 + contentPadding + shadowRadius, 0 + contentPadding + shadowRadius, paint);
         }
-        if (null != shapeBitmap && shadowRadius > 0) {
-            Bitmap shadowBitmap = shapeBitmap.extractAlpha();
-            if (shadowBitmap != null) {
-                paint.setShadowLayer(shadowRadius, shadowDx, shadowDy, shadowColor);
-                paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OVER));
-                paint.setColorFilter(null);
-                canvas.drawBitmap(shadowBitmap, shadowRadius, shadowRadius, paint);
+
+        if (shadowRadius > 0) {
+            if (null != shapeBitmap) {
+                Bitmap shadowBitmap = shapeBitmap.extractAlpha();
+                if (shadowBitmap != null) {
+                    paint.setShadowLayer(shadowRadius / DensityUtils.getScale(), 0, shadowRadius, shadowColor);
+                    paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OVER));
+                    paint.setColorFilter(null);
+                    canvas.drawBitmap(shadowBitmap, shadowRadius, shadowRadius, paint);
+                }
+            } else {
+                Bitmap shadowBitmap = showLayerBitmap.extractAlpha();
+                if (shadowBitmap != null) {
+                    paint.setShadowLayer(shadowRadius / DensityUtils.getScale(), 0, shadowRadius, shadowColor);
+                    paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OVER));
+                    paint.setColorFilter(null);
+                    canvas.drawBitmap(shadowBitmap, shadowRadius, shadowRadius, paint);
+                }
             }
         }
+
 
         return finalBmp;
     }
@@ -282,24 +296,32 @@ public class ShapeImageView extends ImageView {
         this.contentPadding = contentPadding;
     }
 
-    public int getShadowDx() {
-        return shadowDx;
+    public int getShadowRadius() {
+        return shadowRadius;
     }
 
-    public void setShadowDx(int shadowDx) {
-        this.shadowDx = shadowDx;
-        this.shadowRadius = (int) Math.floor(shadowDy > 0 && shadowDx > shadowDy ? shadowDy : shadowDx == 0 ? shadowDy : 0);
-
+    public void setShadowRadius(int shadowRadius) {
+        this.shadowRadius = shadowRadius;
     }
 
-    public int getShadowDy() {
-        return shadowDy;
-    }
-
-    public void setShadowDy(int shadowDy) {
-        this.shadowDy = shadowDy;
-        this.shadowRadius = (int) Math.floor(shadowDy > 0 && shadowDx > shadowDy ? shadowDy : shadowDx == 0 ? shadowDy : 0);
-    }
+    //    public int getShadowDx() {
+//        return shadowDx;
+//    }
+//
+//    public void setShadowDx(int shadowDx) {
+//        this.shadowDx = shadowDx;
+//        this.shadowRadius = (int) Math.floor(shadowDy > 0 && shadowDx > shadowDy ? shadowDy : shadowDx == 0 ? shadowDy : 0);
+//
+//    }
+//
+//    public int getShadowDy() {
+//        return shadowDy;
+//    }
+//
+//    public void setShadowDy(int shadowDy) {
+//        this.shadowDy = shadowDy;
+//        this.shadowRadius = (int) Math.floor(shadowDy > 0 && shadowDx > shadowDy ? shadowDy : shadowDx == 0 ? shadowDy : 0);
+//    }
 
 
     //    @Override

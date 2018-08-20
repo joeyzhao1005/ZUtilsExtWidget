@@ -7,8 +7,10 @@
         <attr name="ShapeImageView_shape_color" format="color" />
         <attr name="ShapeImageView_is_shape_image_show" format="boolean" />
         <attr name="ShapeImageView_content_padding" format="dimension" />
-        <attr name="ShapeImageView_shadow_dx" format="dimension" />
-        <attr name="ShapeImageView_shadow_dy" format="dimension" />
+        <!--<attr name="ShapeImageView_shadow_dx" format="dimension" />-->
+        <!--<attr name="ShapeImageView_shadow_dy" format="dimension" />-->
+        <attr name="ShapeImageView_shadow_radius" format="dimension" />
+
 
     </declare-styleable>
 </resources>
