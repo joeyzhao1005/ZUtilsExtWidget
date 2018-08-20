@@ -3,10 +3,12 @@
 <resources>
     <declare-styleable name="ShapeImageView">
 
-        <attr name="shape_src" format="reference" />
-        <attr name="shape_color" format="color" />
-        <attr name="is_shape_image_show" format="boolean" />
-        <attr name="content_padding" format="dimension" />
+        <attr name="ShapeImageView_shape_src" format="reference" />
+        <attr name="ShapeImageView_shape_color" format="color" />
+        <attr name="ShapeImageView_is_shape_image_show" format="boolean" />
+        <attr name="ShapeImageView_content_padding" format="dimension" />
+        <attr name="ShapeImageView_shadow_dx" format="dimension" />
+        <attr name="ShapeImageView_shadow_dy" format="dimension" />
 
     </declare-styleable>
 </resources>
