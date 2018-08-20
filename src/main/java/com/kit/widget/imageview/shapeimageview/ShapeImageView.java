@@ -59,10 +59,11 @@ public class ShapeImageView extends ImageView {
             shapeLayerDrawable = ta.getDrawable(R.styleable.ShapeImageView_ShapeImageView_shape_src);
             shapeColor = ta.getColor(R.styleable.ShapeImageView_ShapeImageView_shape_color, Color.TRANSPARENT);
             isShapeImageShow = ta.getBoolean(R.styleable.ShapeImageView_ShapeImageView_is_shape_image_show, false);
-            contentPadding = (int) ta.getDimension(R.styleable.ShapeImageView_ShapeImageView_content_padding, 0f);
-            shadowDx = (int) ta.getDimension(R.styleable.ShapeImageView_ShapeImageView_shadow_dx, 0f);
-            shadowDy = (int) ta.getDimension(R.styleable.ShapeImageView_ShapeImageView_shadow_dy, 0f);
-            this.shadowRadius = (int) Math.floor(DensityUtils.getScale() * (shadowDy > 0 && shadowDx > shadowDy ? shadowDy : shadowDx == 0 ? shadowDy : 0));
+            contentPadding = ta.getDimensionPixelSize(R.styleable.ShapeImageView_ShapeImageView_content_padding, 0);
+            shadowDx = ta.getDimensionPixelSize(R.styleable.ShapeImageView_ShapeImageView_shadow_dx, 0);
+            shadowDy = ta.getDimensionPixelSize(R.styleable.ShapeImageView_ShapeImageView_shadow_dy, 0);
+            this.shadowRadius = (int) Math.floor(shadowDy > 0 && shadowDx > shadowDy ? shadowDy : shadowDx == 0 ? shadowDy : 0);
+
             ta.recycle();
         }
 
@@ -97,6 +98,8 @@ public class ShapeImageView extends ImageView {
 
     }
 
+    Bitmap bgShadowBmp = null;
+
 
     private Bitmap createImage() {
         if (shapeLayerDrawable != null) {
@@ -128,17 +131,17 @@ public class ShapeImageView extends ImageView {
         Canvas canvas = new Canvas(finalBmp);
 
 
-        if (null != shapeBitmap) {
-            Bitmap tempBmp = null;
-            if (shadowRadius > 0) {
-                tempBmp = Bitmap.createBitmap((viewWidth - shadowRadius * 2), (viewHeight - shadowRadius * 2), Bitmap.Config.ARGB_8888);
-                tempBmp.eraseColor(Color.BLACK);
-                canvas.drawBitmap(tempBmp, (0 + shadowRadius), (0 + shadowRadius), paint);
-
+        if (shadowRadius > 0) {
+            if (null != shapeBitmap) {
+                bgShadowBmp = Bitmap.createBitmap((viewWidth - shadowRadius * 2), (viewHeight - shadowRadius * 2), Bitmap.Config.ARGB_8888);
+                bgShadowBmp.eraseColor(Color.BLACK);
+                canvas.drawBitmap(bgShadowBmp, (0 + shadowRadius), (0 + shadowRadius), paint);
             } else {
                 finalBmp.eraseColor(Color.BLACK);
             }
+        }
 
+        if (null != shapeBitmap) {
             shapeBitmap = getCenterInsideBitmap(shapeBitmap, (int) (viewWidth - shadowRadius * 2), (int) (viewHeight - shadowRadius * 2));
 
             paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
@@ -146,8 +149,6 @@ public class ShapeImageView extends ImageView {
                 paint.setColorFilter(new PorterDuffColorFilter(shapeColor, PorterDuff.Mode.SRC_IN));
             }
             canvas.drawBitmap(shapeBitmap, (0 + shadowRadius), (0 + shadowRadius), paint);
-
-
         }
 
         if (null != showLayerBitmap) {
@@ -287,7 +288,8 @@ public class ShapeImageView extends ImageView {
 
     public void setShadowDx(int shadowDx) {
         this.shadowDx = shadowDx;
-        this.shadowRadius = (int) Math.floor(DensityUtils.getScale() * (shadowDy > 0 && shadowDx > shadowDy ? shadowDy : shadowDx == 0 ? shadowDy : 0));
+        this.shadowRadius = (int) Math.floor(shadowDy > 0 && shadowDx > shadowDy ? shadowDy : shadowDx == 0 ? shadowDy : 0);
+
     }
 
     public int getShadowDy() {
@@ -296,7 +298,7 @@ public class ShapeImageView extends ImageView {
 
     public void setShadowDy(int shadowDy) {
         this.shadowDy = shadowDy;
-        this.shadowRadius = (int) Math.floor(DensityUtils.getScale() * (shadowDy > 0 && shadowDx > shadowDy ? shadowDy : shadowDx == 0 ? shadowDy : 0));
+        this.shadowRadius = (int) Math.floor(shadowDy > 0 && shadowDx > shadowDy ? shadowDy : shadowDx == 0 ? shadowDy : 0);
     }
 
 
