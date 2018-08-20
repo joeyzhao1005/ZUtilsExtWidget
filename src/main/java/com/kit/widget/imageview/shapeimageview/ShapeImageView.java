@@ -29,7 +29,7 @@ public class ShapeImageView extends ImageView {
     private int viewWidth;
     private int viewHeight;
     private float contentPadding;
-    private Paint paint = new Paint();
+    private Paint paint;
 
 
     public ShapeImageView(Context context) {
@@ -94,7 +94,7 @@ public class ShapeImageView extends ImageView {
             shapeLayerBitmap = getBitmapFromDrawable(shapeLayerDrawable);
         }
         Bitmap showLayerBitmap = getBitmapFromDrawable(getDrawable());
-
+        paint = new Paint();
         paint.setAntiAlias(true);
         paint.setDither(true);
         Bitmap finalBmp = Bitmap.createBitmap(viewWidth, viewHeight, Bitmap.Config.ARGB_8888);
@@ -160,8 +160,6 @@ public class ShapeImageView extends ImageView {
             return getCenterInsideBitmap(src, rectWidth);
         }
     }
-
-
 
 
     /**
