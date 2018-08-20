@@ -99,28 +99,47 @@ public class ShapeImageView extends ImageView {
         paint.setDither(true);
         Bitmap finalBmp = Bitmap.createBitmap(viewWidth, viewHeight, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(finalBmp);
-        if (null != shapeLayerBitmap) {
-            shapeLayerBitmap = getCenterInsideBitmap(shapeLayerBitmap, viewWidth, viewHeight);
-            canvas.drawBitmap(shapeLayerBitmap, 0, 0, paint);
-        }
 
-        if (null != showLayerBitmap) {
-            showLayerBitmap = getCenterCropBitmap(showLayerBitmap, viewWidth, viewHeight);
-            paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-            canvas.drawBitmap(showLayerBitmap, 0 + contentPadding / 2, 0 + contentPadding / 2, paint);
-        }
 
-        if (null != shapeLayerBitmap) {
-            if (shapeColor != Color.TRANSPARENT && !isShapeImageShow) {
-                paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OVER));
+        if (contentPadding != 0) {
+            if (null != shapeLayerBitmap) {
+                shapeLayerBitmap = getCenterInsideBitmap(shapeLayerBitmap, viewWidth, viewHeight);
                 paint.setColorFilter(new PorterDuffColorFilter(shapeColor, PorterDuff.Mode.SRC_IN));
-                canvas.drawBitmap(shapeLayerBitmap, 0, 0, paint);
-            } else if (isShapeImageShow) {
-                paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OVER));
                 canvas.drawBitmap(shapeLayerBitmap, 0, 0, paint);
             }
 
+            if (null != showLayerBitmap) {
+                showLayerBitmap = getCenterCropBitmap(showLayerBitmap, viewWidth, viewHeight);
+                paint.setColorFilter(new PorterDuffColorFilter(shapeColor, PorterDuff.Mode.CLEAR));
+                paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OVER));
+                canvas.drawBitmap(showLayerBitmap, 0 + contentPadding / 2, 0 + contentPadding / 2, paint);
+            }
+
+        } else {
+            if (null != shapeLayerBitmap) {
+                shapeLayerBitmap = getCenterInsideBitmap(shapeLayerBitmap, viewWidth, viewHeight);
+                canvas.drawBitmap(shapeLayerBitmap, 0, 0, paint);
+            }
+
+            if (null != showLayerBitmap) {
+                showLayerBitmap = getCenterCropBitmap(showLayerBitmap, viewWidth, viewHeight);
+                paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+                canvas.drawBitmap(showLayerBitmap, 0, 0, paint);
+            }
+
+            if (null != shapeLayerBitmap) {
+                if (shapeColor != Color.TRANSPARENT && !isShapeImageShow) {
+                    paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OVER));
+                    paint.setColorFilter(new PorterDuffColorFilter(shapeColor, PorterDuff.Mode.SRC_IN));
+                    canvas.drawBitmap(shapeLayerBitmap, 0, 0, paint);
+                } else if (isShapeImageShow) {
+                    paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OVER));
+                    canvas.drawBitmap(shapeLayerBitmap, 0, 0, paint);
+                }
+
+            }
         }
+
         return finalBmp;
     }
 
