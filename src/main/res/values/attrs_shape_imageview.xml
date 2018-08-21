@@ -11,6 +11,5 @@
         <!--<attr name="ShapeImageView_shadow_dy" format="dimension" />-->
         <attr name="ShapeImageView_shadow_radius" format="dimension" />
 
-
     </declare-styleable>
 </resources>
