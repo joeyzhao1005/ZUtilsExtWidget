@@ -96,10 +96,10 @@ public class ScrollRecyclerView extends RecyclerView {
     }
 
     //上下滑动监听灵敏度
-    private int sensitivity = 10;
+    protected int sensitivity = 10;
 
-    private boolean isAtTop;
-    private boolean isAtBottom;
+    protected boolean isAtTop = true;
+    protected boolean isAtBottom;
 
 
 }
