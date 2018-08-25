@@ -1,7 +1,6 @@
 package com.kit.widget.recyclerview;
 
 import android.content.Context;
-import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;

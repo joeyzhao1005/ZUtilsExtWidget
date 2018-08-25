@@ -1,12 +1,9 @@
 package com.kit.widget.recyclerview
 
 import android.content.Context
-import android.graphics.Color
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.support.annotation.LayoutRes
 import android.support.v4.view.ViewCompat
-import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -14,9 +11,7 @@ import android.view.View
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.kit.extend.widget.R
-import com.kit.utils.ColorUtils
 import com.kit.utils.DensityUtils
-import com.kit.utils.DrawableUtils
 import com.kit.utils.ResWrapper
 import com.kit.utils.log.Zog
 
