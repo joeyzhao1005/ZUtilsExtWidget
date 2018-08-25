@@ -42,30 +42,16 @@ public class ScrollRecyclerView extends RecyclerView {
                     callback.onScrollStateChanged(ScrollRecyclerView.this, newState);
                 }
 
-                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    if (Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-
-                        if (!recyclerView.canScrollVertically(1)) {
-                            callback.onScrollToBottom();
-                            isAtBottom = true;
-                        }
-                        if (!recyclerView.canScrollVertically(-1)) {
-                            isAtTop = true;
-                            callback.onScrollToTop();
-                        }
-                    }
-                }
+                checkTopOrBottom();
             }
 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+                checkTopOrBottom();
+
                 if (callback != null) {
                     callback.onScrolled(recyclerView, dx, dy);
-
-                    isAtBottom = false;
-                    isAtTop = false;
-
                     if (dy != 0) {
                         if (dy > 0) {
                             if (Math.abs(dy) > Math.abs(sensitivity)) {
@@ -86,6 +72,20 @@ public class ScrollRecyclerView extends RecyclerView {
         });
     }
 
+
+    private void checkTopOrBottom() {
+        if (!canScrollVertically(1)) {
+            callback.onScrollToBottom();
+            isAtBottom = true;
+        } else if (!canScrollVertically(-1)) {
+            //一定要注意，如果headerview 高度设置成了0 那么这里永远走不进来 也就是永远不在顶部
+            isAtTop = true;
+            callback.onScrollToTop();
+        } else {
+            isAtBottom = false;
+            isAtTop = false;
+        }
+    }
 
     public void setSensitivity(int sensitivity) {
         this.sensitivity = sensitivity;

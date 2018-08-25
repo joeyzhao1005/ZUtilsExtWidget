@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.support.annotation.LayoutRes
+import android.support.v4.view.ViewCompat
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -54,7 +55,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
 //                if (layoutParams is RelativeLayout.LayoutParams && (layoutParams as RelativeLayout.LayoutParams).topMargin != 0) {
 //                    (layoutParams as RelativeLayout.LayoutParams).topMargin = 0
 //                }
-                Zog.d("lastSelectedPostion:$lastSelectedPostion srolledY:$srolledY contentPaddingBottom:$contentPaddingBottom isScrollBack:$isScrollBack")
+                Zog.d("ACTION_UP lastSelectedPostion:$lastSelectedPostion srolledY:$srolledY contentPaddingBottom:$contentPaddingBottom isScrollBack:$isScrollBack")
 
                 if (lastSelectedPostion >= 0) {
                     onMenuChangedListener?.onSailfishOSMenuSelected(lastSelectedPostion, getSelectedTextView(), menuView!!)
@@ -79,7 +80,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
                     menuView!!.layoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 0)
                 }
 
-                Zog.d("ACTION_UP:$readyShowMenu")
+                Zog.d("ACTION_UP readyShowMenu:$readyShowMenu")
                 return readyShowMenu
             }
 
@@ -91,11 +92,12 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
                 }
 
 
-                if (!readyShowMenu && motionEvent.y - startY < 0) {
+                if ((!readyShowMenu && motionEvent.y - startY < 0)) {
                     readyShowMenu = false
                 } else {
-                    //                    Zog.d("ACTION_MOVE startY:" + startY + " " + (Math.abs(motionEvent.getY() - startY) > Math.abs(sensitivity)) + " " + motionEvent.getY());
-                    if (Math.abs(motionEvent.y - startY) > Math.abs(sensitivity) && startY > 0 && motionEvent.y > 0 && !canScrollVertically(-1)) {
+
+                    Zog.d("canScrollVertically: ${canScrollVertically(-1)}  ${ViewCompat.canScrollVertically(this, -1)} getY:${getY()} isAtTop:$isAtTop");
+                    if (Math.abs(motionEvent.y - startY) > Math.abs(sensitivity) && startY > 0 && motionEvent.y > 0 && isAtTop) {
                         readyShowMenu = true
                         isAtTop = true
                     }
@@ -124,6 +126,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
                         isScrollBack = true
                     }
                     srolledY += newDy
+                    Zog.d("srolledY:$srolledY")
                     if (srolledY < 0) {
                         motionEvent.action = MotionEvent.ACTION_UP
                         onTouch(view, motionEvent)
@@ -138,39 +141,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
 
 
                     onMenuChangedListener?.onSailfishOSMenuPulling(srolledY)
-//                    if (srolledY < contentPaddingBottom) {
-//                        textViewSelected(-1)
-//                    } else if (srolledY > contentPaddingBottom && srolledY <= contentPaddingBottom + itemHeight) {
-//                        onMenuChangedListener?.onSailfishOSMenuSelected(0, menuView!!)
-//                        textViewSelected(0)
-//                    } else if (srolledY > contentPaddingBottom + 1 * itemHeight && srolledY <= contentPaddingBottom + 2 * itemHeight) {
-//                        onMenuChangedListener?.onSailfishOSMenuSelected(1, menuView!!)
-//                        textViewSelected(1)
-//                    } else if (srolledY > contentPaddingBottom + 2 * itemHeight && srolledY <= contentPaddingBottom + 3 * itemHeight) {
-//                        onMenuChangedListener?.onSailfishOSMenuSelected(2, menuView!!)
-//                        textViewSelected(2)
-//                    } else if (srolledY > contentPaddingBottom + 3 * itemHeight && srolledY <= contentPaddingBottom + 4 * itemHeight) {
-//                        onMenuChangedListener?.onSailfishOSMenuSelected(3, menuView!!)
-//                        textViewSelected(3)
-//                    } else if (srolledY > contentPaddingBottom + 4 * itemHeight && srolledY <= contentPaddingBottom + 5 * itemHeight) {
-//                        onMenuChangedListener?.onSailfishOSMenuSelected(4, menuView!!)
-//                        textViewSelected(4)
-//                    } else if (srolledY > contentPaddingBottom + 5 * itemHeight && srolledY <= contentPaddingBottom + 6 * itemHeight) {
-//                        onMenuChangedListener?.onSailfishOSMenuSelected(5, menuView!!)
-//                        textViewSelected(5)
-//                    } else if (srolledY > contentPaddingBottom + 6 * itemHeight && srolledY <= contentPaddingBottom + 7 * itemHeight) {
-//                        onMenuChangedListener?.onSailfishOSMenuSelected(6, menuView!!)
-//                        textViewSelected(6)
-//                    } else if (srolledY > contentPaddingBottom + 7 * itemHeight && srolledY <= contentPaddingBottom + 8 * itemHeight) {
-//                        onMenuChangedListener?.onSailfishOSMenuSelected(7, menuView!!)
-//                        textViewSelected(7)
-//                    } else if (srolledY > contentPaddingBottom + 8 * itemHeight && srolledY <= contentPaddingBottom + 9 * itemHeight) {
-//                        onMenuChangedListener?.onSailfishOSMenuSelected(8, menuView!!)
-//                        textViewSelected(8)
-//                    } else if (srolledY > contentPaddingBottom + 9 * itemHeight) {
-//                        onMenuChangedListener?.onSailfishOSMenuSelected(9, menuView!!)
-//                        textViewSelected(9)
-//                    }
+
 
                     if (srolledY < contentPaddingBottom + itemHeight) {
                         if (lastSelectedPostion != -1) {
@@ -458,62 +429,6 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
 
     constructor(context: Context, attrs: AttributeSet?, defStyle: Int) : super(context, attrs, defStyle)
 
-    override fun setOnScrollCallback(cb: OnScrollCallback) {
-        this.callback = cb
-
-        addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-
-                if (callback != null) {
-                    callback.onScrollStateChanged(this@SailfishOSMenuRecyclerView, newState)
-                }
-
-                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    if (Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-
-                        if (!recyclerView.canScrollVertically(1)) {
-                            callback.onScrollToBottom()
-                            isAtBottom = true
-                        }
-                        if (!recyclerView.canScrollVertically(-1)) {
-                            isAtTop = true
-                            callback.onScrollToTop()
-                            setOnTouchListener(this@SailfishOSMenuRecyclerView)
-                        }
-                    }
-                }
-            }
-
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                if (callback != null) {
-                    callback.onScrolled(recyclerView, dx, dy)
-
-                    isAtBottom = false
-                    isAtTop = false
-
-                    if (dy != 0) {
-                        if (dy > 0) {
-                            if (Math.abs(dy) > Math.abs(sensitivity)) {
-                                callback.onScrollDown(this@SailfishOSMenuRecyclerView, dy)
-                            }
-                            //                            callback.onScrollDown(ScrollRecyclerView.this, dy);
-
-                        } else {
-                            if (Math.abs(dy) > Math.abs(sensitivity)) {
-                                callback.onScrollUp(this@SailfishOSMenuRecyclerView, dy)
-                            }
-                            //                            callback.onScrollUp(ScrollRecyclerView.this, dy);
-
-                        }
-                    }
-                }
-            }
-        })
-    }
-
-
     fun setMenu(menus: Array<String>?) {
         setMenu(menus, R.layout.item_sailfish_os_menu)
     }
@@ -552,6 +467,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
         }
         maxHeight += contentPaddingTop + contentPaddingBottom
 
+        setOnTouchListener(this)
     }
 
     private fun addView(textView: TextView, text: String?, index: Int) {
@@ -718,10 +634,6 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
     private var menu7: TextView? = null
     private var menu8: TextView? = null
     private var menu9: TextView? = null
-
-
-
-
 
 
     var maxHeight: Int = 0
