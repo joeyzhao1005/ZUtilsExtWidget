@@ -56,7 +56,9 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
                     onMenuChangedListener?.onSailfishOSMenuSelected(lastSelectedPostion, getSelectedTextView(), menuView!!)
                 } else if (srolledY > 0 && srolledY < contentPaddingBottom) {
                     if (!isScrollBack) {
-                        onMenuChangedListener?.onSailfishOSMenuSelectedNone(menuView!!)
+                        if (srolledY > minScrollY) {
+                            onMenuChangedListener?.onSailfishOSMenuSelectedNone(menuView!!)
+                        }
                     } else {
                         onMenuChangedListener?.onSailfishOSMenuSelectedCancel(menuView!!)
                     }
@@ -451,6 +453,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
 
         itemHeight = DensityUtils.dip2px(context, 40f)
         contentPaddingTop = DensityUtils.dip2px(context, 40f)
+        minScrollY = DensityUtils.dip2px(context, 20f)
 //        tintSelectedMenuBackgroundDrawable()
 
         var index = 0
@@ -644,6 +647,10 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
      */
     private var contentPaddingTop: Int = 0
 
+    /**
+     * 最小纵向滚动
+     */
+    private var minScrollY: Int = 0
 
     /**
      * 底边距（下边距）
