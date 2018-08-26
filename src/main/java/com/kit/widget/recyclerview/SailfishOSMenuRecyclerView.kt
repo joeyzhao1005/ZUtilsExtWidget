@@ -115,7 +115,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
 //                        (layoutParams as RelativeLayout.LayoutParams).topMargin = motionEvent.y.toInt()
 //                    }
 
-                    val newDy = (motionEvent.y - lastY) * parallax
+                    val newDy = (motionEvent.y - lastY) * (if (srolledY < contentPaddingBottom) 1.0f else parallax)
 
                     if (newDy < 0) {
                         isScrollBack = true
@@ -653,7 +653,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
     /**
      * 视差系数
      */
-    private val parallax: Float = 1.3f
+    private val parallax: Float = 1.8f
     private val INDEX_OF_MENU_ID: Int = 10000
 
     interface OnMenuChangedListener {
