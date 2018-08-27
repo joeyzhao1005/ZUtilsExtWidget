@@ -54,7 +54,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
 
                 if (lastSelectedPostion >= 0) {
                     onMenuChangedListener?.onSailfishOSMenuSelected(lastSelectedPostion, getSelectedTextView(), menuView!!)
-                } else if (srolledY > 0 && srolledY < contentPaddingBottom) {
+                } else if (srolledY > 0 && srolledY < contentPaddingBottom + itemHeight) {
                     if (!isScrollBack) {
                         if (srolledY > minScrollY) {
                             onMenuChangedListener?.onSailfishOSMenuSelectedNone(menuView!!)
@@ -87,9 +87,14 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
                     startY = motionEvent.y
                     lastY = motionEvent.y
                 }
+                val newDy = (motionEvent.y - lastY) * (if (srolledY < contentPaddingBottom) 1.0f else parallax)
+                Zog.d("newDy:$newDy")
 
+                if (newDy < 0) {
+                    isScrollBack = true
+                }
 
-                if ((!readyShowMenu && motionEvent.y - startY < 0)) {
+                if ((!readyShowMenu && newDy < 0)) {
                     readyShowMenu = false
                 } else {
 
@@ -117,13 +122,8 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
 //                        (layoutParams as RelativeLayout.LayoutParams).topMargin = motionEvent.y.toInt()
 //                    }
 
-                    val newDy = (motionEvent.y - lastY) * (if (srolledY < contentPaddingBottom) 1.0f else parallax)
 
-                    if (newDy < 0) {
-                        isScrollBack = true
-                    }
                     srolledY += newDy
-                    Zog.d("srolledY:$srolledY")
                     if (srolledY < 0) {
                         motionEvent.action = MotionEvent.ACTION_UP
                         onTouch(view, motionEvent)
@@ -453,7 +453,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
 
         itemHeight = DensityUtils.dip2px(context, 40f)
         contentPaddingTop = DensityUtils.dip2px(context, 40f)
-        minScrollY = DensityUtils.dip2px(context, 20f)
+        minScrollY = DensityUtils.dip2px(context, 30f)
 //        tintSelectedMenuBackgroundDrawable()
 
         var index = 0
@@ -660,7 +660,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
     /**
      * 视差系数
      */
-    private val parallax: Float = 1.8f
+    private val parallax: Float = 1.6f
     private val INDEX_OF_MENU_ID: Int = 10000
 
     interface OnMenuChangedListener {
