@@ -453,7 +453,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
 
         itemHeight = DensityUtils.dip2px(context, 40f)
         contentPaddingTop = DensityUtils.dip2px(context, 40f)
-        minScrollY = DensityUtils.dip2px(context, 30f)
+        minScrollY = DensityUtils.dip2px(context, 50f)
 //        tintSelectedMenuBackgroundDrawable()
 
         var index = 0
