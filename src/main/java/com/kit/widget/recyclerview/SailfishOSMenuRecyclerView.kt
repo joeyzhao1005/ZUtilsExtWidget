@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.kit.extend.widget.R
+import com.kit.utils.DateUtils
 import com.kit.utils.DensityUtils
 import com.kit.utils.ResWrapper
 import com.kit.utils.log.Zog
@@ -31,10 +32,15 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
 
     override fun onTouch(view: View, motionEvent: MotionEvent): Boolean {
         when (motionEvent.action) {
-            MotionEvent.ACTION_DOWN -> {
-                startY = motionEvent.y
-                return true
-            }
+
+            //在recyclerview中 因为item一般会设置onclick事件，因而MotionEvent.ACTION_DOWN是监听不到的
+
+//            MotionEvent.ACTION_DOWN -> {
+//                startY = motionEvent.y
+//                touchStartTime = DateUtils.getCurrDateLong()
+//                Zog.d("ACTION_DOWN touchStartTime:$touchStartTime")
+//                return true
+//            }
 
 
             MotionEvent.ACTION_UP -> {
@@ -50,7 +56,14 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
 //                if (layoutParams is RelativeLayout.LayoutParams && (layoutParams as RelativeLayout.LayoutParams).topMargin != 0) {
 //                    (layoutParams as RelativeLayout.LayoutParams).topMargin = 0
 //                }
-                Zog.d("ACTION_UP lastSelectedPostion:$lastSelectedPostion srolledY:$srolledY contentPaddingBottom:$contentPaddingBottom isScrollBack:$isScrollBack")
+
+                onMenuChangedListener?.onSailfishOSMenuPullEnd()
+
+                Zog.d("ACTION_UP lastSelectedPostion:$lastSelectedPostion srolledY:$srolledY contentPaddingBottom:$contentPaddingBottom isScrollBack:$isScrollBack  ${DateUtils.getCurrDateLong() - touchStartTime}")
+                if (DateUtils.getCurrDateLong() - touchStartTime < 40) {
+                    //小于40ms 算作误触
+                    return false
+                }
 
                 if (lastSelectedPostion >= 0) {
                     onMenuChangedListener?.onSailfishOSMenuSelected(lastSelectedPostion, getSelectedTextView(), menuView!!)
@@ -71,7 +84,6 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
                 readyShowMenu = false
                 isScrollBack = false
 
-                onMenuChangedListener?.onSailfishOSMenuPullEnd()
 
                 if (menuView != null) {
                     menuView!!.layoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 0)
@@ -84,9 +96,15 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
             MotionEvent.ACTION_MOVE -> {
 
                 if (startY == 0f) {
+                    //可以把这里当作 MotionEvent.ACTION_DOWN 来用 ，即是开始触摸
+                    touchStartTime = DateUtils.getCurrDateLong()
+                    Zog.d("ACTION_DOWN touchStartTime:$touchStartTime")
+
+
                     startY = motionEvent.y
                     lastY = motionEvent.y
                 }
+
                 val newDy = (motionEvent.y - lastY) * (if (srolledY < contentPaddingBottom) 1.0f else parallax)
                 Zog.d("newDy:$newDy")
 
@@ -221,7 +239,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
                 return readyShowMenu
             }
 
-            else -> return true
+            else -> return readyShowMenu
         }
     }
 
@@ -617,6 +635,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
 
     var selectedMenuBackgroundDrawable: Drawable? = null
 
+    private var touchStartTime: Long = -1
     private var lastSelectedPostion: Int = -1
     private var isScrollBack: Boolean = false
 
