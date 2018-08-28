@@ -21,16 +21,30 @@ import com.kit.utils.log.Zog
  */
 class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
 
+    override fun onInterceptTouchEvent(e: MotionEvent?): Boolean {
+        Zog.d("onInterceptTouchEvent e:${e?.action}")
+        return super.onInterceptTouchEvent(e)
+    }
 
-    //
-    //    @Override
-    //    public boolean onInterceptTouchEvent(MotionEvent e) {
-    //        Zog.d("e.y::::::" + e.getY());
-    //        return super.onInterceptTouchEvent(e);
-    //    }
 
+    private fun reset() {
+        if (menuView != null) {
+            menuView!!.layoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 0)
+        }
+
+        touchStartTime = -1
+
+        startY = 0f
+        srolledY = 0f
+        lastY = 0f
+
+        lastSelectedPostion = -1
+        readyShowMenu = false
+        isScrollBack = false
+    }
 
     override fun onTouch(view: View, motionEvent: MotionEvent): Boolean {
+        Zog.d("onInterceptTouchEvent onTouch e:${motionEvent?.action}")
         when (motionEvent.action) {
 
             //在recyclerview中 因为item一般会设置onclick事件，因而MotionEvent.ACTION_DOWN是监听不到的
@@ -41,7 +55,13 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
 //                Zog.d("ACTION_DOWN touchStartTime:$touchStartTime")
 //                return true
 //            }
+            MotionEvent.ACTION_CANCEL -> {
 
+                onMenuChangedListener?.onSailfishOSMenuPullEnd()
+
+                reset()
+                return false
+            }
 
             MotionEvent.ACTION_UP -> {
                 //                if (getTranslationY() != 0) {
@@ -77,17 +97,8 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
                     }
                 }
 
-                startY = 0f
-                srolledY = 0f
-                lastY = 0f
-                lastSelectedPostion = -1
-                readyShowMenu = false
-                isScrollBack = false
+                reset()
 
-
-                if (menuView != null) {
-                    menuView!!.layoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 0)
-                }
 
                 Zog.d("ACTION_UP readyShowMenu:$readyShowMenu")
                 return readyShowMenu
@@ -239,9 +250,34 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
                 return readyShowMenu
             }
 
+
             else -> return readyShowMenu
         }
     }
+
+//    override fun onInterceptTouchEvent(e: MotionEvent?): Boolean {
+//        if (e?.action == MotionEvent.ACTION_DOWN) {
+//            lastInterceptMotionEvent = null
+//        }
+//
+////        Zog.d("e.action:${e?.action} e.x:${e?.x} e.y:${e?.y}")
+//
+//        if (Math.abs(((e?.x) ?: 0f) - ((lastInterceptMotionEvent?.x) ?: 0f)) > 10f
+//                && (Math.abs((e?.y) ?: 0f) - ((lastInterceptMotionEvent?.y) ?: 0f)) < 10f) {
+//            Zog.d("parent viewpager will get MotionEvent")
+//            lastInterceptMotionEvent = e
+//            return false
+//        } else {
+//            Zog.d("recyclerview will get MotionEvent")
+//
+//            lastInterceptMotionEvent = e
+//            return true
+//        }
+//
+////        return super.onInterceptTouchEvent(e)
+//    }
+//
+//    private var lastInterceptMotionEvent: MotionEvent? = null
 
     private fun getSelectedTextView(): TextView {
         when (lastSelectedPostion) {
