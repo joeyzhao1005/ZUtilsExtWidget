@@ -13,6 +13,7 @@ import android.widget.TextView
 import com.kit.extend.widget.R
 import com.kit.utils.DateUtils
 import com.kit.utils.DensityUtils
+import com.kit.utils.DeviceUtils
 import com.kit.utils.ResWrapper
 import com.kit.utils.log.Zog
 
@@ -497,7 +498,10 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
         if (menuView == null) {
             menuView = LayoutInflater.from(context).inflate(R.layout.layout_sailfish_os_menu_view, null)
         }
-        contentPaddingBottom = DensityUtils.dip2px(context, 150f)
+//        contentPaddingBottom = DensityUtils.dip2px(context, 150f)
+
+        //暂定滑过屏幕的三分之一 才能拉出来顶部菜单
+        contentPaddingBottom = DeviceUtils.getRealScreenHeight(context)*1/3
 
         if (parent is RelativeLayout) {
             val layoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 0)
