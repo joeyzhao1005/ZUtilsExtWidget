@@ -481,17 +481,20 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
 
     constructor(context: Context, attrs: AttributeSet?, defStyle: Int) : super(context, attrs, defStyle)
 
-    fun setMenu(menus: Array<String>?) {
-        setMenu(menus, R.layout.item_sailfish_os_menu)
+    fun setMenu(contentPaddingBottom: Int, menus: Array<String>?) {
+        setMenu(contentPaddingBottom, menus, R.layout.item_sailfish_os_menu)
     }
 
-    fun setMenu(menus: Array<String>?, @LayoutRes layoutItemResId: Int) {
+    fun setMenu(contentPaddingBottom: Int, menus: Array<String>?, @LayoutRes layoutItemResId: Int) {
 
         if (menus == null || menus.size <= 0) {
             return
         }
 
         this.menus = menus
+        this.contentPaddingBottom = if (contentPaddingBottom <= 0) {
+            DeviceUtils.getRealScreenHeight(context) * 1 / 3
+        } else contentPaddingBottom
 
         val iterator: Iterator<String> = menus.iterator()
 
@@ -501,7 +504,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
 //        contentPaddingBottom = DensityUtils.dip2px(context, 150f)
 
         //暂定滑过屏幕的三分之一 才能拉出来顶部菜单
-        contentPaddingBottom = DeviceUtils.getRealScreenHeight(context)*1/3
+
 
         if (parent is RelativeLayout) {
             val layoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 0)
@@ -668,6 +671,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
 //        }
 //        menuView = value
 //    }
+
 
     fun getContentPaddingBottom(): Int {
         return contentPaddingBottom
