@@ -23,7 +23,7 @@ import com.kit.utils.log.Zog
 class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
 
     override fun onInterceptTouchEvent(e: MotionEvent?): Boolean {
-        Zog.d("onInterceptTouchEvent e:${e?.action}")
+//        Zog.d("onInterceptTouchEvent e:${e?.action}")
         return super.onInterceptTouchEvent(e)
     }
 
@@ -45,7 +45,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
     }
 
     override fun onTouch(view: View, motionEvent: MotionEvent): Boolean {
-        Zog.d("onInterceptTouchEvent onTouch e:${motionEvent?.action}")
+//        Zog.d("onInterceptTouchEvent onTouch e:${motionEvent?.action}")
         when (motionEvent.action) {
 
             //在recyclerview中 因为item一般会设置onclick事件，因而MotionEvent.ACTION_DOWN是监听不到的
@@ -80,7 +80,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
 
                 onMenuChangedListener?.onSailfishOSMenuPullEnd()
 
-                Zog.d("ACTION_UP lastSelectedPostion:$lastSelectedPostion srolledY:$srolledY contentPaddingBottom:$contentPaddingBottom isScrollBack:$isScrollBack  ${DateUtils.getCurrDateLong() - touchStartTime}")
+//                Zog.d("ACTION_UP lastSelectedPostion:$lastSelectedPostion srolledY:$srolledY contentPaddingBottom:$contentPaddingBottom isScrollBack:$isScrollBack  ${DateUtils.getCurrDateLong() - touchStartTime}")
                 if (DateUtils.getCurrDateLong() - touchStartTime < 40) {
                     //小于40ms 算作误触
                     return false
@@ -101,7 +101,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
                 reset()
 
 
-                Zog.d("ACTION_UP readyShowMenu:$readyShowMenu")
+//                Zog.d("ACTION_UP readyShowMenu:$readyShowMenu")
                 return readyShowMenu
             }
 
@@ -110,7 +110,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
                 if (startY == 0f) {
                     //可以把这里当作 MotionEvent.ACTION_DOWN 来用 ，即是开始触摸
                     touchStartTime = DateUtils.getCurrDateLong()
-                    Zog.d("ACTION_DOWN touchStartTime:$touchStartTime")
+//                    Zog.d("ACTION_DOWN touchStartTime:$touchStartTime")
 
 
                     startY = motionEvent.y
@@ -118,7 +118,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
                 }
 
                 val newDy = (motionEvent.y - lastY) * (if (srolledY < contentPaddingBottom) 1.0f else parallax)
-                Zog.d("newDy:$newDy")
+//                Zog.d("newDy:$newDy")
 
                 if (newDy < 0) {
                     isScrollBack = true
@@ -128,7 +128,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
                     readyShowMenu = false
                 } else {
 
-                    Zog.d("canScrollVertically: ${canScrollVertically(-1)}  ${ViewCompat.canScrollVertically(this, -1)} getY:${getY()} isAtTop:$isAtTop");
+//                    Zog.d("canScrollVertically: ${canScrollVertically(-1)}  ${ViewCompat.canScrollVertically(this, -1)} getY:${getY()} isAtTop:$isAtTop");
                     if (Math.abs(motionEvent.y - startY) > Math.abs(sensitivity) && startY > 0 && motionEvent.y > 0 && isAtTop) {
                         readyShowMenu = true
                         isAtTop = true
