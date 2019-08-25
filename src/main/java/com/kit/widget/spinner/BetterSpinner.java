@@ -4,15 +4,13 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatAutoCompleteTextView;
+import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.AutoCompleteTextView;
 
-import com.kit.extend.widget.R;
 import com.kit.utils.ApiLevel;
 
 import java.util.Calendar;

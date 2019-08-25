@@ -10,7 +10,7 @@ import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.RippleDrawable
 import android.graphics.drawable.StateListDrawable
 import android.os.Build
-import android.support.v7.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatButton
 import android.util.AttributeSet
 import android.view.Gravity
 import com.kit.extend.widget.R
