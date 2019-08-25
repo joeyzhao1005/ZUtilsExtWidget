@@ -7,7 +7,7 @@ dependencies {
     implementation project(':ZUtilsExt')
 
     implementation "com.android.support:design:${android_sdk_version}"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 //    implementation 'com.nineoldandroids:library:2.4.0'
 
 //    implementation 'info.hoang8f:android-segmented:1.0.6'
@@ -16,7 +16,6 @@ dependencies {
 
 android {
     compileSdkVersion 28
-    buildToolsVersion "28.0.1"
 
     defaultConfig {
         minSdkVersion 18
