@@ -4,14 +4,18 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
+
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 
+import com.kit.extend.widget.R;
 import com.kit.utils.ApiLevel;
+import com.kit.utils.DarkMode;
 
 import java.util.Calendar;
 
@@ -109,11 +113,11 @@ public class BetterSpinner extends AppCompatAutoCompleteTextView implements Adap
 
     @Override
     public void setCompoundDrawablesWithIntrinsicBounds(Drawable left, Drawable top, Drawable right, Drawable bottom) {
-        Drawable dropdownIcon = getContext().getResources().getDrawable(android.R.drawable.arrow_down_float);
+        Drawable dropdownIcon = getContext().getResources().getDrawable(R.drawable.ic_arrow_down);
         if (dropdownIcon != null) {
             right = dropdownIcon;
             if (ApiLevel.ATLEAST_LOLLIPOP) {
-                right.mutate().setTint(Color.BLACK);
+                right.mutate().setTint(DarkMode.isDarkMode() ? Color.WHITE : Color.BLACK);
             }
             right.mutate().setAlpha(128);
         }
