@@ -112,7 +112,7 @@ public class WithTitleEditText extends LinearLayout {
         edittext_text_color = a
                 .getColor(
                         R.styleable.WithTitleEditText_WithTitleEditText_edittext_text_color,
-                        getResources().getColor(R.color.black));
+                        getResources().getColor(R.color.text_color2));
 
 
         etSingLine = a

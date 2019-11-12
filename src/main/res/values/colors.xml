@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="text_color">#ffffffff</color>
+
+    <color name="text_color0">#fff0f0f0</color>
+    <color name="text_color1">#333333</color>
+    <color name="text_color2">#0e0e0e</color>
+    <color name="text_color3">#888888</color>
+    <color name="text_color4">#D32F2F</color>
+    <color name="text_color5">#fc4949</color>
+
+    <!-- color文件谨慎添加颜色，多个单词，中间用"_"连接,背景色一律用bg开头，其余按照功能名字命名color颜色，色值末尾一定要包含“color”这个单词 -->
+
+
+</resources>
