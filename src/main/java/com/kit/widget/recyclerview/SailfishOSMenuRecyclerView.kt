@@ -481,11 +481,11 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
 
     constructor(context: Context, attrs: AttributeSet?, defStyle: Int) : super(context, attrs, defStyle)
 
-    fun setMenu(contentPaddingBottom: Int, menus: Array<String>?) {
+    fun setMenu(contentPaddingBottom: Int, menus: List<String>?) {
         setMenu(contentPaddingBottom, menus, R.layout.item_sailfish_os_menu)
     }
 
-    fun setMenu(contentPaddingBottom: Int, menus: Array<String>?, @LayoutRes layoutItemResId: Int) {
+    fun setMenu(contentPaddingBottom: Int, menus: List<String>?, @LayoutRes layoutItemResId: Int) {
 
         if (menus == null || menus.size <= 0) {
             return
@@ -703,7 +703,7 @@ class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
     /**
      * 要展示的 menu 数据
      */
-    private var menus: Array<String>? = null
+    private var menus: List<String>? = null
 
     /**
      * 顶边距(上边距)
