@@ -5,11 +5,13 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ScrollView;
 
+import androidx.core.widget.NestedScrollView;
+
 import com.kit.widget.recyclerview.ScrollRecyclerView;
 
 
 //
-public class DirectionScrollView extends ScrollView {
+public class DirectionScrollView extends NestedScrollView {
 
 
     public DirectionScrollView(Context context) {
