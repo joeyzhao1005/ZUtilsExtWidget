@@ -204,7 +204,7 @@ class ShapeButton @JvmOverloads constructor(
         // 如果xml中配置了drawable则设置padding让文字移动到边缘与drawable靠在一起
         // button中配置的drawable默认贴着边缘
         if (mDrawablePosition > -1) {
-            compoundDrawables?.let {
+            compoundDrawables.let {
                 val drawable: Drawable? = compoundDrawables[mDrawablePosition]
                 drawable?.let {
                     // 图片间距
