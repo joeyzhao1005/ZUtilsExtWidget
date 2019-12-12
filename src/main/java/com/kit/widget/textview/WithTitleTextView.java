@@ -3,7 +3,10 @@ package com.kit.widget.textview;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
+
 import androidx.annotation.Nullable;
+import androidx.annotation.StyleRes;
+
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ImageButton;
@@ -55,6 +58,10 @@ public class WithTitleTextView extends LinearLayout {
         final TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.WithTitleTextView,
                 defStyleAttr, 0);
 
+
+    }
+
+    private void setStyle(Context context, TypedArray a) {
         title_color = a.getColor(
                 R.styleable.WithTitleTextView_WithTitleTextView_title_color,
                 getResources().getColor(R.color.black));
@@ -140,6 +147,12 @@ public class WithTitleTextView extends LinearLayout {
     //    public void setPadding(int left, int top, int right, int bottom){
 //        llContainer.setPadding( left,  top,  right,  bottom);
 //    }
+
+
+    public void setAppearance(@StyleRes int styleResId) {
+        final TypedArray ta = getContext().obtainStyledAttributes(styleResId, R.styleable.WithTitleTextView);
+        setStyle(getContext(), ta);
+    }
 
     /**
      * @param text title文字
