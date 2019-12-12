@@ -54,11 +54,9 @@ public class WithTitleTextView extends LinearLayout {
 
 
     private void init(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-
         final TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.WithTitleTextView,
                 defStyleAttr, 0);
-
-
+        setStyle(context, a);
     }
 
     private void setStyle(Context context, TypedArray a) {
