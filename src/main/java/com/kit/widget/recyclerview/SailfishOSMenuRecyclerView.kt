@@ -22,11 +22,6 @@ import com.kit.utils.log.Zog
  */
 class SailfishOSMenuRecyclerView : ScrollRecyclerView, View.OnTouchListener {
 
-    override fun onInterceptTouchEvent(e: MotionEvent?): Boolean {
-//        Zog.d("onInterceptTouchEvent e:${e?.action}")
-        return super.onInterceptTouchEvent(e)
-    }
-
 
     private fun reset() {
         if (menuView != null) {
