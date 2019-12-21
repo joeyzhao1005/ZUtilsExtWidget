@@ -79,7 +79,6 @@ public class WithTitleTextView extends LinearLayout {
         contentPosition = a.getInt(R.styleable.WithTitleTextView_WithTitleTextView_content_align, 0);
 
         contentString = a.getString(R.styleable.WithTitleTextView_WithTitleTextView_content);
-
         a.recycle();
 
 
