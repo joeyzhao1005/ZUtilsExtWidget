@@ -99,7 +99,7 @@ public class BetterSpinner extends AppCompatAutoCompleteTextView implements Adap
             performFiltering("", 0);
         } catch (Exception e) {
         }
-        InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) getContext().getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(getWindowToken(), 0);
         setKeyListener(null);
         super.dismissDropDown();
