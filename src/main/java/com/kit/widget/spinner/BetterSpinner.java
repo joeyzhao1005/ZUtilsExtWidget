@@ -19,6 +19,9 @@ import com.kit.utils.DarkMode;
 
 import java.util.Calendar;
 
+/**
+ * @author joeyzhao
+ */
 public class BetterSpinner extends AppCompatAutoCompleteTextView implements AdapterView.OnItemClickListener {
 
     private static final int MAX_CLICK_DURATION = 200;
