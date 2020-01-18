@@ -105,6 +105,7 @@ public class WithSpinnerTextView extends LinearLayout {
 
         if (!StringUtils.isEmptyOrNullStr(contentString)) {
             tvContent.setText(contentString);
+            tvContent.setVisibility(VISIBLE);
         } else {
             tvContent.setText("");
             tvContent.setVisibility(GONE);
