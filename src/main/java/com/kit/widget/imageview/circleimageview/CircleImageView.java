@@ -103,6 +103,7 @@ public class CircleImageView extends AppCompatImageView {
 
     public void setSolidColor(int solidColor) {
         this.mSolidColor = solidColor;
+        initSolidPaint();
     }
 
     @Override
