@@ -23,20 +23,15 @@ import com.kit.widget.spinner.BetterSpinner;
 
 public class WithSpinnerTextView extends LinearLayout {
 
-    // private ImageView ivGo;
-    // private EditText et;
     private TextView tvTitle, tvContent;
     private ImageButton ibInfo;
-    private String contentString, WithSpinnerTextView_title,
-            WithSpinnerTextView_suffix_string;
-    private Drawable WithSpinnerTextViewDeleteIcon,
-            WithSpinnerTextView_background, goSrc;
+    private String contentString, WithSpinnerTextView_title;
+    private Drawable WithSpinnerTextView_background;
 
     private RelativeLayout llWithSpinnerTextView;
 
     private boolean is_content_text_left;
-    private int title_size, content_size, title_margin_right,
-            content_margin, content_margin_left, content_margin_right,
+    private int title_size, content_size,
             margin, margin_left, margin_right;
 
     private int title_color, content_color;
