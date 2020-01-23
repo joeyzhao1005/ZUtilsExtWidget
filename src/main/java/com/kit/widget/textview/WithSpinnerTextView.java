@@ -21,6 +21,9 @@ import com.kit.utils.DensityUtils;
 import com.kit.utils.StringUtils;
 import com.kit.widget.spinner.BetterSpinner;
 
+/**
+ * @author joeyzhao
+ */
 public class WithSpinnerTextView extends LinearLayout {
 
     private TextView tvTitle, tvContent;
@@ -186,8 +189,6 @@ public class WithSpinnerTextView extends LinearLayout {
     }
 
 
-
-
     /**
      * 设置info点击监听器
      *
@@ -207,7 +208,6 @@ public class WithSpinnerTextView extends LinearLayout {
     public void setSpinnerHint(CharSequence hint) {
         spinner.setHint(hint);
     }
-
 
 
     /**
