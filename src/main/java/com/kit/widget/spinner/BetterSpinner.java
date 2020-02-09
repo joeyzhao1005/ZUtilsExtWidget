@@ -84,6 +84,13 @@ public class BetterSpinner extends AppCompatAutoCompleteTextView implements Adap
                     }
                 }
             }
+
+            case MotionEvent.ACTION_CANCEL:
+                isPopup = false;
+                break;
+
+            default:
+                break;
         }
 
         return super.onTouchEvent(event);
@@ -92,6 +99,7 @@ public class BetterSpinner extends AppCompatAutoCompleteTextView implements Adap
     @Override
     public void dismissDropDown() {
         dismisss();
+        isPopup = false;
     }
 
     /**
