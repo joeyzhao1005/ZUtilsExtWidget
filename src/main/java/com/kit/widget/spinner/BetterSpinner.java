@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 
+import com.kit.app.theme.ThemeEngine;
 import com.kit.extend.widget.R;
 import com.kit.utils.ApiLevel;
 import com.kit.utils.DarkMode;
@@ -123,11 +124,6 @@ public class BetterSpinner extends AppCompatAutoCompleteTextView implements Adap
     }
 
 
-    public void darkMode(boolean darkMode) {
-        this.darkMode = darkMode;
-    }
-
-    Boolean darkMode;
 
     @Override
     public void setCompoundDrawablesWithIntrinsicBounds(Drawable left, Drawable top, Drawable right, Drawable bottom) {
@@ -135,7 +131,7 @@ public class BetterSpinner extends AppCompatAutoCompleteTextView implements Adap
         if (dropdownIcon != null) {
             right = dropdownIcon;
             if (ApiLevel.ATLEAST_LOLLIPOP) {
-                right.mutate().setTint((darkMode == null ? DarkMode.isDarkMode() : darkMode) ? Color.WHITE : Color.BLACK);
+                right.mutate().setTint(ThemeEngine.INSTANCE.isDarkMode() ? Color.WHITE : Color.BLACK);
             }
             right.mutate().setAlpha(128);
         }
