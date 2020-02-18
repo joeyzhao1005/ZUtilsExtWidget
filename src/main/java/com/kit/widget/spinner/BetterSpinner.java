@@ -122,13 +122,20 @@ public class BetterSpinner extends AppCompatAutoCompleteTextView implements Adap
         isPopup = false;
     }
 
+
+    public void darkMode(boolean darkMode) {
+        this.darkMode = darkMode;
+    }
+
+    Boolean darkMode;
+
     @Override
     public void setCompoundDrawablesWithIntrinsicBounds(Drawable left, Drawable top, Drawable right, Drawable bottom) {
         Drawable dropdownIcon = getContext().getResources().getDrawable(R.drawable.ic_arrow_down);
         if (dropdownIcon != null) {
             right = dropdownIcon;
             if (ApiLevel.ATLEAST_LOLLIPOP) {
-                right.mutate().setTint(DarkMode.isDarkMode() ? Color.WHITE : Color.BLACK);
+                right.mutate().setTint((darkMode == null ? DarkMode.isDarkMode() : darkMode) ? Color.WHITE : Color.BLACK);
             }
             right.mutate().setAlpha(128);
         }
