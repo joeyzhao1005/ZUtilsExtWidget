@@ -17,6 +17,7 @@ import com.kit.app.theme.ThemeEngine;
 import com.kit.extend.widget.R;
 import com.kit.utils.ApiLevel;
 import com.kit.utils.DarkMode;
+import com.kit.utils.ResWrapper;
 
 import java.util.Calendar;
 
@@ -130,7 +131,7 @@ public class BetterSpinner extends AppCompatAutoCompleteTextView implements Adap
         if (dropdownIcon != null) {
             right = dropdownIcon;
             if (ApiLevel.ATLEAST_LOLLIPOP) {
-                right.mutate().setTint(ThemeEngine.INSTANCE.isDarkMode() ? Color.WHITE : Color.BLACK);
+                right.mutate().setTint(ResWrapper.getColor(R.color.text_color2));
             }
             right.mutate().setAlpha(128);
         }
