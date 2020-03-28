@@ -19,9 +19,11 @@ import com.kit.utils.ApiLevel;
 import com.kit.utils.DensityUtils;
 import com.kit.utils.StringUtils;
 
+/**
+ * @author joeyzhao
+ */
 public class WithTitleTextView extends LinearLayout {
 
-    // private EditText et;
     private TextView tvTitle, tvContent;
     private ImageButton ibInfo;
     private String contentString, WithTitleTextView_title;
