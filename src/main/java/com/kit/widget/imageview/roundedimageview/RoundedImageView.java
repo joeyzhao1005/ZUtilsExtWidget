@@ -26,16 +26,20 @@ import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
+import android.util.AttributeSet;
+import android.util.Log;
+
 import androidx.annotation.ColorRes;
 import androidx.annotation.DimenRes;
 import androidx.annotation.DrawableRes;
 import androidx.appcompat.widget.AppCompatImageView;
-import android.util.AttributeSet;
-import android.util.Log;
 
 import com.kit.extend.widget.R;
 
 
+/**
+ * @author joeyzhao
+ */
 @SuppressWarnings("UnusedDeclaration")
 public class RoundedImageView extends AppCompatImageView {
 
