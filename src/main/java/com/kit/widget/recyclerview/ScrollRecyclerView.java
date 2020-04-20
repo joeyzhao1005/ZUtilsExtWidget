@@ -2,13 +2,14 @@ package com.kit.widget.recyclerview;
 
 import android.content.Context;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.BaseRecyclerView;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
 
 /**
  * 可监听滚动事件的RecyclerView
  */
-public class ScrollRecyclerView extends RecyclerView {
+public class ScrollRecyclerView extends BaseRecyclerView {
 
     public ScrollRecyclerView(Context context) {
         super(context);
