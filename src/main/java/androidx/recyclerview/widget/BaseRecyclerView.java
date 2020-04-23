@@ -2,6 +2,7 @@ package androidx.recyclerview.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import androidx.annotation.NonNull;
@@ -32,7 +33,19 @@ public class BaseRecyclerView extends RecyclerView {
     }
 
     public void scrollByDirectly(int x, int y, MotionEvent ev) {
-        scrollByInternal(x, y, ev);
+        if (mLayout == null) {
+            Log.e(TAG, "Cannot scroll without a LayoutManager set. "
+                    + "Call setLayoutManager with a non-null argument.");
+            return;
+        }
+        if (mLayoutSuppressed) {
+            return;
+        }
+//        final boolean canScrollHorizontal = mLayout.canScrollHorizontally();
+//        final boolean canScrollVertical = mLayout.canScrollVertically();
+//        if (canScrollHorizontal || canScrollVertical) {
+        scrollByInternal(x, y, null);
+//        }
     }
 
 
