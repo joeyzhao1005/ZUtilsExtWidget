@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
 
 /**
  * @author joeyzhao
@@ -44,7 +45,7 @@ public class BaseRecyclerView extends RecyclerView {
 //        final boolean canScrollHorizontal = mLayout.canScrollHorizontally();
 //        final boolean canScrollVertical = mLayout.canScrollVertically();
 //        if (canScrollHorizontal || canScrollVertical) {
-        scrollByInternal(x, y, null);
+        scrollByInternal(x, y, null, ViewCompat.TYPE_NON_TOUCH);
 //        }
     }
 
