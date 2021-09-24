@@ -3,11 +3,8 @@ package com.kit.widget.scrollview;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.widget.ScrollView;
 
 import androidx.core.widget.NestedScrollView;
-
-import com.kit.widget.recyclerview.ScrollRecyclerView;
 
 
 //

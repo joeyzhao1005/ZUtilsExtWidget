@@ -8,7 +8,7 @@ dependencies {
     implementation project(':ZUtils')
     implementation project(':ZUtilsExt')
 
-    implementation "com.google.android.material:material:${android_material}"
+    implementation "androidx.appcompat:appcompat:${android_x_appcompat}"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 //    implementation 'com.nineoldandroids:library:2.4.0'
 
