@@ -114,7 +114,6 @@
                     android:gravity="end|center_vertical"
                     android:hint="@string/with_del_edittext_hint"
                     android:imeOptions="actionSearch"
-                    android:textColor="@color/text_color2"
                     android:textColorHint="#60000000"
                     android:textSize="15sp" />
             </RelativeLayout>

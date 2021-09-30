@@ -2,7 +2,6 @@
 <resources>
 
 
-    <color name="text_color2">#0e0e0e</color>
 
     <!-- color文件谨慎添加颜色，多个单词，中间用"_"连接,背景色一律用bg开头，其余按照功能名字命名color颜色，色值末尾一定要包含“color”这个单词 -->
 

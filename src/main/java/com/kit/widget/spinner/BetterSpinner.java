@@ -131,7 +131,7 @@ public class BetterSpinner extends AppCompatAutoCompleteTextView implements Adap
         if (dropdownIcon != null) {
             right = dropdownIcon;
             if (ApiLevel.ATLEAST_LOLLIPOP) {
-                right.mutate().setTint(ResWrapper.getColor(R.color.text_color2));
+                right.mutate().setTint(0xFF0E0E0E);
             }
             right.mutate().setAlpha(128);
         }
