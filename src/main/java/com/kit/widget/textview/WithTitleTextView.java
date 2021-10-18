@@ -24,9 +24,9 @@ import com.kit.utils.StringUtils;
  */
 public class WithTitleTextView extends LinearLayout {
 
-    private TextView tvTitle, tvContent;
+    private TextView tvTitle, tvContent, tvValue;
     private ImageButton ibInfo;
-    private String contentString, WithTitleTextView_title;
+    private String contentString, WithTitleTextView_title,valueString;
 
 
     private float title_size, content_size;
@@ -81,6 +81,7 @@ public class WithTitleTextView extends LinearLayout {
         contentPosition = a.getInt(R.styleable.WithTitleTextView_WithTitleTextView_content_align, 0);
 
         contentString = a.getString(R.styleable.WithTitleTextView_WithTitleTextView_content);
+        valueString = a.getString(R.styleable.WithTitleTextView_WithTitleTextView_value);
         a.recycle();
 
 
@@ -92,7 +93,6 @@ public class WithTitleTextView extends LinearLayout {
         tvTitle = (TextView) findViewById(R.id.tvWithTitleTextViewTitle);
 
         ibInfo = (ImageButton) findViewById(R.id.ibInfo);
-
 
         if (title_size != -1) {
             tvTitle.setTextSize(DensityUtils.px2dip(context, title_size));
@@ -108,12 +108,15 @@ public class WithTitleTextView extends LinearLayout {
         //content
 
         tvContent = (TextView) findViewById(R.id.tvWithTitleTextViewContent);
+        tvValue = (TextView) findViewById(R.id.tvWithTitleTextViewValue);
+
         switch (contentPosition) {
             case 1:
                 if (ApiLevel.ATLEAST_JB_MR1) {
                     ((RelativeLayout.LayoutParams) tvContent.getLayoutParams()).removeRule(RelativeLayout.BELOW);
                 }
                 ((RelativeLayout.LayoutParams) tvContent.getLayoutParams()).addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                ((RelativeLayout.LayoutParams) tvContent.getLayoutParams()).addRule(RelativeLayout.CENTER_VERTICAL);
                 ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).addRule(RelativeLayout.LEFT_OF, R.id.tvWithTitleTextViewContent);
                 break;
 
@@ -121,6 +124,7 @@ public class WithTitleTextView extends LinearLayout {
                 if (ApiLevel.ATLEAST_JB_MR1) {
                     ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).removeRule(RelativeLayout.LEFT_OF);
                     ((RelativeLayout.LayoutParams) tvContent.getLayoutParams()).removeRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                    ((RelativeLayout.LayoutParams) tvContent.getLayoutParams()).removeRule(RelativeLayout.CENTER_VERTICAL);
                 }
                 ((RelativeLayout.LayoutParams) tvContent.getLayoutParams()).addRule(RelativeLayout.BELOW, R.id.tvWithTitleTextViewTitle);
         }
@@ -138,14 +142,9 @@ public class WithTitleTextView extends LinearLayout {
 
         tvContent.setTextColor(content_color);
 
-        if (!StringUtils.isEmptyOrNullStr(contentString)) {
-            setContent(contentString);
-        }
+        setContent(contentString);
+        setValue(valueString);
     }
-
-    //    public void setPadding(int left, int top, int right, int bottom){
-//        llContainer.setPadding( left,  top,  right,  bottom);
-//    }
 
 
     public void setAppearance(@StyleRes int styleResId) {
@@ -172,18 +171,29 @@ public class WithTitleTextView extends LinearLayout {
     public void setContent(CharSequence text) {
         if (text == null || StringUtils.isEmptyOrNullStr(text.toString())) {
             tvContent.setVisibility(GONE);
-            ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).addRule(RelativeLayout.CENTER_VERTICAL);
         } else {
             tvContent.setVisibility(VISIBLE);
             tvContent.setText(text);
-            if ("end".equals(contentPosition)) {
-                if (ApiLevel.ATLEAST_JB_MR1) {
-                    ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).removeRule(RelativeLayout.CENTER_VERTICAL);
-                }
-            } else {
-                ((RelativeLayout.LayoutParams) tvTitle.getLayoutParams()).addRule(RelativeLayout.CENTER_VERTICAL);
-            }
         }
+    }
+
+    /**
+     * @param text activity返回过来的文字
+     * @return void 返回类型
+     * @Title setContent
+     * @Description 设置activity返回过来的文字
+     */
+    public void setValue(CharSequence text) {
+        if (text == null || StringUtils.isEmptyOrNullStr(text.toString())) {
+            tvValue.setVisibility(GONE);
+        } else {
+            tvValue.setVisibility(VISIBLE);
+            tvValue.setText(text);
+        }
+    }
+
+    public CharSequence getValue() {
+        return tvValue.getText();
     }
 
     /**

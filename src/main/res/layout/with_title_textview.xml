@@ -14,10 +14,9 @@
         android:id="@+id/tvWithTitleTextViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_centerVertical="true"
         android:text=""
         android:textColor="@color/black"
         android:textSize="15dp"
@@ -34,20 +33,36 @@
         android:padding="5dp"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_info_gray"
-        android:visibility="gone" />
+        android:visibility="gone"
+        tools:visibility="gone" />
 
 
     <TextView
         android:id="@+id/tvWithTitleTextViewContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/tvWithTitleTextViewTitle"
         android:layout_gravity="end|center_vertical"
         android:text=""
-        android:layout_alignParentRight="true"
         android:textColor="#878787"
         android:textSize="12dp"
         android:visibility="gone"
         tools:text="content"
-        tools:visibility="visible" />
+        tools:visibility="gone" />
+
+
+    <TextView
+        android:id="@+id/tvWithTitleTextViewValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="end|center_vertical"
+        android:text=""
+        android:textColor="#878787"
+        android:textSize="12dp"
+        android:visibility="gone"
+        tools:text="value"
+        tools:visibility="gone" />
 
 </RelativeLayout>

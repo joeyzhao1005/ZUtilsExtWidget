@@ -21,6 +21,9 @@
         <!-- 内容文字 -->
         <attr name="WithTitleTextView_content" format="string" />
 
+        <!-- 内容文字 -->
+        <attr name="WithTitleTextView_value" format="string" />
+
         <!-- 内容文字颜色 -->
         <attr name="WithTitleTextView_content_color" format="color" />
         <!-- 内容文字大小 -->
