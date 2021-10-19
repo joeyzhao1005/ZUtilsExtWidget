@@ -29,9 +29,9 @@ public class WithTitleTextView extends LinearLayout {
     private String contentString, WithTitleTextView_title,valueString;
 
 
-    private float title_size, content_size;
+    private float title_size, content_size,value_size;
     private int contentPosition = 0;
-    private int title_color, content_color;
+    private int title_color, content_color,value_color;
 
     public WithTitleTextView(Context context) {
         super(context);
@@ -76,6 +76,12 @@ public class WithTitleTextView extends LinearLayout {
                 R.styleable.WithTitleTextView_WithTitleTextView_content_size,
                 -1);
 
+        value_color = a.getColor(
+                R.styleable.WithTitleTextView_WithTitleTextView_value_color, getResources().getColor(R.color.gray));
+
+        value_size = a.getDimension(
+                R.styleable.WithTitleTextView_WithTitleTextView_value_size,
+                -1);
 
         WithTitleTextView_title = a.getString(R.styleable.WithTitleTextView_WithTitleTextView_title);
         contentPosition = a.getInt(R.styleable.WithTitleTextView_WithTitleTextView_content_align, 0);
@@ -106,9 +112,7 @@ public class WithTitleTextView extends LinearLayout {
 
 
         //content
-
         tvContent = (TextView) findViewById(R.id.tvWithTitleTextViewContent);
-        tvValue = (TextView) findViewById(R.id.tvWithTitleTextViewValue);
 
         switch (contentPosition) {
             case 1:
@@ -143,6 +147,16 @@ public class WithTitleTextView extends LinearLayout {
         tvContent.setTextColor(content_color);
 
         setContent(contentString);
+
+
+        //value
+        tvValue = (TextView) findViewById(R.id.tvWithTitleTextViewValue);
+        if (content_size != -1) {
+            tvValue.setTextSize(DensityUtils.px2dip(context, value_size));
+        }
+
+        tvValue.setTextColor(value_color);
+
         setValue(valueString);
     }
 

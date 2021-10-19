@@ -21,14 +21,20 @@
         <!-- 内容文字 -->
         <attr name="WithTitleTextView_content" format="string" />
 
-        <!-- 内容文字 -->
-        <attr name="WithTitleTextView_value" format="string" />
 
         <!-- 内容文字颜色 -->
         <attr name="WithTitleTextView_content_color" format="color" />
         <!-- 内容文字大小 -->
         <attr name="WithTitleTextView_content_size" format="dimension" />
 
+        <!-- value文字 -->
+        <attr name="WithTitleTextView_value" format="string" />
+
+        <!-- value文字颜色 -->
+        <attr name="WithTitleTextView_value_color" format="color" />
+
+        <!-- 内容文字大小 -->
+        <attr name="WithTitleTextView_value_size" format="dimension" />
 
     </declare-styleable>
 
